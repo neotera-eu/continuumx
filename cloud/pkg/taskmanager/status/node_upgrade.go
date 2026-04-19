@@ -24,7 +24,7 @@ import (
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
 	crdcliset "github.com/kubeedge/api/client/clientset/versioned"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 func tryUpdateNodeUpgradeJobStatus(ctx context.Context, cli crdcliset.Interface, opts TryUpdateStatusOptions) error {

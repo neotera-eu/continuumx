@@ -1,0 +1,58 @@
+name: ContinuumX Sync Check
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  branding-leak-check:
+    name: Verify no kubeedge strings in Tier A/B zones
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run rebrand verify
+        run: sh scripts/sync/rebrand.sh --verify-only
+
+      - name: Check go.mod module path
+        run: |
+          if grep -q 'module github.com/kubeedge/kubeedge' go.mod; then
+            echo "FAIL: go.mod still declares kubeedge module path"
+            exit 1
+          fi
+          echo "OK: go.mod module path is correct"
+
+      - name: Check binary name in Makefile
+        run: |
+          if grep -q '^\s*keadm\\' Makefile || grep -qP '^\tkeadm $' Makefile; then
+            echo "FAIL: Makefile BINARIES still contains 'keadm'"
+            exit 1
+          fi
+          echo "OK: binary name in Makefile is correct"
+
+      - name: Check Docker image org in build scripts
+        run: |
+          if grep -q '\-t kubeedge/' hack/make-rules/image.sh; then
+            echo "FAIL: image.sh still uses kubeedge/ org prefix"
+            exit 1
+          fi
+          echo "OK: image.sh uses correct org prefix"
+
+      - name: Check Helm values image repositories
+        run: |
+          if grep -q '"kubeedge/' manifests/charts/cloudcore/values.yaml; then
+            echo "FAIL: Helm values.yaml still references kubeedge/ image repos"
+            exit 1
+          fi
+          echo "OK: Helm values.yaml image repos are correct"
+
+      - name: Scan Go source for raw kubeedge imports (excluding vendor)
+        run: |
+          leaks=$(find . -name '*.go' -not -path '*/vendor/*' -not -path '*/.git/*' \
+            | xargs grep -l 'github\.com/kubeedge/kubeedge' 2>/dev/null || true)
+          if [ -n "$leaks" ]; then
+            echo "FAIL: Go files still importing github.com/kubeedge/kubeedge:"
+            echo "$leaks"
+            exit 1
+          fi
+          echo "OK: no raw kubeedge imports in Go source"

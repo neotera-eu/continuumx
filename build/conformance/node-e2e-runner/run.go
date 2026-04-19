@@ -29,7 +29,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/kubeedge/kubeedge/build/conformance/util"
+	"github.com/neotera-eu/continuumx/build/conformance/util"
 )
 
 const (

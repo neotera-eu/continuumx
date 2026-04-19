@@ -23,7 +23,7 @@ import (
 	"github.com/256dpi/gomqtt/transport"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
 )
 
 // Server serve as an internal mqtt broker.

@@ -22,9 +22,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcontext"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtmanager"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcontext"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtmanager"
 )
 
 // mockPanicWorker implements a worker that panics for testing

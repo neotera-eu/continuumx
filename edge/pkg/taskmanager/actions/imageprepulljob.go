@@ -32,13 +32,13 @@ import (
 	klog "k8s.io/klog/v2"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	metaclient "github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
-	"github.com/kubeedge/kubeedge/pkg/image"
-	"github.com/kubeedge/kubeedge/pkg/nodetask/actionflow"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	metaclient "github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/pkg/image"
+	"github.com/neotera-eu/continuumx/pkg/nodetask/actionflow"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 func newImagePrePullJobRunner() *ActionRunner {

@@ -21,7 +21,7 @@ import (
 
 	"k8s.io/component-base/logs"
 
-	"github.com/kubeedge/kubeedge/cloud/cmd/cloudcore/app"
+	"github.com/neotera-eu/continuumx/cloud/cmd/cloudcore/app"
 )
 
 func main() {

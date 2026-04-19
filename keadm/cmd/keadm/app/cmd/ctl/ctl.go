@@ -19,14 +19,14 @@ package ctl
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/confirm"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/describe"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/edit"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/exec"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/get"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/logs"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/restart"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/unhold"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/confirm"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/describe"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/edit"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/exec"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/get"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/logs"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/restart"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/unhold"
 )
 
 var ctlShortDescription = `Commands operating on the data plane at edge`

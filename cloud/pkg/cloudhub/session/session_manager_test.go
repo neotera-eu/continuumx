@@ -22,9 +22,9 @@ import (
 	"github.com/golang/mock/gomock"
 
 	"github.com/kubeedge/api/client/clientset/versioned/fake"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common"
-	tf "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/testing"
-	mockcon "github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn/testing"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common"
+	tf "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/testing"
+	mockcon "github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn/testing"
 )
 
 func TestGetAddSession(t *testing.T) {

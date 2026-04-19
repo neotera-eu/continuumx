@@ -21,22 +21,22 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/beta"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/cloud"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/debug"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/deprecated"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/edge"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/beta"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/cloud"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/debug"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/deprecated"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/edge"
 )
 
 var (
 	keadmLongDescription = `
     +----------------------------------------------------------+
-    | KEADM                                                    |
-    | Easily bootstrap a KubeEdge cluster                      |
+    | CXADM                                                    |
+    | Easily bootstrap a ContinuumX cluster                      |
     |                                                          |
     | Please give us feedback at:                              |
-    | https://github.com/kubeedge/kubeedge/issues              |
+    | https://github.com/neotera-eu/continuumx/issues          |
     +----------------------------------------------------------+
 
     Create a cluster with cloud node
@@ -49,13 +49,13 @@ var (
     +----------------------------------------------------------+
     | On the cloud machine:                                    |
     +----------------------------------------------------------+
-    | master node (on the cloud)# sudo keadm init              |
+    | master node (on the cloud)# sudo cxadm init              |
     +----------------------------------------------------------+
 
     +----------------------------------------------------------+
     | On the edge machine:                                     |
     +----------------------------------------------------------+
-    | worker node (at the edge)# sudo keadm join <flags>       |
+    | worker node (at the edge)# sudo cxadm join <flags>       |
     +----------------------------------------------------------+
 
     You can then repeat the second step on, as many other machines as you like.
@@ -65,8 +65,8 @@ var (
 // NewKubeedgeCommand returns cobra.Command to run keadm commands
 func NewKubeedgeCommand() *cobra.Command {
 	cmds := &cobra.Command{
-		Use:     "keadm",
-		Short:   "keadm: Bootstrap KubeEdge cluster",
+		Use:     "cxadm",
+		Short:   "cxadm: Bootstrap ContinuumX cluster",
 		Long:    keadmLongDescription,
 		Example: keadmExample,
 	}

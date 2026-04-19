@@ -104,5 +104,5 @@ const (
 	DefaultBurst = 60
 
 	KubeEdgeBinaryName = "edgecore"
-	KeadmBinaryName    = "keadm"
+	KeadmBinaryName    = "cxadm"
 )

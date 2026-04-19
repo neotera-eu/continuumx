@@ -30,10 +30,10 @@ import (
 	syncinformer "github.com/kubeedge/api/client/informers/externalversions"
 	synclisters "github.com/kubeedge/api/client/listers/reliablesyncs/v1alpha1"
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common"
-	tf "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/testing"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/session"
-	mockcon "github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn/testing"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common"
+	tf "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/testing"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/session"
+	mockcon "github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn/testing"
 )
 
 func TestNoAckRequired(t *testing.T) {

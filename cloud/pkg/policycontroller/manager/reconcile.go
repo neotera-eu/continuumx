@@ -25,10 +25,10 @@ import (
 
 	policyv1alpha1 "github.com/kubeedge/api/apis/policy/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/constants"
-	commonconstants "github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/constants"
+	commonconstants "github.com/neotera-eu/continuumx/common/constants"
 )
 
 type Controller struct {

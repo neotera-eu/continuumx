@@ -23,9 +23,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	cmdcommon "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/pkg/containers"
+	cmdcommon "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/pkg/containers"
 )
 
 // Configuration represent keadm config options
@@ -81,7 +81,7 @@ func newCmdConfigImagesList() *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "list",
-		Short: "Print a list of images keadm will use.",
+		Short: "Print a list of images cxadm will use.",
 		RunE: func(_ *cobra.Command, _ []string) error {
 			ver, err := util.GetCurrentVersion(cfg.KubeEdgeVersion)
 			if err != nil {
@@ -140,7 +140,7 @@ func AddImagesCommonConfigFlags(cmd *cobra.Command, cfg *Configuration) {
 		`Use this key to decide which image repository to pull images from.`,
 	)
 	cmd.Flags().StringVar(&cfg.Part, "part", cfg.Part,
-		"Use this key to set which part keadm will install: cloud part or edge part. If not set, keadm will list/pull all images used by both cloud part and edge part.")
+		"Use this key to set which part cxadm will install: cloud part or edge part. If not set, cxadm will list/pull all images used by both cloud part and edge part.")
 
 	cmd.Flags().StringVar(&cfg.RemoteRuntimeEndpoint, cmdcommon.FlagNameRemoteRuntimeEndpoint, cfg.RemoteRuntimeEndpoint,
 		"The endpoint of remote runtime service in edge node")

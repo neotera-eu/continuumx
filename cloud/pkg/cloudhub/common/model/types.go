@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
 )
 
 // constants for resource types

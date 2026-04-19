@@ -10,10 +10,10 @@ import (
 	"k8s.io/client-go/kubernetes"
 	fakekube "k8s.io/client-go/kubernetes/fake"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/util"
 )
 
 func TestNegotiateTunnelPort(t *testing.T) {

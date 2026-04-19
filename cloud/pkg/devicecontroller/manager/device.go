@@ -6,7 +6,7 @@ import (
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/config"
 )
 
 // DeviceManager is a manager watch device change event

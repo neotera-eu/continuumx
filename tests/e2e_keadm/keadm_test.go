@@ -24,9 +24,9 @@ import (
 	clientset "k8s.io/client-go/kubernetes"
 	"k8s.io/kubernetes/test/e2e/framework"
 
-	"github.com/kubeedge/kubeedge/tests/e2e/constants"
-	"github.com/kubeedge/kubeedge/tests/e2e/testsuite"
-	"github.com/kubeedge/kubeedge/tests/e2e/utils"
+	"github.com/neotera-eu/continuumx/tests/e2e/constants"
+	"github.com/neotera-eu/continuumx/tests/e2e/testsuite"
+	"github.com/neotera-eu/continuumx/tests/e2e/utils"
 )
 
 var DeploymentTestTimerGroup = utils.NewTestTimerGroup()

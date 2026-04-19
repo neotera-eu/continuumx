@@ -9,7 +9,7 @@ import (
 
 	v1 "github.com/kubeedge/api/apis/rules/v1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/constants"
 )
 
 func TestPathJoin(t *testing.T) {

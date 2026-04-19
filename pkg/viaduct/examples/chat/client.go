@@ -10,11 +10,11 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/examples/chat/config"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/client"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/mux"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/examples/chat/config"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/client"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/mux"
 )
 
 func handleClient(container *mux.MessageContainer, writer mux.ResponseWriter) {

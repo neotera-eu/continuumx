@@ -24,14 +24,14 @@ import (
 	"k8s.io/klog/v2"
 
 	reliableclient "github.com/kubeedge/api/client/clientset/versioned"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/authorization"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/dispatcher"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/session"
-	"github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/controller"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/mux"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/authorization"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/dispatcher"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/session"
+	"github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/controller"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/mux"
 )
 
 type Handler interface {

@@ -17,13 +17,13 @@ import (
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	beehiveModel "github.com/kubeedge/beehive/pkg/core/model"
-	commonType "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	servicebusConfig "github.com/kubeedge/kubeedge/edge/pkg/servicebus/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/servicebus/util"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	commonType "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	servicebusConfig "github.com/neotera-eu/continuumx/edge/pkg/servicebus/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/servicebus/util"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 var (

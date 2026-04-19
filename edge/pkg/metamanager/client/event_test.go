@@ -28,7 +28,7 @@ import (
 	appcorev1 "k8s.io/client-go/applyconfigurations/core/v1"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 const testEventName = "test-event"

@@ -16,9 +16,9 @@ import (
 	"github.com/kubeedge/api/apis/reliablesyncs/v1alpha1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	commonconst "github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	commonconst "github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 var (

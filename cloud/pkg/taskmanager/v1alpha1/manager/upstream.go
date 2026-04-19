@@ -26,13 +26,13 @@ import (
 	crdClientset "github.com/kubeedge/api/client/clientset/versioned"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	keclient "github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util/controller"
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	keclient "github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util/controller"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 // UpstreamController subscribe messages from edge and sync to k8s api server

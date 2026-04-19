@@ -25,10 +25,10 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	upgrdeedge "github.com/kubeedge/kubeedge/pkg/upgrade/edge"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	upgrdeedge "github.com/neotera-eu/continuumx/pkg/upgrade/edge"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 func NewRollbackCommand() *cobra.Command {

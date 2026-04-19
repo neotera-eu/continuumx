@@ -25,11 +25,11 @@ import (
 	"time"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcontext"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dttype"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/mocks"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcontext"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dttype"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/mocks"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 var (

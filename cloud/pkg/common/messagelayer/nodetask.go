@@ -18,8 +18,8 @@ package messagelayer
 
 import (
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	nodetaskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	nodetaskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 // BuildNodeTaskRouter builds the *model.Message of the node task

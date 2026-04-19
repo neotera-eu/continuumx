@@ -1,6 +1,6 @@
 ---
 name: Question
-about: Question relating to KubeEdge.
+about: Question relating to ContinuumX.
 labels: kind/question
 
 ---
@@ -14,4 +14,4 @@ labels: kind/question
 
 **Environment**:
 - Kubernetes version (use `kubectl version`):
-- KubeEdge version(e.g. `cloudcore --version` and `edgecore --version`):
+- ContinuumX version(e.g. `cloudcore --version` and `edgecore --version`):

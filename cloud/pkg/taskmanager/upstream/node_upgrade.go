@@ -27,10 +27,10 @@ import (
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
 	crdcliset "github.com/kubeedge/api/client/clientset/versioned"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/status"
-	"github.com/kubeedge/kubeedge/pkg/nodetask/actionflow"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/status"
+	"github.com/neotera-eu/continuumx/pkg/nodetask/actionflow"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 type NodeUpgradeJobHandler struct {

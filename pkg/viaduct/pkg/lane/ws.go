@@ -9,8 +9,8 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/packer"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/translator"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/packer"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/translator"
 )
 
 type WSLane struct {

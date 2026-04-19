@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	metaserverconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/config"
+	metaserverconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/config"
 )
 
 var Config Configure

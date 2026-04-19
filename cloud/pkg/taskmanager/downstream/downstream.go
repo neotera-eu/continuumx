@@ -24,10 +24,10 @@ import (
 	"github.com/go-logr/logr"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/nodes"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/executor"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/wrap"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/nodes"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/executor"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/wrap"
 )
 
 type DownstreamHandler interface {

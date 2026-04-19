@@ -5,9 +5,9 @@ import (
 
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/controller"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/controller"
 )
 
 // EdgeController use beehive context message layer

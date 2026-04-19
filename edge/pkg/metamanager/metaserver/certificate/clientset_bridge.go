@@ -29,8 +29,8 @@ import (
 	v1 "k8s.io/client-go/kubernetes/typed/certificates/v1"
 	fakecertificatesv1 "k8s.io/client-go/kubernetes/typed/certificates/v1/fake"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
-	kecertificates "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/certificate/certificates/v1"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
+	kecertificates "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/certificate/certificates/v1"
 )
 
 // NewSimpleClientset is new interface

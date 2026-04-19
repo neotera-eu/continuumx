@@ -25,7 +25,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/rand"
 
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	edgecon "github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/constants"
+	edgecon "github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/constants"
 )
 
 type TestMessageObj struct {

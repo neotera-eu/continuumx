@@ -40,8 +40,8 @@ import (
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
 	rulesv1 "github.com/kubeedge/api/apis/rules/v1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	messagelayer "github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	edgeapi "github.com/kubeedge/kubeedge/common/types"
+	messagelayer "github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	edgeapi "github.com/neotera-eu/continuumx/common/types"
 )
 
 const (

@@ -25,9 +25,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"k8s.io/client-go/kubernetes"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 func TestNewGetToken(t *testing.T) {

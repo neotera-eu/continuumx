@@ -22,9 +22,9 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/common"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/edge"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/common"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/edge"
 )
 
 // context to load config and access across the package

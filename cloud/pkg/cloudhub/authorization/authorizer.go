@@ -32,9 +32,9 @@ import (
 	"k8s.io/kubernetes/cmd/kubeadm/app/constants"
 
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	cloudhubmodel "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
-	hubconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/config"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
+	cloudhubmodel "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
+	hubconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/config"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
 )
 
 type cloudhubAuthorizer struct {

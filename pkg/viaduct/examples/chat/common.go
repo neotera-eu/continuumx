@@ -8,7 +8,7 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/pkg/viaduct/examples/chat/config"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/examples/chat/config"
 )
 
 func GetTlsConfig(cfg *config.Config) (*tls.Config, error) {

@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 type Reporter interface {

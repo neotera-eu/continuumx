@@ -26,8 +26,8 @@ import (
 	"github.com/emicklei/go-restful"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 func TestString_Metrics(t *testing.T) {

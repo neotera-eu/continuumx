@@ -30,7 +30,7 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/metaclient"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/metaclient"
 )
 
 func TestGetVersion(t *testing.T) {

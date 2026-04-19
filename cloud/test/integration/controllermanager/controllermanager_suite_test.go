@@ -28,7 +28,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/envtest"
 
 	appsv1alpha1 "github.com/kubeedge/api/apis/apps/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager"
 )
 
 // Values of the following two variables will be linked when

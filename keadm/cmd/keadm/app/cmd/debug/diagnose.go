@@ -9,30 +9,30 @@ import (
 
 	"github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 var (
-	edgeDiagnoseLongDescription = `keadm debug diagnose command Diagnose relevant information at edge nodes
+	edgeDiagnoseLongDescription = `cxadm debug diagnose command Diagnose relevant information at edge nodes
 `
 	edgeDiagnoseShortDescription = `Diagnose relevant information at edge nodes`
 
 	edgeDiagnoseExample = `
 # Diagnose whether the node is normal
-keadm debug diagnose node
+cxadm debug diagnose node
 
 # Diagnose whether the pod is normal
-keadm debug diagnose pod nginx-xxx -n test
+cxadm debug diagnose pod nginx-xxx -n test
 
 # Diagnose node installation conditions
-keadm debug diagnose install
+cxadm debug diagnose install
 
 # Diagnose node installation conditions and specify the detected ip
-keadm debug diagnose install -i 192.168.1.2
+cxadm debug diagnose install -i 192.168.1.2
 `
 )
 

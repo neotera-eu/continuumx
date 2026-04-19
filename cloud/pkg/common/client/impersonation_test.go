@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	authenticationv1 "k8s.io/api/authentication/v1"
 
-	ctxutl "github.com/kubeedge/kubeedge/cloud/pkg/common/context"
+	ctxutl "github.com/neotera-eu/continuumx/cloud/pkg/common/context"
 )
 
 type fakeNextRoundTripper struct {

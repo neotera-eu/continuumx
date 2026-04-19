@@ -28,9 +28,9 @@ import (
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	"github.com/kubeedge/api/apis/operations/v1alpha1"
 	crdClientset "github.com/kubeedge/api/client/clientset/versioned"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util/manager"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util/manager"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 type Controller interface {

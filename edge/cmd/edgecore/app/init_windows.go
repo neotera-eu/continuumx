@@ -24,7 +24,7 @@ import (
 
 	klog "k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
 )
 
 func initForOS(opts *options.EdgeCoreOptions) error {

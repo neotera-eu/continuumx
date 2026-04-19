@@ -1,0 +1,26 @@
+# CODEOWNERS — ContinuumX
+# Each pattern maps to one or more GitHub users/teams who must review changes.
+# The last matching pattern wins.
+
+# Default: Neotera platform team reviews everything
+*                                       @neotera-eu/platform
+
+# Sync scripts and branding — platform team only
+/scripts/sync/                          @neotera-eu/platform
+/docs/upstream-sync.md                  @neotera-eu/platform
+
+# CI/CD workflows
+/.github/workflows/                     @neotera-eu/platform
+
+# Cloud core
+/cloud/                                 @neotera-eu/platform
+/manifests/                             @neotera-eu/platform
+
+# Edge
+/edge/                                  @neotera-eu/platform
+
+# CLI (cxadm)
+/keadm/                                 @neotera-eu/platform
+
+# Staging sub-modules (upstream-tracked, changes need extra care)
+/staging/                               @neotera-eu/platform

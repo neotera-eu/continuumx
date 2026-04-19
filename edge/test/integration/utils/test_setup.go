@@ -8,8 +8,8 @@ import (
 	"time"
 
 	edgecore "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/edge"
-	"github.com/kubeedge/kubeedge/pkg/version"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/edge"
+	"github.com/neotera-eu/continuumx/pkg/version"
 )
 
 const (

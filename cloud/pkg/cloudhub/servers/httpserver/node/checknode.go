@@ -24,7 +24,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
 )
 
 func CheckNode(request *restful.Request, response *restful.Response) {

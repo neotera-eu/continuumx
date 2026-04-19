@@ -25,12 +25,12 @@ import (
 	"k8s.io/klog/v2"
 	"sigs.k8s.io/apiserver-network-proxy/pkg/util"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd"
 )
 
 // Run executes the keadm command
 func Run() error {
-	flagSet := flag.NewFlagSet("keadm", flag.ExitOnError)
+	flagSet := flag.NewFlagSet("cxadm", flag.ExitOnError)
 	cmd := cmd.NewKubeedgeCommand()
 	flags := cmd.Flags()
 	klog.InitFlags(flagSet)

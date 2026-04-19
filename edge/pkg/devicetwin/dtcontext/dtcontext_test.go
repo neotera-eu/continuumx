@@ -23,10 +23,10 @@ import (
 	"testing"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dttype"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/testutil"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dttype"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/testutil"
 )
 
 // TestCommTo is function to test CommTo().

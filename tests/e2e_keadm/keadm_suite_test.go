@@ -26,7 +26,7 @@ import (
 	"github.com/spf13/pflag"
 	"k8s.io/kubernetes/test/e2e/framework"
 
-	"github.com/kubeedge/kubeedge/tests/e2e/utils"
+	"github.com/neotera-eu/continuumx/tests/e2e/utils"
 )
 
 var (

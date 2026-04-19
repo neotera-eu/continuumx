@@ -17,15 +17,15 @@ import (
 	"k8s.io/kubernetes/cmd/kubeadm/app/constants"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	utilcontext "github.com/kubeedge/kubeedge/cloud/pkg/common/context"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
-	passthrough "github.com/kubeedge/kubeedge/pkg/util/pass-through"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	utilcontext "github.com/neotera-eu/continuumx/cloud/pkg/common/context"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
+	passthrough "github.com/neotera-eu/continuumx/pkg/util/pass-through"
 )
 
 type Center struct {

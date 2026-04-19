@@ -42,9 +42,9 @@ import (
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/fakers"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/scope"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/fakers"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/scope"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage"
 )
 
 type mockAdmit struct{}

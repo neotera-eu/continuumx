@@ -27,7 +27,7 @@ import (
 	"github.com/kubeedge/api/apis/common/constants"
 	cfgv1alpha2 "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/api/client/clientset/versioned"
-	keadutil "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	keadutil "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 func KubeClient() (kubernetes.Interface, error) {

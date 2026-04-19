@@ -24,7 +24,7 @@ import (
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
 	crdcliset "github.com/kubeedge/api/client/clientset/versioned"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
 )
 
 const (

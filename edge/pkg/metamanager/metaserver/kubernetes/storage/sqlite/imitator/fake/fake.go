@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/watch"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
 )
 
 // Client fake

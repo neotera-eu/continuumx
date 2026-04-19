@@ -28,9 +28,9 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/metaclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/metaclient"
 )
 
 func (f *Factory) UnholdUpgrade() http.Handler {

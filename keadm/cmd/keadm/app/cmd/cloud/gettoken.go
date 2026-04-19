@@ -23,19 +23,19 @@ import (
 	"github.com/spf13/cobra"
 	metaV1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
 	gettokenLongDescription = `
-"keadm gettoken" command prints the token to use for establishing bidirectional trust between edge nodes and cloudcore.
+"cxadm gettoken" command prints the token to use for establishing bidirectional trust between edge nodes and cloudcore.
 A token can be used when a edge node is about to join the cluster. With this token the cloudcore then approve the
 certificate request.
 `
 	gettokenExample = `
-keadm gettoken --kube-config /root/.kube/config
+cxadm gettoken --kube-config /root/.kube/config
 - kube-config is the absolute path of kubeconfig which used to build secure connectivity between keadm and kube-apiserver
 to get the token.
 `

@@ -20,10 +20,10 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/certificate/http"
-	"github.com/kubeedge/kubeedge/pkg/security/certs"
-	"github.com/kubeedge/kubeedge/pkg/security/token"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/certificate/http"
+	"github.com/neotera-eu/continuumx/pkg/security/certs"
+	"github.com/neotera-eu/continuumx/pkg/security/token"
 )
 
 // jitteryDuration uses some jitter to set the rotation threshold so each node

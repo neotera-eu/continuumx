@@ -28,10 +28,10 @@ import (
 	"k8s.io/klog/v2"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/wrap"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
-	"github.com/kubeedge/kubeedge/pkg/util/slices"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/wrap"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/pkg/util/slices"
 )
 
 var (

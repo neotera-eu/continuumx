@@ -29,9 +29,9 @@ import (
 	"k8s.io/klog/v2"
 
 	apiconsts "github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/common/constants"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/common/constants"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 // IsKubeEdgeProcessRunning checks if the given process is running or not

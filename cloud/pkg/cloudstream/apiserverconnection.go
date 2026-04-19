@@ -3,7 +3,7 @@ package cloudstream
 import (
 	"fmt"
 
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 const (

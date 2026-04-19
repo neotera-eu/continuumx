@@ -6,10 +6,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/cmgr"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/mux"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/cmgr"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/mux"
 )
 
 // notify a new connection

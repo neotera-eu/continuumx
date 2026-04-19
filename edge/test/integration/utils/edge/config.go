@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/common"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/common"
 )
 
 // config.json decode struct

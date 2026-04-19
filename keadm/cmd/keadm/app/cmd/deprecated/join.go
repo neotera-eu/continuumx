@@ -25,17 +25,17 @@ import (
 	"github.com/spf13/pflag"
 
 	apiconsts "github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/common/constants"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/edge"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/common/constants"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/edge"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
 )
 
 var (
 	edgeJoinLongDescription = `
 Deprecated:
-"keadm deprecated join" command bootstraps KubeEdge's worker node (at the edge) component.
+"cxadm deprecated join" command bootstraps KubeEdge's worker node (at the edge) component.
 It will also connect with cloud component to receive
 further instructions and forward telemetry data from
 devices to cloud

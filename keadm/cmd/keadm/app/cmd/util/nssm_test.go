@@ -26,7 +26,7 @@ import (
 	"github.com/agiledragon/gomonkey/v2"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 const testServiceName = "testService"

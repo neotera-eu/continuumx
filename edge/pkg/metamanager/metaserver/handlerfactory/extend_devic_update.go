@@ -27,8 +27,8 @@ import (
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/constants"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/constants"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 func updateEdgeDevice() http.Handler {

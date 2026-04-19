@@ -8,7 +8,7 @@ import (
 	"k8s.io/client-go/tools/cache"
 
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/config"
 )
 
 func TestDeviceModelManager_Events(t *testing.T) {

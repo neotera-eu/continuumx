@@ -23,9 +23,9 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/common/constants"
-	edgeapi "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/common/constants"
+	edgeapi "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 func TestNewPodStatus(t *testing.T) {

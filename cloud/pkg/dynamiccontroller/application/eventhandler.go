@@ -27,9 +27,9 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog/v2"
 
-	genericinformers "github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	genericinformers "github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 // HandlerCenter is used to prepare corresponding CommonResourceEventHandler for listener

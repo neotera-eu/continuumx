@@ -27,7 +27,7 @@ import (
 	"github.com/kubeedge/beehive/pkg/common"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 // Override the global variables to use very short timeouts

@@ -28,7 +28,7 @@ import (
 
 	gomock "github.com/golang/mock/gomock"
 	model "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
 )
 
 // MockConnection is a mock of Connection interface.

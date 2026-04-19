@@ -11,10 +11,10 @@ import (
 	"github.com/kubeedge/api/apis/common/constants"
 	apiconsts "github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 var (
@@ -22,7 +22,7 @@ var (
 `
 	edgecollectExample = `
 # Collect all items and specified the output directory path
-keadm debug collect --output-path .
+cxadm debug collect --output-path .
 `
 )
 

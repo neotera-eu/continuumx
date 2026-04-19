@@ -7,8 +7,8 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 // UnmarshalMembershipDetail Unmarshal membershipdetail

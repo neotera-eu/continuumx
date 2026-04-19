@@ -40,7 +40,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	appsv1alpha1 "github.com/kubeedge/api/apis/apps/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodegroup"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodegroup"
 )
 
 const (

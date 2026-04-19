@@ -16,11 +16,11 @@ import (
 	"github.com/kubeedge/api/apis/reliablesyncs/v1alpha1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	edgectrconst "github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/constants"
-	commonconst "github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	edgectrconst "github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/constants"
+	commonconst "github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 func (sctl *SyncController) reconcileObjectSync(sync *v1alpha1.ObjectSync) {

@@ -23,8 +23,8 @@ import (
 
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudstream/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudstream/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
 )
 
 func TestNewCloudStream(t *testing.T) {

@@ -25,7 +25,7 @@ import (
 
 	"github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/pkg/util/validation"
+	"github.com/neotera-eu/continuumx/pkg/util/validation"
 )
 
 type EdgeCoreOptions struct {

@@ -10,12 +10,12 @@ import (
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/certificate"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/clients"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/config"
-	msghandler "github.com/kubeedge/kubeedge/edge/pkg/edgehub/messagehandler"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/certificate"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/clients"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/config"
+	msghandler "github.com/neotera-eu/continuumx/edge/pkg/edgehub/messagehandler"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 // EdgeHub defines edgehub object structure

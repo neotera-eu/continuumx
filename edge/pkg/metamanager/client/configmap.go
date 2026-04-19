@@ -7,9 +7,9 @@ import (
 	api "k8s.io/api/core/v1"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
 )
 
 // ConfigMapsGetter has a method to return a ConfigMapInterface.

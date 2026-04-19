@@ -24,8 +24,8 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/edged/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/edge/pkg/edged/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
 )
 
 const (

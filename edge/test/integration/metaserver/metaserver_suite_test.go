@@ -7,11 +7,11 @@ import (
 	. "github.com/onsi/gomega"
 
 	edgeconfig "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/common"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/edge"
-	kefeatures "github.com/kubeedge/kubeedge/pkg/features"
-	"github.com/kubeedge/kubeedge/tests/integration/framework"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/common"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/edge"
+	kefeatures "github.com/neotera-eu/continuumx/pkg/features"
+	"github.com/neotera-eu/continuumx/tests/integration/framework"
 )
 
 func TestEdgecoreMetaServer(t *testing.T) {

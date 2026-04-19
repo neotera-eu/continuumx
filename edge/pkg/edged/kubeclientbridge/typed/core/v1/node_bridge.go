@@ -31,8 +31,8 @@ import (
 	kubetypes "k8s.io/apimachinery/pkg/types"
 	typedcorev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 // NodesBridge implements NodeInterface

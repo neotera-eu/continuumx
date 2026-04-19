@@ -12,7 +12,7 @@ import (
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 func init() {

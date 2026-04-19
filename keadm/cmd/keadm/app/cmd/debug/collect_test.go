@@ -29,10 +29,10 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 func setupMkdirPatch(t *testing.T, path string, shouldSucceed bool) *gomonkey.Patches {

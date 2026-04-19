@@ -36,9 +36,9 @@ import (
 	"github.com/kubeedge/api/apis/reliablesyncs/v1alpha1"
 	"github.com/kubeedge/api/client/clientset/versioned/fake"
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
 )
 
 var (

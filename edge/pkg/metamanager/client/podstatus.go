@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/common/constants"
-	edgeapi "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	commodule "github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/common/constants"
+	edgeapi "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	commodule "github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 // PodStatusGetter is interface to get pod status

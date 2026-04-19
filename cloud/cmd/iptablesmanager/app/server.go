@@ -30,11 +30,11 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/cmd/iptablesmanager/app/options"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudstream/iptables"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/util/flag"
-	"github.com/kubeedge/kubeedge/pkg/version/verflag"
+	"github.com/neotera-eu/continuumx/cloud/cmd/iptablesmanager/app/options"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudstream/iptables"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/util/flag"
+	"github.com/neotera-eu/continuumx/pkg/version/verflag"
 )
 
 func NewIptablesManagerCommand() *cobra.Command {

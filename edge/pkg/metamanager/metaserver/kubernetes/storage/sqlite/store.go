@@ -18,11 +18,11 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
-	patchutil "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/util"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
+	patchutil "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/util"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 /*

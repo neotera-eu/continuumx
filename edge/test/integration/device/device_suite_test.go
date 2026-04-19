@@ -24,11 +24,11 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/common"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/edge"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/helpers"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/common"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/edge"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/helpers"
 )
 
 // context to load config and access across the package

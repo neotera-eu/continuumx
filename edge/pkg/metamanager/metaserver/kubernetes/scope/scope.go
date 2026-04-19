@@ -15,8 +15,8 @@ import (
 	"k8s.io/kube-openapi/pkg/validation/spec"
 	"sigs.k8s.io/structured-merge-diff/v4/fieldpath"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/fakers"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/serializer"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/fakers"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/serializer"
 )
 
 func NewRequestScope() *handlers.RequestScope {

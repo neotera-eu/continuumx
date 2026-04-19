@@ -21,10 +21,10 @@ import (
 	reliablesyncslisters "github.com/kubeedge/api/client/listers/reliablesyncs/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	keclient "github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/synccontroller/config"
+	keclient "github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/synccontroller/config"
 )
 
 const (

@@ -15,7 +15,7 @@ import (
 
 	policyv1alpha1 "github.com/kubeedge/api/apis/policy/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
 )
 
 const (

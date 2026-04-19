@@ -29,9 +29,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apiserver/pkg/endpoints/request"
 
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage"
 )
 
 func TestExec(t *testing.T) {

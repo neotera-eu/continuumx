@@ -19,8 +19,8 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/cloud"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/edge"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/cloud"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/edge"
 )
 
 // NewUpgradeCommand creates a upgrade command instance and returns it.

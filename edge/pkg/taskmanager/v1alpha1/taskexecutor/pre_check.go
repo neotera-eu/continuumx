@@ -27,8 +27,8 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 const (

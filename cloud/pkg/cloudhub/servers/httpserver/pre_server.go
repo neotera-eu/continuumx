@@ -28,11 +28,11 @@ import (
 	certutil "k8s.io/client-go/util/cert"
 	"k8s.io/klog/v2"
 
-	hubconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/security/certs"
-	"github.com/kubeedge/kubeedge/pkg/security/token"
+	hubconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/security/certs"
+	"github.com/neotera-eu/continuumx/pkg/security/token"
 )
 
 const (

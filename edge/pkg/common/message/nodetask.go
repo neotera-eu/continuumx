@@ -21,9 +21,9 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 // ReportTaskResult reports the status of node tasks, only for v1alpha2 version.

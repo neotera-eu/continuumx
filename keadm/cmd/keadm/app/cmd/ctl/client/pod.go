@@ -23,7 +23,7 @@ import (
 	metaV1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes/scheme"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/metaclient"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/metaclient"
 )
 
 type PodRequest struct {

@@ -28,8 +28,8 @@ import (
 
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	dmiapi "github.com/kubeedge/api/apis/dmi/v1beta1"
-	deviceconst "github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/constants"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
+	deviceconst "github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/constants"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
 )
 
 type DMIClient struct {

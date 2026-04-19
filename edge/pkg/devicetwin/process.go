@@ -13,12 +13,12 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcontext"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtmodule"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dttype"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcontext"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtmodule"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dttype"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 var (

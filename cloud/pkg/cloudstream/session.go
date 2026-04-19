@@ -24,7 +24,7 @@ import (
 	"github.com/gorilla/websocket"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 // Session indicates one tunnel connection (default websocket) from edgecore

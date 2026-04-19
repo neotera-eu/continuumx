@@ -19,7 +19,7 @@ package main
 import (
 	"os"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app"
 )
 
 func main() {

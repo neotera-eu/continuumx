@@ -25,7 +25,7 @@ import (
 
 	"github.com/kubeedge/api/apis/common/constants"
 	config "github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
-	"github.com/kubeedge/kubeedge/pkg/util/validation"
+	"github.com/neotera-eu/continuumx/pkg/util/validation"
 )
 
 type CloudCoreOptions struct {

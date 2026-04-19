@@ -27,9 +27,9 @@ import (
 
 	operationv1alpha1 "github.com/kubeedge/api/apis/operations/v1alpha1"
 	operationv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 var (

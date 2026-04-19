@@ -26,7 +26,7 @@ export KUBEEDGE_OUTPUT_SUBPATH="${KUBEEDGE_OUTPUT_SUBPATH:-_output/local}"
 export KUBEEDGE_OUTPUT="${KUBEEDGE_ROOT}/${KUBEEDGE_OUTPUT_SUBPATH}"
 export KUBEEDGE_OUTPUT_BINPATH="${KUBEEDGE_OUTPUT}/bin"
 
-readonly KUBEEDGE_GO_PACKAGE="github.com/kubeedge/kubeedge"
+readonly KUBEEDGE_GO_PACKAGE="github.com/neotera-eu/continuumx"
 
 source "${KUBEEDGE_ROOT}/hack/lib/golang.sh"
 source "${KUBEEDGE_ROOT}/hack/lib/util.sh"

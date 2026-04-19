@@ -14,7 +14,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes/fake"
 
-	"github.com/kubeedge/kubeedge/cloud/test/httpfake"
+	"github.com/neotera-eu/continuumx/cloud/test/httpfake"
 )
 
 func TestRegisterValidateWebhook(t *testing.T) {

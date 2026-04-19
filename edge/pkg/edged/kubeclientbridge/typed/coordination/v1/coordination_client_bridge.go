@@ -27,7 +27,7 @@ import (
 	typedcoordinationv1 "k8s.io/client-go/kubernetes/typed/coordination/v1"
 	fakecoordinationv1 "k8s.io/client-go/kubernetes/typed/coordination/v1/fake"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 // CoordinationV1Bridge is a coordinationV1 bridge

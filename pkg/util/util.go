@@ -29,14 +29,14 @@ import (
 	nodeutil "k8s.io/component-helpers/node/util"
 	"k8s.io/kubernetes/pkg/apis/core/validation"
 
-	"github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 func GetLocalIP(hostName string) (string, error) {
 	var ipAddr net.IP
 	var err error
 
-	// fix https://github.com/kubeedge/kubeedge/issues/6023
+	// fix https://github.com/neotera-eu/continuumx/issues/6023
 	// LookupIP maybe get docker0 ip's or other cni ip's
 	// maybe get default route interface ip's can be safter
 	// if get default ip fails then should use LookupIP

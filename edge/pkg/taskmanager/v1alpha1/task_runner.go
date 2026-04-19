@@ -21,10 +21,10 @@ import (
 	"fmt"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	commonmsg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/v1alpha1/taskexecutor"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	commonmsg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/v1alpha1/taskexecutor"
 )
 
 func Init() {

@@ -27,9 +27,9 @@ import (
 
 	"github.com/kubeedge/api/apis/common/constants"
 	cfgv1alpha2 "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	upgrdeedge "github.com/kubeedge/kubeedge/pkg/upgrade/edge"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	upgrdeedge "github.com/neotera-eu/continuumx/pkg/upgrade/edge"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 func TestBackupCommandRun(t *testing.T) {

@@ -29,7 +29,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/cache/informertest"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 func TestVerifyNodeDefine(t *testing.T) {

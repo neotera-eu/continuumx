@@ -28,13 +28,13 @@ import (
 
 	"github.com/kubeedge/api/apis/common/constants"
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
-	"github.com/kubeedge/kubeedge/common/types"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/pkg/containers"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
-	"github.com/kubeedge/kubeedge/pkg/version"
+	"github.com/neotera-eu/continuumx/common/types"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/pkg/containers"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/pkg/version"
 )
 
 const (

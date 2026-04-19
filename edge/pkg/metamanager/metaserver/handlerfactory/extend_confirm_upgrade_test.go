@@ -32,13 +32,13 @@ import (
 	configv1alpha2 "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	fsmv1alpha1 "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	commonmsg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/actions"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/v1alpha1/taskexecutor"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	commonmsg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/actions"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/v1alpha1/taskexecutor"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 func TestConfirmUpgrade(t *testing.T) {

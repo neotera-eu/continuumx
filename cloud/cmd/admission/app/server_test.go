@@ -24,8 +24,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"k8s.io/component-base/cli/globalflag"
 
-	"github.com/kubeedge/kubeedge/cloud/cmd/admission/app/options"
-	"github.com/kubeedge/kubeedge/pkg/version/verflag"
+	"github.com/neotera-eu/continuumx/cloud/cmd/admission/app/options"
+	"github.com/neotera-eu/continuumx/pkg/version/verflag"
 )
 
 func TestNewAdmissionCommand(t *testing.T) {

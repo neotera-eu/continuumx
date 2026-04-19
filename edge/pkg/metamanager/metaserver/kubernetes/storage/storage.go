@@ -27,15 +27,15 @@ import (
 	remote "k8s.io/cri-client/pkg"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/pkg/edged/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/agent"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/restful"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	"github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/pkg/edged/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/agent"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/restful"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 // REST implements a RESTStorage for all resource against imitator.

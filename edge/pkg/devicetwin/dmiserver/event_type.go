@@ -19,7 +19,7 @@ package dmiserver
 import (
 	"time"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/types"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/types"
 )
 
 // DeviceTwinUpdate the structure of device twin update.

@@ -11,12 +11,12 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter"
-	"github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/constants"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter"
+	"github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/constants"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 type SelectorListener struct {

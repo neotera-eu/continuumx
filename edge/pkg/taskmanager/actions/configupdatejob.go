@@ -26,10 +26,10 @@ import (
 	klog "k8s.io/klog/v2"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/pkg/nodetask/actionflow"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/pkg/nodetask/actionflow"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 func newConfigUpdateJobRunner() *ActionRunner {

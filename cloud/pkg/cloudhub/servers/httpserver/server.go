@@ -24,11 +24,11 @@ import (
 	"github.com/emicklei/go-restful"
 	certutil "k8s.io/client-go/util/cert"
 
-	hubconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/config"
-	certshandler "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/servers/httpserver/certificate"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/servers/httpserver/node"
-	nodetaskhandler "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/servers/httpserver/nodetask"
-	"github.com/kubeedge/kubeedge/common/constants"
+	hubconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/config"
+	certshandler "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/servers/httpserver/certificate"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/servers/httpserver/node"
+	nodetaskhandler "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/servers/httpserver/nodetask"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 // StartHTTPServer starts the http service

@@ -10,7 +10,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 @CHANGELOG
-KubeEdge Authors: To create keadm debug get function like kubectl get,
+KubeEdge Authors: To create cxadm debug get function like kubectl get,
 This file is derived from K8S Kubectl code with reduced set of methods
 Changes done are
 1. Package edged got some functions from "k8s.io/kubectl/pkg/cmd/get/get_flags.go"

@@ -6,8 +6,8 @@ import (
 	"net"
 	"os"
 
-	metaserverconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/config"
-	"github.com/kubeedge/kubeedge/pkg/util"
+	metaserverconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/config"
+	"github.com/neotera-eu/continuumx/pkg/util"
 )
 
 func setupDummyInterface() error {

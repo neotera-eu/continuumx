@@ -30,11 +30,11 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	commfake "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common/fake"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	commfake "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common/fake"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 const (

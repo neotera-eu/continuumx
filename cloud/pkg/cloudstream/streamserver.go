@@ -31,10 +31,10 @@ import (
 	"k8s.io/apimachinery/pkg/util/httpstream"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudstream/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/stream/flushwriter"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudstream/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/stream/flushwriter"
 )
 
 type StreamServer struct {

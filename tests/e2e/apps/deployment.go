@@ -32,11 +32,11 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/kubernetes/test/e2e/framework"
 
-	"github.com/kubeedge/kubeedge/tests/e2e/constants"
+	"github.com/neotera-eu/continuumx/tests/e2e/constants"
 
-	kconstants "github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/tests/e2e/testsuite"
-	"github.com/kubeedge/kubeedge/tests/e2e/utils"
+	kconstants "github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/tests/e2e/testsuite"
+	"github.com/neotera-eu/continuumx/tests/e2e/utils"
 )
 
 var DeploymentTestTimerGroup = utils.NewTestTimerGroup()

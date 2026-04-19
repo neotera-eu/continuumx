@@ -20,7 +20,7 @@ import (
 	"fmt"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/pkg/nodetask/actionflow"
+	"github.com/neotera-eu/continuumx/pkg/nodetask/actionflow"
 )
 
 type NodeJob interface {

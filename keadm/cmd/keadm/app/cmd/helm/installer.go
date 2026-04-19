@@ -17,10 +17,10 @@ import (
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"sigs.k8s.io/yaml"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	kecharts "github.com/kubeedge/kubeedge/manifests"
+	"github.com/neotera-eu/continuumx/common/constants"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	kecharts "github.com/neotera-eu/continuumx/manifests"
 )
 
 const (

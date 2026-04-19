@@ -10,9 +10,9 @@ import (
 	"k8s.io/client-go/informers"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	commoninformers "github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodegroup"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	commoninformers "github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodegroup"
 )
 
 func IsBelongToSameGroup(targetNodeName string, epNodeName string) bool {

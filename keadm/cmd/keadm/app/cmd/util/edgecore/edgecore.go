@@ -24,7 +24,7 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/metaclient"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/metaclient"
 )
 
 func GetVersion(ctx context.Context, config *v1alpha2.EdgeCoreConfig) string {

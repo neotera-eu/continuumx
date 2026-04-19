@@ -25,8 +25,8 @@ import (
 	"github.com/stretchr/testify/require"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/status"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/status"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 func TestNodeUpgradeJobUpdateNodeTaskStatus(t *testing.T) {

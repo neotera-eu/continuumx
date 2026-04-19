@@ -7,7 +7,7 @@ import (
 	"k8s.io/component-base/logs"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/cmd/controllermanager/app"
+	"github.com/neotera-eu/continuumx/cloud/cmd/controllermanager/app"
 )
 
 func main() {

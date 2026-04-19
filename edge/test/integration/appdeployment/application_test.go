@@ -26,9 +26,9 @@ import (
 	"k8s.io/apimachinery/pkg/api/resource"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/common"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/edge"
-	"github.com/kubeedge/kubeedge/edge/test/integration/utils/helpers"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/common"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/edge"
+	"github.com/neotera-eu/continuumx/edge/test/integration/utils/helpers"
 )
 
 const (

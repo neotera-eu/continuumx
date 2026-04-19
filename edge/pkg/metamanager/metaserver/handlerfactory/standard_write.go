@@ -35,10 +35,10 @@ import (
 	"k8s.io/apiserver/pkg/endpoints/request"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/fakers"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/scope"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/fakers"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/scope"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 func (f *Factory) Create(req *request.RequestInfo) http.Handler {

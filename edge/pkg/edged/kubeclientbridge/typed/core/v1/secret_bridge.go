@@ -30,7 +30,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	typedcorev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 // SecretBridge implements SecretInterface

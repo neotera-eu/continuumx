@@ -30,25 +30,25 @@ import (
 	"github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	apiutil "github.com/kubeedge/api/apis/util"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
 )
 
 var (
 	edgeJoinDescription = `
-"keadm join" command bootstraps KubeEdge's worker node (at the edge) component.
+"cxadm join" command bootstraps KubeEdge's worker node (at the edge) component.
 It will also connect with cloud component to receive
 further instructions and forward telemetry data from
 devices to cloud
 `
 	edgeJoinExample = `
-keadm join --cloudcore-ipport=<ip:port address> --edgenode-name=<unique string as edge identifier>
+cxadm join --cloudcore-ipport=<ip:port address> --edgenode-name=<unique string as edge identifier>
 
   - For this command --cloudcore-ipport flag is a required option
   - This command will download and install the default version of pre-requisites and KubeEdge
 
-keadm join --cloudcore-ipport=10.20.30.40:10000 --edgenode-name=testing123 --kubeedge-version=v` + common.DefaultKubeEdgeVersion + `
+cxadm join --cloudcore-ipport=10.20.30.40:10000 --edgenode-name=testing123 --kubeedge-version=v` + common.DefaultKubeEdgeVersion + `
 `
 )
 

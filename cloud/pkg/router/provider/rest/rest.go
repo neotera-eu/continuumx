@@ -15,11 +15,11 @@ import (
 
 	v1 "github.com/kubeedge/api/apis/rules/v1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/constants"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/listener"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/provider"
-	httpUtils "github.com/kubeedge/kubeedge/cloud/pkg/router/utils/http"
-	commonType "github.com/kubeedge/kubeedge/common/types"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/listener"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/provider"
+	httpUtils "github.com/neotera-eu/continuumx/cloud/pkg/router/utils/http"
+	commonType "github.com/neotera-eu/continuumx/common/types"
 )
 
 var inited int32

@@ -27,8 +27,8 @@ import (
 	"k8s.io/client-go/tools/cache"
 
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
 )
 
 func TestSecretManager_Events(t *testing.T) {

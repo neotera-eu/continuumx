@@ -27,9 +27,9 @@ import (
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/wrap"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/wrap"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 func TestExecutorOperation(t *testing.T) {

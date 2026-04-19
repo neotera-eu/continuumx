@@ -11,10 +11,10 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodegroup"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/application"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodegroup"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/application"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter"
 )
 
 // FilterImpl implement enpointslice filter

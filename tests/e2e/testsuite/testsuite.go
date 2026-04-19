@@ -26,7 +26,7 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	clientset "k8s.io/client-go/kubernetes"
 
-	"github.com/kubeedge/kubeedge/tests/e2e/utils"
+	"github.com/neotera-eu/continuumx/tests/e2e/utils"
 )
 
 func CreateDeploymentTest(c clientset.Interface, replica int32, deplName string) *v1.PodList {

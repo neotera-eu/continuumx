@@ -19,7 +19,7 @@ limitations under the License.
 package app
 
 import (
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
 )
 
 func initForOS(_opts *options.EdgeCoreOptions) error {

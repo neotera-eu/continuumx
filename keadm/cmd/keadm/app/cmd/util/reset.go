@@ -24,7 +24,7 @@ import (
 	utilruntime "k8s.io/kubernetes/cmd/kubeadm/app/util/runtime"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
 )
 
 func NewResetOptions() *common.ResetOptions {
@@ -47,7 +47,7 @@ func RemoveContainers(criSocketPath string) error {
 		return err
 	}
 	// TODO: add defer after upgrade to specific k8s version
-	// see https://github.com/kubeedge/kubeedge/pull/6536#discussion_r2508874149
+	// see https://github.com/neotera-eu/continuumx/pull/6536#discussion_r2508874149
 	// defer containerRuntime.Close()
 
 	containers, err := containerRuntime.ListKubeContainers()

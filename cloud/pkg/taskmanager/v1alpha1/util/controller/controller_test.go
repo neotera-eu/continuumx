@@ -24,7 +24,7 @@ import (
 
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	"github.com/kubeedge/api/apis/operations/v1alpha1"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 func TestName(t *testing.T) {

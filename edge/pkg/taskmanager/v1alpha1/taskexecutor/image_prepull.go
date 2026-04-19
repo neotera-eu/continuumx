@@ -28,14 +28,14 @@ import (
 
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	"github.com/kubeedge/api/apis/operations/v1alpha1"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/common/types"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	commonmsg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	metaclient "github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
-	"github.com/kubeedge/kubeedge/pkg/containers"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/common/types"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	commonmsg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	metaclient "github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/pkg/containers"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 const (

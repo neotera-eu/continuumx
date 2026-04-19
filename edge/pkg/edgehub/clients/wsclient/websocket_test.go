@@ -27,12 +27,12 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/util"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/config"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/mux"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/server"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/config"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/mux"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/server"
 )
 
 func handleServer(container *mux.MessageContainer, writer mux.ResponseWriter) {

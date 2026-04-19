@@ -11,8 +11,8 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/require"
 
-	hubconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/config"
-	"github.com/kubeedge/kubeedge/pkg/security/certs"
+	hubconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/config"
+	"github.com/neotera-eu/continuumx/pkg/security/certs"
 )
 
 func TestVerifyCert(t *testing.T) {

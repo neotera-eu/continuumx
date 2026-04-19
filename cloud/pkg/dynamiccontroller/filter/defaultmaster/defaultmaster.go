@@ -6,7 +6,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter"
 )
 
 // FilterImpl implement enpointslice filter

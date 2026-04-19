@@ -26,7 +26,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/commons"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/commons"
 )
 
 type ImagePrePullJobController struct {

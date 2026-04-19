@@ -3,7 +3,7 @@ package cmgr
 import (
 	"sync"
 
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
 )
 
 // ConnKey callback for getting connection key

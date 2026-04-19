@@ -11,8 +11,8 @@ import (
 	apirequest "k8s.io/apiserver/pkg/endpoints/request"
 	"k8s.io/klog/v2"
 
-	models "github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	models "github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 func KeyFunc(obj runtime.Object) string {

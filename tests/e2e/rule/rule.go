@@ -11,7 +11,7 @@ import (
 
 	v1 "github.com/kubeedge/api/apis/rules/v1"
 	edgeclientset "github.com/kubeedge/api/client/clientset/versioned"
-	"github.com/kubeedge/kubeedge/tests/e2e/utils"
+	"github.com/neotera-eu/continuumx/tests/e2e/utils"
 )
 
 var _ = GroupDescribe("Rule Management test in E2E scenario", func() {

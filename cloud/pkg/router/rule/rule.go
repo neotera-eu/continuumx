@@ -9,9 +9,9 @@ import (
 
 	routerv1 "github.com/kubeedge/api/apis/rules/v1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/listener"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/provider"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/listener"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/provider"
 )
 
 var (

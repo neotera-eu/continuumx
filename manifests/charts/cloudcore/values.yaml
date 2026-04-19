@@ -7,7 +7,7 @@ cloudCore:
   replicaCount: 1
   hostNetWork: true
   image:
-    repository: "kubeedge/cloudcore"
+    repository: "neotera/cloudcore"
     tag: "v1.23.0"
     pullPolicy: "IfNotPresent"
     pullSecrets: []
@@ -78,8 +78,8 @@ iptablesManager:
   framework: "legacy"
   hostNetWork: true
   image:
-    repository: "kubeedge/iptables-manager"
-    nftRepository: "kubeedge/iptables-manager-nft"
+    repository: "neotera/iptables-manager"
+    nftRepository: "neotera/iptables-manager-nft"
     tag: "v1.23.0"
     pullPolicy: "IfNotPresent"
     pullSecrets: []
@@ -112,7 +112,7 @@ iptablesManager:
 controllerManager:
   enable: false
   image:
-    repository: "kubeedge/controller-manager"
+    repository: "neotera/controller-manager"
     tag: "v1.23.0"
     pullPolicy: "IfNotPresent"
     pullSecrets: []
@@ -148,7 +148,7 @@ admission:
   replicaCount: 1
   certsSecretName: ""
   image:
-    repository: "kubeedge/admission"
+    repository: "neotera/admission"
     tag: "v1.23.0"
     pullPolicy: "IfNotPresent"
     pullSecrets: []

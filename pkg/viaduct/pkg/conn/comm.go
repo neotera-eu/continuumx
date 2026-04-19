@@ -4,7 +4,7 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/lane"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/lane"
 )
 
 type responseWriter struct {

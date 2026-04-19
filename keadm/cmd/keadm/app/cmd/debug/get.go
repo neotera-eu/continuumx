@@ -37,10 +37,10 @@ import (
 
 	edgecoreCfg "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/common/constants"
-	commonmsg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/common/constants"
+	commonmsg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 const (
@@ -57,13 +57,13 @@ var (
 Prints a table of the most important information about the specified resource from the local database of the edge node.`
 	debugGetExample = `
 # List all pod in namespace test
-keadm debug get pod -n test
+cxadm debug get pod -n test
 # List a single configmap  with specified NAME
-keadm debug get configmap web -n default
+cxadm debug get configmap web -n default
 # List the complete information of the configmap with the specified name in the yaml output format
-keadm debug get configmap web -n default -o yaml
+cxadm debug get configmap web -n default -o yaml
 # List the complete information of all available resources of edge nodes using the specified format (default: yaml)
-keadm debug get all -o yaml`
+cxadm debug get all -o yaml`
 
 	// availableResources Convert flag to currently supports available Resource types in EdgeCore database.
 	availableResources = map[string]string{
@@ -89,7 +89,7 @@ keadm debug get all -o yaml`
 	ms = dbclient.NewMetaService()
 )
 
-// NewCmdDebugGet returns keadm debug get command.
+// NewCmdDebugGet returns cxadm debug get command.
 func NewCmdDebugGet() *cobra.Command {
 	getOption := NewGetOptions()
 

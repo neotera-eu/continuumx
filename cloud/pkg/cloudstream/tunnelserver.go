@@ -35,10 +35,10 @@ import (
 	certutil "k8s.io/client-go/util/cert"
 	"k8s.io/klog/v2"
 
-	hubconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/config"
-	streamconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudstream/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	hubconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/config"
+	streamconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudstream/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 const (

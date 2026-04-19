@@ -32,8 +32,8 @@ import (
 
 	edgecoreconfig "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	"github.com/kubeedge/kubeedge/pkg/image"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/pkg/image"
 )
 
 func TestImagePrePullJobCheckItems(t *testing.T) {

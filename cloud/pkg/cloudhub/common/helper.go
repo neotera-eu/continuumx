@@ -28,11 +28,11 @@ import (
 	"k8s.io/klog/v2"
 
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	edgecon "github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/constants"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	edgecon "github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/constants"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
 )
 
 // VolumePattern constants for error message

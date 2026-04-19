@@ -24,10 +24,10 @@ import (
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	edgecon "github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/constants"
-	"github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	edgecon "github.com/neotera-eu/continuumx/cloud/pkg/edgecontroller/constants"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 func TestIsVolumeResource(t *testing.T) {

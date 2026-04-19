@@ -89,7 +89,7 @@ function build_images() {
     DOCKERFILE_PATH="$(get_dockerfile_by_target ${arg})"
 
     set -x
-    docker build --build-arg GO_LDFLAGS="${GO_LDFLAGS}" -t kubeedge/${IMAGE_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} .
+    docker build --build-arg GO_LDFLAGS="${GO_LDFLAGS}" -t neotera/${IMAGE_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} .
     set +x
 
     if [[ "${DOCKER_BUILD_AND_SYSTEM_PRUNE}" = "true" ]]; then

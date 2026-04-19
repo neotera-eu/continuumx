@@ -23,7 +23,7 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/comm"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/comm"
 )
 
 func TestNewMessageFifo(t *testing.T) {

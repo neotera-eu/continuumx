@@ -17,11 +17,11 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	routerConfig "github.com/kubeedge/kubeedge/cloud/pkg/router/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/utils"
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	routerConfig "github.com/neotera-eu/continuumx/cloud/pkg/router/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/utils"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/util"
 )
 
 const MaxMessageBytes = 12 * (1 << 20)

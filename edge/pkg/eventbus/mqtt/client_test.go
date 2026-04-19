@@ -28,8 +28,8 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/kubeedge/edge/pkg/eventbus/common/util"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/mocks"
+	"github.com/neotera-eu/continuumx/edge/pkg/eventbus/common/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/mocks"
 )
 
 type TestMessage struct {

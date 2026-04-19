@@ -21,7 +21,7 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
 )
 
 type BaseOptions struct {
@@ -92,9 +92,9 @@ func AddBaseFlags(cmd *cobra.Command, opts *BaseOptions) {
 	cmd.Flags().StringVar(&opts.Config, "config", constants.EdgecoreConfigPath,
 		"Use this key to specify the path to the edgecore configuration file.")
 	cmd.Flags().StringVar(&opts.PreRun, common.FlagNamePreRun, opts.PreRun,
-		"Execute the prescript before upgrading the node. (for example: keadm upgrade edge --pre-run=./test-script.sh ...)")
+		"Execute the prescript before upgrading the node. (for example: cxadm upgrade edge --pre-run=./test-script.sh ...)")
 	cmd.Flags().StringVar(&opts.PostRun, common.FlagNamePostRun, opts.PostRun,
-		"Execute the postscript after upgrading the node. (for example: keadm upgrade edge --post-run=./test-script.sh ...)")
+		"Execute the postscript after upgrading the node. (for example: cxadm upgrade edge --post-run=./test-script.sh ...)")
 }
 
 // AddUpgradeFlags adds some flags to the upgrade command, and use UpgradeOptions struct to map these flags.

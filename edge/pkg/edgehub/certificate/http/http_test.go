@@ -26,7 +26,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/common/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/util"
 )
 
 const (

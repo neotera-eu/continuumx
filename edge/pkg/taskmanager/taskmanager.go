@@ -26,11 +26,11 @@ import (
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	taskmgrv1alpha1 "github.com/kubeedge/kubeedge/edge/pkg/taskmanager/v1alpha1"
-	"github.com/kubeedge/kubeedge/pkg/features"
-	nodetaskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	taskmgrv1alpha1 "github.com/neotera-eu/continuumx/edge/pkg/taskmanager/v1alpha1"
+	"github.com/neotera-eu/continuumx/pkg/features"
+	nodetaskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 type TaskManager struct {

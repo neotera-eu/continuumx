@@ -25,7 +25,7 @@ import (
 	"sigs.k8s.io/apiserver-network-proxy/cmd/server/app/options"
 	"sigs.k8s.io/apiserver-network-proxy/pkg/util"
 
-	"github.com/kubeedge/kubeedge/edgesite/cmd/edgesite-server/app"
+	"github.com/neotera-eu/continuumx/edgesite/cmd/edgesite-server/app"
 )
 
 func main() {

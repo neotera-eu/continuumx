@@ -29,10 +29,10 @@ import (
 
 	"github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/devices/v1beta1"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/client"
-	ctlcommon "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/ctl/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/client"
+	ctlcommon "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/ctl/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var edgeDeviceGetShortDescription = `Get devices in edge node`

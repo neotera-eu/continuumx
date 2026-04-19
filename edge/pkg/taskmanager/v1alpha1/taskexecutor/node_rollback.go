@@ -23,9 +23,9 @@ import (
 	"k8s.io/klog/v2"
 
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
-	"github.com/kubeedge/kubeedge/pkg/version"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/pkg/version"
 )
 
 func rollbackNode(taskReq commontypes.NodeTaskRequest) (event fsm.Event) {

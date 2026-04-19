@@ -35,7 +35,7 @@ import (
 	"github.com/kubeedge/api/apis/reliablesyncs/v1alpha1"
 	edgeinformers "github.com/kubeedge/api/client/informers/externalversions"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
 )
 
 type testFuncBackup struct {

@@ -22,7 +22,7 @@ import (
 	"k8s.io/kubernetes/pkg/apis/authorization"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	cloudhubmodel "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
+	cloudhubmodel "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
 )
 
 func TestGetBuiltinResourceAttributes(t *testing.T) {

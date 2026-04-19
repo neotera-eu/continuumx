@@ -5,13 +5,13 @@ import (
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	metamanagerconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver"
-	metaserverconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	metamanagerconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver"
+	metaserverconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 type metaManager struct {

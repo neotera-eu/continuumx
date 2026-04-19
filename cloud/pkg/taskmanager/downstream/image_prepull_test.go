@@ -24,7 +24,7 @@ import (
 	"k8s.io/klog/v2"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/executor"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/executor"
 )
 
 func TestImagePrePullJobCanDownstreamPhase(t *testing.T) {

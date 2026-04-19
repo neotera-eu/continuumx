@@ -11,7 +11,7 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/common/types"
+	"github.com/neotera-eu/continuumx/common/types"
 )
 
 const (

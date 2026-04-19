@@ -22,8 +22,8 @@ import (
 
 	"github.com/blang/semver"
 
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 const (

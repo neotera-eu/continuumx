@@ -13,10 +13,10 @@ import (
 	_ "sigs.k8s.io/controller-runtime/pkg/client/config" // using to set --kubeconfig flag
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	"github.com/kubeedge/kubeedge/cloud/cmd/controllermanager/app/options"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager"
-	"github.com/kubeedge/kubeedge/pkg/features"
-	"github.com/kubeedge/kubeedge/pkg/version/verflag"
+	"github.com/neotera-eu/continuumx/cloud/cmd/controllermanager/app/options"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager"
+	"github.com/neotera-eu/continuumx/pkg/features"
+	"github.com/neotera-eu/continuumx/pkg/version/verflag"
 )
 
 func NewControllerManagerCommand(ctx context.Context) *cobra.Command {

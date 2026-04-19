@@ -15,7 +15,7 @@ import (
 
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	pb "github.com/kubeedge/api/apis/dmi/v1beta1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/constants"
 )
 
 // ValidateValue validate value type

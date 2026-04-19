@@ -32,8 +32,8 @@ import (
 	"k8s.io/client-go/kubernetes"
 	"sigs.k8s.io/yaml"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 // K8SInstTool embeds Common struct and contains the default K8S version and
@@ -142,7 +142,7 @@ func installCRDs(ks *K8SInstTool) error {
 			}
 		}
 	}
-	fmt.Printf("keadm will install %s CRDs\n", version)
+	fmt.Printf("cxadm will install %s CRDs\n", version)
 
 	CRDDownloadURL := fmt.Sprintf(KubeEdgeCRDDownloadURL, version)
 	for dir := range crds {

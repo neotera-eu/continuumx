@@ -13,7 +13,7 @@ import (
 	admissionregistrationv1client "k8s.io/client-go/kubernetes/typed/admissionregistration/v1"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 func registerValidateWebhook(client admissionregistrationv1client.ValidatingWebhookConfigurationInterface,

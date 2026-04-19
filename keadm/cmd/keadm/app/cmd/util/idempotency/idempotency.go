@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
 )
 
 // idempotencyRecord is a file that is used to avoid mutually exclusive

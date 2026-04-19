@@ -31,11 +31,11 @@ import (
 	"k8s.io/kubernetes/pkg/registry/authorization/util"
 
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common"
-	cloudhubmodel "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
-	taskutil "github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util"
-	commonconstants "github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common"
+	cloudhubmodel "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
+	taskutil "github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util"
+	commonconstants "github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
 )
 
 const (

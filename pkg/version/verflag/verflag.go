@@ -25,7 +25,7 @@ import (
 
 	flag "github.com/spf13/pflag"
 
-	"github.com/kubeedge/kubeedge/pkg/version"
+	"github.com/neotera-eu/continuumx/pkg/version"
 )
 
 type VersionValue int

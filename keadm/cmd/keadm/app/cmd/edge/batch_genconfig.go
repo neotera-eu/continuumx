@@ -45,7 +45,7 @@ func NewBatchProcessGenConfig() *cobra.Command {
 }
 
 func getConfigTemplate() string {
-	return `# detailed design: https://github.com/kubeedge/kubeedge/blob/master/docs/proposals/batch-node-process.md
+	return `# detailed design: https://github.com/neotera-eu/continuumx/blob/master/docs/proposals/batch-node-process.md
 keadm:
   download:
     enable: true              # <Optional> Whether to download the keadm package, which can be left unconfigured, default is true. if it is false, the 'offlinePackageDir' will be used.

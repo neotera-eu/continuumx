@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
 )
 
 func (f *Factory) Restart(namespace string) http.Handler {

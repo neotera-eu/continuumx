@@ -37,15 +37,15 @@ import (
 	"k8s.io/kubernetes/plugin/pkg/auth/authorizer/rbac"
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/auth"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/certificate"
-	metaserverconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/handlerfactory"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/serializer"
-	kefeatures "github.com/kubeedge/kubeedge/pkg/features"
-	passthrough "github.com/kubeedge/kubeedge/pkg/util/pass-through"
+	"github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/auth"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/certificate"
+	metaserverconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/handlerfactory"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/serializer"
+	kefeatures "github.com/neotera-eu/continuumx/pkg/features"
+	passthrough "github.com/neotera-eu/continuumx/pkg/util/pass-through"
 )
 
 // MetaServer is simplification of server.GenericAPIServer

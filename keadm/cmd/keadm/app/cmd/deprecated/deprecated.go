@@ -8,7 +8,7 @@ import (
 func NewDeprecated() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "deprecated",
-		Short: "keadm deprecated command",
+		Short: "cxadm deprecated command",
 		Long:  `keadm deprecated command provides some subcommands that are deprecated in kubeedge installation, using this sub command is NOT recommended`,
 	}
 

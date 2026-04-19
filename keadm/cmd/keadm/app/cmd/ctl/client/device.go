@@ -25,7 +25,7 @@ import (
 
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	"github.com/kubeedge/api/client/clientset/versioned/scheme"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/metaclient"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/metaclient"
 )
 
 type DeviceRequest struct {

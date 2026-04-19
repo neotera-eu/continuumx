@@ -29,12 +29,12 @@ import (
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgestream/config"
-	"github.com/kubeedge/kubeedge/pkg/features"
-	"github.com/kubeedge/kubeedge/pkg/stream"
-	"github.com/kubeedge/kubeedge/pkg/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgestream/config"
+	"github.com/neotera-eu/continuumx/pkg/features"
+	"github.com/neotera-eu/continuumx/pkg/stream"
+	"github.com/neotera-eu/continuumx/pkg/util"
 )
 
 type edgestream struct {

@@ -25,9 +25,9 @@ import (
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/actions"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/actions"
 )
 
 func TestRunTask(t *testing.T) {

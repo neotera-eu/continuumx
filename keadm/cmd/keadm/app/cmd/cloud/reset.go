@@ -24,19 +24,19 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/helm"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/helm"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
 	resetLongDescription = `
-keadm reset cloud command can be executed edge node
+cxadm reset cloud command can be executed edge node
 In cloud node it shuts down the cloud processes of KubeEdge
 `
 	resetExample = `
 For cloud node:
-keadm reset cloud
+cxadm reset cloud
 `
 )
 

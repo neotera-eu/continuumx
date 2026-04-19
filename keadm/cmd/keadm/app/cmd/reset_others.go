@@ -29,11 +29,11 @@ import (
 	phases "k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/reset"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/cloud"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/edge"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/helm"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/cloud"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/edge"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/helm"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
@@ -42,14 +42,14 @@ var (
 In cloud node it shuts down the cloud processes of KubeEdge.
 In edge node it shuts down the edge processes of KubeEdge.
 'keadm reset' is no longer supported after version v1.22. 
-You must use the third-level command 'keadm reset cloud' or 'keadm reset edge'.
+You must use the third-level command 'cxadm reset cloud' or 'cxadm reset edge'.
 `
 	resetExample = `
 For cloud node:
 keadm reset
 
 For edge node:
-keadm reset edge
+cxadm reset edge
 `
 )
 
@@ -65,7 +65,7 @@ func NewKubeEdgeReset() *cobra.Command {
 		PreRunE: func(_ *cobra.Command, _ []string) error {
 			// TODO: remove this hint after version v1.22
 			fmt.Println("WARNING: 'keadm reset' is no longer supported after version v1.22.")
-			fmt.Println("You must use the third-level command 'keadm reset cloud' or 'keadm reset edge'.")
+			fmt.Println("You must use the third-level command 'cxadm reset cloud' or 'cxadm reset edge'.")
 
 			whoRunning := util.RunningModuleV2(reset)
 			if whoRunning == common.NoneRunning {

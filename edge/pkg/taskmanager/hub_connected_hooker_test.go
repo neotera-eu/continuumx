@@ -26,11 +26,11 @@ import (
 	"github.com/stretchr/testify/require"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/actions"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
-	upgradeedge "github.com/kubeedge/kubeedge/pkg/upgrade/edge"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/actions"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
+	upgradeedge "github.com/neotera-eu/continuumx/pkg/upgrade/edge"
 )
 
 func TestReportUpgradeStatus(t *testing.T) {

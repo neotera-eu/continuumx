@@ -12,10 +12,10 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/config"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
-	wsclient "github.com/kubeedge/kubeedge/pkg/viaduct/pkg/client"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/config"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
+	wsclient "github.com/neotera-eu/continuumx/pkg/viaduct/pkg/client"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
 )
 
 const (

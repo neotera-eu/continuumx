@@ -9,12 +9,12 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	connect "github.com/kubeedge/kubeedge/edge/pkg/common/cloudconnection"
-	messagepkg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/clients"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub/config"
-	msghandler "github.com/kubeedge/kubeedge/edge/pkg/edgehub/messagehandler"
+	connect "github.com/neotera-eu/continuumx/edge/pkg/common/cloudconnection"
+	messagepkg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/clients"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub/config"
+	msghandler "github.com/neotera-eu/continuumx/edge/pkg/edgehub/messagehandler"
 )
 
 var (

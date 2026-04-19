@@ -5,8 +5,8 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/mux"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/mux"
 )
 
 // connection options

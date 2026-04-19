@@ -22,15 +22,15 @@ import (
 	"github.com/blang/semver"
 	"github.com/spf13/cobra"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/helm"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/common/constants"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/helm"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
 	cloudInitLongDescription = `
-"keadm init" command install KubeEdge's master node (on the cloud) component by using a list of set flags like helm.
+"cxadm init" command install KubeEdge's master node (on the cloud) component by using a list of set flags like helm.
 It checks if the Kubernetes Master are installed already,
 If not installed, please install the Kubernetes first.
 `
@@ -38,13 +38,13 @@ If not installed, please install the Kubernetes first.
 keadm init
 - This command will render and install the Charts for KubeEdge cloud component
 
-keadm init --advertise-address=127.0.0.1 --kubeedge-version=v%s --kube-config=/root/.kube/config
+cxadm init --advertise-address=127.0.0.1 --kubeedge-version=v%s --kube-config=/root/.kube/config
   - kube-config is the absolute path of kubeconfig which used to secure connectivity between cloudcore and kube-apiserver
-	- a list of helm style set flags like "--set key=value" can be implemented, ref: https://github.com/kubeedge/kubeedge/tree/master/manifests/charts/cloudcore/README.md
+	- a list of helm style set flags like "--set key=value" can be implemented, ref: https://github.com/neotera-eu/continuumx/tree/master/manifests/charts/cloudcore/README.md
 `
 )
 
-// NewCloudInit represents the keadm init command for cloud component
+// NewCloudInit represents the cxadm init command for cloud component
 func NewCloudInit() *cobra.Command {
 	opts := newInitOptions()
 	var cmd = &cobra.Command{

@@ -8,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
 )
 
 type WatchHook struct {

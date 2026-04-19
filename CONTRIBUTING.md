@@ -1,3 +1,14 @@
+# Contributing to ContinuumX
+
+> **ContinuumX** is a branded distribution of [KubeEdge](https://github.com/kubeedge/kubeedge)
+> maintained by [Neotera](https://neotera.eu). It tracks KubeEdge upstream.
+> See [docs/upstream-sync.md](docs/upstream-sync.md) for the sync runbook.
+>
+> When submitting changes, run `sh scripts/sync/rebrand.sh --verify-only` to confirm
+> no raw `kubeedge` strings have leaked into Tier A/B zones.
+
+---
+
 # Welcome
 
 Welcome to KubeEdge!

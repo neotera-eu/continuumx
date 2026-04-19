@@ -21,10 +21,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	fakekube "k8s.io/client-go/kubernetes/fake"
 
-	kecoordinationv1 "github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge/typed/coordination/v1"
-	kecorev1 "github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge/typed/core/v1"
-	kestoragev1 "github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge/typed/storage/v1"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	kecoordinationv1 "github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge/typed/coordination/v1"
+	kecorev1 "github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge/typed/core/v1"
+	kestoragev1 "github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge/typed/storage/v1"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 func TestNewSimpleClientset(t *testing.T) {

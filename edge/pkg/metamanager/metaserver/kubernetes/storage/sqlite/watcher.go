@@ -33,11 +33,11 @@ import (
 	"k8s.io/apiserver/pkg/storage"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/agent"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
-	"github.com/kubeedge/kubeedge/pkg/metaserver/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/agent"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/kubernetes/storage/sqlite/imitator"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/pkg/metaserver/util"
 )
 
 const (

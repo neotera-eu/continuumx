@@ -19,7 +19,7 @@ package fake
 import (
 	"github.com/blang/semver"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
 )
 
 type MockOSTypeInstaller struct {

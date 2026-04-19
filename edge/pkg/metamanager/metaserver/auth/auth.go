@@ -13,7 +13,7 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/kubernetes/pkg/serviceaccount"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 type jwtTokenAuthenticator[privateClaims any] struct {

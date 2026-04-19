@@ -27,10 +27,10 @@ import (
 	"github.com/kubeedge/beehive/pkg/common"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	cloudconn "github.com/kubeedge/kubeedge/edge/pkg/common/cloudconnection"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcontext"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dttype"
+	cloudconn "github.com/neotera-eu/continuumx/edge/pkg/common/cloudconnection"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcontext"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dttype"
 )
 
 // TestStartAction is function to test Start() when value is passed in ReceiverChan.

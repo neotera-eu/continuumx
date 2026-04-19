@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"sigs.k8s.io/yaml"
 
-	"github.com/kubeedge/kubeedge/pkg/version"
+	"github.com/neotera-eu/continuumx/pkg/version"
 )
 
 const (

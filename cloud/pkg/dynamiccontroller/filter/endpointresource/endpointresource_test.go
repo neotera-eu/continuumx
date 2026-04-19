@@ -31,8 +31,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodegroup"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodegroup"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter"
 )
 
 const (

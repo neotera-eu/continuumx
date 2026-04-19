@@ -5,7 +5,7 @@ import (
 
 	"k8s.io/component-base/logs"
 
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app"
 )
 
 func main() {

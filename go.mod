@@ -1,4 +1,4 @@
-module github.com/kubeedge/kubeedge
+module github.com/neotera-eu/continuumx
 
 go 1.23.12
 

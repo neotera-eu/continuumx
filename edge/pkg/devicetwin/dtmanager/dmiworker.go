@@ -27,14 +27,14 @@ import (
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	pb "github.com/kubeedge/api/apis/dmi/v1beta1"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/constants"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dmicache"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dmiclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dmiserver"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcommon"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcontext"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dttype"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/constants"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dmicache"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dmiclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dmiserver"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcommon"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcontext"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dttype"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
 )
 
 // DMIWorker deal dmi event

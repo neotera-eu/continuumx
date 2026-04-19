@@ -19,8 +19,8 @@ package cloud
 import (
 	"github.com/spf13/cobra"
 
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/helm"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/helm"
 )
 
 func NewCloudUpgrade() *cobra.Command {

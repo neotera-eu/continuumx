@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/filter"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/filter"
 )
 
 type ResponseWriter interface {

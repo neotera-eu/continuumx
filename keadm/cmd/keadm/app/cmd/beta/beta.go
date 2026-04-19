@@ -24,7 +24,7 @@ import (
 func NewBeta() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "beta",
-		Short: "keadm beta command",
+		Short: "cxadm beta command",
 		Long:  `keadm beta command provides some subcommands that are still in testing, but have complete functions and can be used in advance, but now it contains nothing`,
 	}
 

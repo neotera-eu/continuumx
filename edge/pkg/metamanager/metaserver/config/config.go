@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	edgehubconfig "github.com/kubeedge/kubeedge/edge/pkg/edgehub/config"
+	edgehubconfig "github.com/neotera-eu/continuumx/edge/pkg/edgehub/config"
 )
 
 var Config Configure

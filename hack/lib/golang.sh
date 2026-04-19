@@ -178,7 +178,7 @@ kubeedge::check::env() {
 ALL_BINARIES_AND_TARGETS=(
   cloudcore:cloud/cmd/cloudcore
   admission:cloud/cmd/admission
-  keadm:keadm/cmd/keadm
+  cxadm:keadm/cmd/keadm
   edgecore:edge/cmd/edgecore
   edgesite-agent:edgesite/cmd/edgesite-agent
   edgesite-server:edgesite/cmd/edgesite-server
@@ -243,7 +243,7 @@ kubeedge::golang::build_binaries() {
   mkdir -p ${KUBEEDGE_OUTPUT_BINPATH}
   for bin in ${binaries[@]}; do
     echo "building $bin"
-    local name="${bin##*/}"
+    local name="${bin##*/}"; [ "$name" = "keadm" ] && name="cxadm"
     set -x
     go build -o ${KUBEEDGE_OUTPUT_BINPATH}/${name} -gcflags="${gogcflags:-}" -ldflags "${goldflags:-}" $bin
     set +x
@@ -305,7 +305,7 @@ kubeedge::golang::cross_build_place_binaries() {
 
   mkdir -p ${KUBEEDGE_OUTPUT_BINPATH}
   for bin in ${binaries[@]}; do
-    local name="${bin##*/}"
+    local name="${bin##*/}"; [ "$name" = "keadm" ] && name="cxadm"
     if [ "${goos}" == "linux" ] ; then
       echo "cross building $bin GOARM${goarm} ${goos} ${goarch}"
       if [ "${goarm}" == "8" ]; then
@@ -370,7 +370,7 @@ kubeedge::golang::small_build_place_binaries() {
   mkdir -p ${KUBEEDGE_OUTPUT_BINPATH}
   for bin in ${binaries[@]}; do
     echo "small building $bin"
-    local name="${bin##*/}"
+    local name="${bin##*/}"; [ "$name" = "keadm" ] && name="cxadm"
     set -x
     go build -o ${KUBEEDGE_OUTPUT_BINPATH}/${name} -ldflags "-w -s -extldflags -static $ldflags" $bin
     upx-ucl -9 ${KUBEEDGE_OUTPUT_BINPATH}/${name}

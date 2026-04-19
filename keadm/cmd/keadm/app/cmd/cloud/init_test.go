@@ -23,7 +23,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
 
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
 )
 
 func TestNewCloudInit(t *testing.T) {

@@ -1,11 +1,11 @@
 ---
 name: Failing Test
-about: Report test failures in KubeEdge CI jobs
+about: Report test failures in ContinuumX CI jobs
 labels: kind/failing-test
 
 ---
 
-<!-- Please only use this template for submitting reports about failing tests in KubeEdge CI jobs -->
+<!-- Please only use this template for submitting reports about failing tests in ContinuumX CI jobs -->
 
 **Which jobs are failing**:
 

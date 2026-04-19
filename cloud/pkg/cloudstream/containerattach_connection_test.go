@@ -28,7 +28,7 @@ import (
 	"github.com/emicklei/go-restful"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 func TestString(t *testing.T) {

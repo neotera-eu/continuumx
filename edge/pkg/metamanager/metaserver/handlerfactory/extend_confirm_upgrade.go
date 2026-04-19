@@ -25,13 +25,13 @@ import (
 	"k8s.io/klog/v2"
 
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/types"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	commonmsg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/actions"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/v1alpha1/taskexecutor"
+	"github.com/neotera-eu/continuumx/common/types"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	commonmsg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/actions"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/v1alpha1/taskexecutor"
 )
 
 func (f *Factory) ConfirmUpgrade() http.Handler {

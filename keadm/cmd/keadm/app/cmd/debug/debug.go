@@ -18,7 +18,7 @@ import (
 )
 
 var (
-	edgeDebugLongDescription  = `"keadm debug" command help  provide debug function to help diagnose the cluster`
+	edgeDebugLongDescription  = `"cxadm debug" command help  provide debug function to help diagnose the cluster`
 	edgeDebugShortDescription = `debug function to help diagnose the cluster`
 )
 

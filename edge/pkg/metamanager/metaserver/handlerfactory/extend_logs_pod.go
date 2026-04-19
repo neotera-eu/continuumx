@@ -27,7 +27,7 @@ import (
 	"k8s.io/apiserver/pkg/endpoints/request"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
 )
 
 func (f *Factory) Logs(request *request.RequestInfo) http.Handler {

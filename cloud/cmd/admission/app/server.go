@@ -25,11 +25,11 @@ import (
 	"k8s.io/component-base/term"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/cmd/admission/app/options"
-	"github.com/kubeedge/kubeedge/cloud/pkg/admissioncontroller"
-	"github.com/kubeedge/kubeedge/pkg/util/flag"
-	"github.com/kubeedge/kubeedge/pkg/version"
-	"github.com/kubeedge/kubeedge/pkg/version/verflag"
+	"github.com/neotera-eu/continuumx/cloud/cmd/admission/app/options"
+	"github.com/neotera-eu/continuumx/cloud/pkg/admissioncontroller"
+	"github.com/neotera-eu/continuumx/pkg/util/flag"
+	"github.com/neotera-eu/continuumx/pkg/version"
+	"github.com/neotera-eu/continuumx/pkg/version/verflag"
 )
 
 func NewAdmissionCommand() *cobra.Command {

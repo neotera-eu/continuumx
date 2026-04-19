@@ -13,13 +13,13 @@ This is an issue template aims to provide a comprehensive checklist template for
 ## Requirements for release onboarding
 
 - [ ] All CI tests pass.
-- [ ] Update KubeEdge version in [manifests](https://github.com/kubeedge/kubeedge/tree/master/manifests)
+- [ ] Update ContinuumX version in [manifests](https://github.com/continuumx/continuumx/tree/master/manifests)
 
 ## After release onboarding
 
 - [ ] Draft staging repository release.
-- [ ] Update [Kubernetes compatibility](https://github.com/kubeedge/kubeedge?tab=readme-ov-file#kubernetes-compatibility).
+- [ ] Update [Kubernetes compatibility](https://github.com/continuumx/continuumx?tab=readme-ov-file#kubernetes-compatibility).
 - [ ] Release blog.
-- [ ] Update KubeEdge [latest version](https://github.com/kubeedge/website/blob/master/functions/latestversion.js).
-- [ ] Update KubeEdge documentation version.
+- [ ] Update ContinuumX [latest version](https://github.com/continuumx/website/blob/master/functions/latestversion.js).
+- [ ] Update ContinuumX documentation version.
 - [ ] Update Kubernetes version in github action CI. 

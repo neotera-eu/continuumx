@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a bug encountered while operating KubeEdge
+about: Report a bug encountered while operating ContinuumX
 labels: kind/bug
 
 ---
@@ -16,7 +16,7 @@ labels: kind/bug
 
 **Environment**:
 - Kubernetes version (use `kubectl version`):
-- KubeEdge version(e.g. `cloudcore --version` and `edgecore --version`):
+- ContinuumX version(e.g. `cloudcore --version` and `edgecore --version`):
 - <details><summary>Cloud nodes Environment:</summary>
 
   - Hardware configuration (e.g. `lscpu`):

@@ -5,13 +5,13 @@ import (
 
 	"github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	routerconfig "github.com/kubeedge/kubeedge/cloud/pkg/router/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/listener"
-	_ "github.com/kubeedge/kubeedge/cloud/pkg/router/provider/eventbus"   // init eventbus
-	_ "github.com/kubeedge/kubeedge/cloud/pkg/router/provider/rest"       // init rest
-	_ "github.com/kubeedge/kubeedge/cloud/pkg/router/provider/servicebus" // init servicebus
-	_ "github.com/kubeedge/kubeedge/cloud/pkg/router/rule"                // init rule
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	routerconfig "github.com/neotera-eu/continuumx/cloud/pkg/router/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/listener"
+	_ "github.com/neotera-eu/continuumx/cloud/pkg/router/provider/eventbus"   // init eventbus
+	_ "github.com/neotera-eu/continuumx/cloud/pkg/router/provider/rest"       // init rest
+	_ "github.com/neotera-eu/continuumx/cloud/pkg/router/provider/servicebus" // init servicebus
+	_ "github.com/neotera-eu/continuumx/cloud/pkg/router/rule"                // init rule
 )
 
 type router struct {

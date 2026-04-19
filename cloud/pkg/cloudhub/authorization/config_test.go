@@ -21,7 +21,7 @@ import (
 
 	"k8s.io/kubernetes/cmd/kubeadm/app/constants"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
 )
 
 func TestNewAuthorizer(t *testing.T) {

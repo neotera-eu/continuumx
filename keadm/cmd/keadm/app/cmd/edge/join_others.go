@@ -37,15 +37,15 @@ import (
 	"github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2/validation"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/extsystem"
-	"github.com/kubeedge/kubeedge/pkg/containers"
-	pkgutil "github.com/kubeedge/kubeedge/pkg/util"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
-	"github.com/kubeedge/kubeedge/pkg/util/files"
-	"github.com/kubeedge/kubeedge/pkg/version"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/extsystem"
+	"github.com/neotera-eu/continuumx/pkg/containers"
+	pkgutil "github.com/neotera-eu/continuumx/pkg/util"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/pkg/util/files"
+	"github.com/neotera-eu/continuumx/pkg/version"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
 )
 
 func AddJoinOtherFlags(cmd *cobra.Command, joinOptions *common.JoinOptions) {
@@ -94,10 +94,10 @@ func AddJoinOtherFlags(cmd *cobra.Command, joinOptions *common.JoinOptions) {
 		"Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)")
 
 	cmd.Flags().StringVar(&joinOptions.PreRun, common.FlagNamePreRun, joinOptions.PreRun,
-		"Execute the prescript before joining the node. (for example: keadm join --pre-run=./test-script.sh ...)")
+		"Execute the prescript before joining the node. (for example: cxadm join --pre-run=./test-script.sh ...)")
 
 	cmd.Flags().StringVar(&joinOptions.PostRun, common.FlagNamePostRun, joinOptions.PostRun,
-		"Execute the postscript after joining the node. (for example: keadm join --post-run=./test-script.sh ...)")
+		"Execute the postscript after joining the node. (for example: cxadm join --post-run=./test-script.sh ...)")
 }
 
 func createEdgeConfigFiles(opt *common.JoinOptions) error {

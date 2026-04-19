@@ -28,9 +28,9 @@ import (
 
 	policyv1alpha1 "github.com/kubeedge/api/apis/policy/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	pm "github.com/kubeedge/kubeedge/cloud/pkg/policycontroller/manager"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	pm "github.com/neotera-eu/continuumx/cloud/pkg/policycontroller/manager"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 const (

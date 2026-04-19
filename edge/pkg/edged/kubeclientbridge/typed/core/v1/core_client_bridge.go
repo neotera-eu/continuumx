@@ -27,7 +27,7 @@ import (
 	corev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 	fakecorev1 "k8s.io/client-go/kubernetes/typed/core/v1/fake"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 // CoreV1Bridge is a coreV1 bridge

@@ -23,7 +23,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kubeedge/kubeedge/pkg/nodetask/actionflow"
+	"github.com/neotera-eu/continuumx/pkg/nodetask/actionflow"
 )
 
 type fakeFuncs struct {

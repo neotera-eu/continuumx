@@ -28,14 +28,14 @@ import (
 	phases "k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/reset"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	extsys "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/extsystem"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	extsys "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/extsystem"
 )
 
 var (
 	resetLongDescription = `
-keadm reset command in windows can only be executed in edge node.
+cxadm reset command in windows can only be executed in edge node.
 It shut down the edge processes of KubeEdge.
 `
 	resetExample = `

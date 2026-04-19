@@ -29,9 +29,9 @@ import (
 	reliableclient "github.com/kubeedge/api/client/clientset/versioned"
 	"github.com/kubeedge/api/client/clientset/versioned/fake"
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common"
-	tf "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/testing"
-	mockcon "github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn/testing"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common"
+	tf "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/testing"
+	mockcon "github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn/testing"
 )
 
 func TestNodeSessionKeepAliveCheck(t *testing.T) {

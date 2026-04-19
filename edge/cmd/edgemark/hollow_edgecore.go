@@ -53,11 +53,11 @@ import (
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core"
-	"github.com/kubeedge/kubeedge/edge/pkg/edged"
-	"github.com/kubeedge/kubeedge/edge/pkg/edgehub"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao"
-	"github.com/kubeedge/kubeedge/pkg/version"
+	"github.com/neotera-eu/continuumx/edge/pkg/edged"
+	"github.com/neotera-eu/continuumx/edge/pkg/edgehub"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao"
+	"github.com/neotera-eu/continuumx/pkg/version"
 )
 
 type hollowEdgeNodeConfig struct {

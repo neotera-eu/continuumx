@@ -1,132 +1,86 @@
-# KubeEdge
-[![Go Report Card](https://goreportcard.com/badge/github.com/kubeedge/kubeedge)](https://goreportcard.com/report/github.com/kubeedge/kubeedge)
-[![LICENSE](https://img.shields.io/github/license/kubeedge/kubeedge.svg?style=flat-square)](/LICENSE)
-[![Releases](https://img.shields.io/github/release/kubeedge/kubeedge/all.svg?style=flat-square)](https://github.com/kubeedge/kubeedge/releases)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3018/badge)](https://bestpractices.coreinfrastructure.org/projects/3018)
+# ContinuumX
 
-<img src="./docs/images/kubeedge-logo-only.png">
+[![Go Report Card](https://goreportcard.com/badge/github.com/neotera-eu/continuumx)](https://goreportcard.com/report/github.com/neotera-eu/continuumx)
+[![LICENSE](https://img.shields.io/github/license/neotera-eu/continuumx.svg?style=flat-square)](/LICENSE)
+[![Releases](https://img.shields.io/github/release/neotera-eu/continuumx/all.svg?style=flat-square)](https://github.com/neotera-eu/continuumx/releases)
 
-English | [简体中文](./README_zh.md)
+> **ContinuumX** is a branded distribution of [KubeEdge](https://github.com/kubeedge/kubeedge), maintained by [Neotera](https://neotera.eu).
+> It tracks KubeEdge upstream and layers Neotera-specific integrations on top.
+> See [docs/upstream-sync.md](./docs/upstream-sync.md) for the upstream sync runbook.
 
-KubeEdge is built upon Kubernetes and extends native containerized application orchestration and device management to hosts at the Edge.
-It consists of cloud part and edge part, provides core infrastructure support for networking, application deployment and metadata synchronization
-between cloud and edge. It also supports **MQTT** which enables edge devices to access through edge nodes.
-
-With KubeEdge it is easy to get and deploy existing complicated machine learning, image recognition, event processing and other high level applications to the Edge.
-With business logic running at the Edge, much larger volumes of data can be secured & processed locally where the data is produced.
-With data processed at the Edge, the responsiveness is increased dramatically and data privacy is protected.
-
-KubeEdge is a graduation-level hosted project by the [Cloud Native Computing Foundation](https://cncf.io) (CNCF). KubeEdge graduation [announcement](https://www.cncf.io/announcements/2024/10/15/cloud-native-computing-foundation-announces-kubeedge-graduation/) by CNCF.
+ContinuumX extends Kubernetes with native edge computing capabilities — bringing containerised application orchestration and device management to edge nodes.
+It consists of a cloud component and an edge component, providing core infrastructure support for networking, application deployment, and metadata synchronisation between cloud and edge.
+It also supports **MQTT**, enabling edge devices to communicate through edge nodes.
 
 ## Advantages
 
-- **Kubernetes-native support**: Managing edge applications and edge devices in the cloud with fully compatible Kubernetes APIs.
-- **Cloud-Edge Reliable Collaboration**: Ensure reliable messages delivery without loss over unstable cloud-edge network.
-- **Edge Autonomy**: Ensure edge nodes run autonomously and the applications in edge run normally, when the cloud-edge network is unstable or edge is offline and restarted.
-- **Edge Devices Management**: Managing edge devices through Kubernetes native APIs implemented by CRD.
-- **Extremely Lightweight Edge Agent**: Extremely lightweight Edge Agent(EdgeCore) to run on resource constrained edge.
-
+- **Kubernetes-native support**: Manage edge applications and edge devices from the cloud using fully compatible Kubernetes APIs.
+- **Cloud-Edge Reliable Collaboration**: Reliable message delivery over unstable cloud-edge networks.
+- **Edge Autonomy**: Edge nodes run autonomously even when the cloud-edge network is unstable or the edge is offline.
+- **Edge Device Management**: Manage edge devices through Kubernetes native APIs implemented by CRD.
+- **Extremely Lightweight Edge Agent**: Minimal footprint EdgeCore for resource-constrained edge hardware.
 
 ## How It Works
 
-KubeEdge consists of cloud part and edge part.
+ContinuumX consists of a cloud part and an edge part.
 
 ### Architecture
 
-<div  align="center">
-<img src="./docs/images/kubeedge_arch.png" width = "85%" align="center">
+<div align="center">
+<img src="./docs/images/kubeedge_arch.png" width="85%" align="center">
 </div>
 
 ### In the Cloud
-- [CloudHub](https://kubeedge.io/en/docs/architecture/cloud/cloudhub): a web socket server responsible for watching changes at the cloud side, caching and sending messages to EdgeHub.
-- [EdgeController](https://kubeedge.io/en/docs/architecture/cloud/edge_controller): an extended kubernetes controller which manages edge nodes and pods metadata so that the data can be targeted to a specific edge node.
-- [DeviceController](https://kubeedge.io/en/docs/architecture/cloud/device_controller): an extended kubernetes controller which manages devices so that the device metadata/status data can be synced between edge and cloud.
-
+- **CloudHub**: WebSocket server responsible for watching changes at the cloud side, caching and sending messages to EdgeHub.
+- **EdgeController**: Extended Kubernetes controller managing edge nodes and pod metadata.
+- **DeviceController**: Extended Kubernetes controller managing device metadata and status sync between edge and cloud.
 
 ### On the Edge
-- [EdgeHub](https://kubeedge.io/en/docs/architecture/edge/edgehub): a web socket client responsible for interacting with Cloud Service for the edge computing (like Edge Controller as in the KubeEdge Architecture). This includes syncing cloud-side resource updates to the edge, and reporting edge-side host and device status changes to the cloud.
-- [Edged](https://kubeedge.io/en/docs/architecture/edge/edged): an agent that runs on edge nodes and manages containerized applications.
-- [EventBus](https://kubeedge.io/en/docs/architecture/edge/eventbus): a MQTT client to interact with MQTT servers (mosquitto), offering publish and subscribe capabilities to other components.
-- [ServiceBus](https://kubeedge.io/en/docs/architecture/edge/servicebus): an HTTP client to interact with HTTP servers (REST), offering HTTP client capabilities to components of cloud to reach HTTP servers running at edge.
-- [DeviceTwin](https://kubeedge.io/en/docs/architecture/edge/devicetwin): responsible for storing device status and syncing device status to the cloud. It also provides query interfaces for applications.
-- [MetaManager](https://kubeedge.io/en/docs/architecture/edge/metamanager): the message processor between edged and edgehub. It is also responsible for storing/retrieving metadata to/from a lightweight database (SQLite).
+- **EdgeHub**: WebSocket client interacting with Cloud Service, syncing resource updates and reporting edge status.
+- **Edged**: Agent running on edge nodes, managing containerised applications.
+- **EventBus**: MQTT client offering publish/subscribe capabilities to other components.
+- **ServiceBus**: HTTP client providing REST capabilities to reach HTTP servers running at edge.
+- **DeviceTwin**: Stores device status and syncs it to the cloud.
+- **MetaManager**: Message processor between Edged and EdgeHub; stores/retrieves metadata in a lightweight SQLite database.
 
-## Kubernetes compatibility
+## Kubernetes Compatibility
 
-|                        | Kubernetes 1.27 | Kubernetes 1.28 | Kubernetes 1.29 | Kubernetes 1.30 | Kubernetes 1.31 | Kubernetes 1.32 |
-|------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| KubeEdge 1.19          | ✓               | ✓               | ✓               | -               | -               | -               |
-| KubeEdge 1.20          | +               | ✓               | ✓               | ✓               | -               | -               |
-| KubeEdge 1.21          | +               | ✓               | ✓               | ✓               | -               | -               |
-| KubeEdge 1.22          | +               | +               | ✓               | ✓               | ✓               | -               |
-| KubeEdge 1.23          | +               | +               | +               | ✓               | ✓               | ✓               |
-| KubeEdge HEAD (master) | +               | +               | +               | ✓               | ✓               | ✓               |
+|                           | Kubernetes 1.27 | Kubernetes 1.28 | Kubernetes 1.29 | Kubernetes 1.30 | Kubernetes 1.31 | Kubernetes 1.32 |
+|---------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+| ContinuumX 1.19 (KE 1.19) | ✓               | ✓               | ✓               | -               | -               | -               |
+| ContinuumX 1.20 (KE 1.20) | +               | ✓               | ✓               | ✓               | -               | -               |
+| ContinuumX 1.21 (KE 1.21) | +               | ✓               | ✓               | ✓               | -               | -               |
+| ContinuumX 1.22 (KE 1.22) | +               | +               | ✓               | ✓               | ✓               | -               |
+| ContinuumX 1.23 (KE 1.23) | +               | +               | +               | ✓               | ✓               | ✓               |
 
 Key:
-* `✓` KubeEdge and the Kubernetes version are exactly compatible.
-* `+` KubeEdge has features or API objects that may not be present in the Kubernetes version.
-* `-` The Kubernetes version has features or API objects that KubeEdge can't use.
+* `✓` ContinuumX and the Kubernetes version are exactly compatible.
+* `+` ContinuumX has features or API objects that may not be present in the Kubernetes version.
+* `-` The Kubernetes version has features or API objects that ContinuumX can't use.
 
-## Guides
+## Getting Started
 
-Get started with this [doc](https://kubeedge.io/en/docs).
+```bash
+# Install the cloud component
+cxadm init --advertise-address=<CLOUD_IP>
 
-See our documentation on [kubeedge.io](https://kubeedge.io) for more details.
-
-To learn deeply about KubeEdge, try some examples on [examples](https://github.com/kubeedge/examples).
-
-## Roadmap
-
-* [2024 Roadmap](https://github.com/kubeedge/community/blob/master/roadmap.md)
-
-## Meeting
-
-Technical Steering Committees (TSC) Meeting:
-- Pacific Time: **Wednesdays at 10:00-11:00 Beijing Time** (biweekly, starting from Feb. 26th 2020).
-([Convert to your timezone.](https://www.thetimezoneconverter.com/?t=10%3A00&tz=GMT%2B8&))
-
-Regular Community Meeting:
-- Europe Time: **Wednesdays at 16:00-17:30 Beijing Time** (weekly, starting from Feb. 19th 2020).
-([Convert to your timezone.](https://www.thetimezoneconverter.com/?t=16%3A30&tz=GMT%2B8&))
-
-Resources:
-- [Meeting notes and agenda](https://docs.google.com/document/d/1Sr5QS_Z04uPfRbA7PrXr3aPwCRpx7EtsyHq7mp6CnHs/edit)
-- [Meeting recordings](https://www.youtube.com/playlist?list=PLQtlO1kVWGXkRGkjSrLGEPJODoPb8s5FM)
-- [Meeting link](https://zoom.us/j/4167237304)
-- [Meeting Calendar](https://calendar.google.com/calendar/embed?src=8rjk8o516vfte21qibvlae3lj4%40group.calendar.google.com) | [Subscribe](https://calendar.google.com/calendar?cid=OHJqazhvNTE2dmZ0ZTIxcWlidmxhZTNsajRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
-
-## Contact
-
-If you need support, start with the [troubleshooting guide](https://kubeedge.io/en/docs/developer/troubleshooting), and work your way through the process that we've outlined.
-
-If you have questions, feel free to reach out to us in the following ways:
-
-- [mailing list](https://groups.google.com/forum/#!forum/kubeedge)
-- [slack](https://kubeedge.io/docs/community/slack)
-- [twitter](https://twitter.com/kubeedge)
+# Join an edge node
+cxadm join --cloudcore-ipport=<CLOUD_IP>:10000 --edgenode-name=<NODE_NAME>
+```
 
 ## Contributing
 
-If you're interested in being a contributor and want to get involved in
-developing the KubeEdge code, please see [CONTRIBUTING](./CONTRIBUTING.md) for
-details on submitting patches and the contribution workflow.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on submitting patches, the contribution workflow, and how this project tracks KubeEdge upstream.
 
 ## Security
 
-### Security Audit
+Report suspected vulnerabilities to the Neotera security team.
+See [SECURITY.md](.github/SECURITY.md) for details.
 
-A third party security audit of KubeEdge has been completed in July 2022. Additionally, the KubeEdge community completed an overall system security analysis of KubeEdge. The detailed reports are as follows.
+## Upstream
 
-- [Security audit](https://github.com/kubeedge/community/blob/master/sig-security/sig-security-audit/KubeEdge-security-audit-2022.pdf)
-
-- [Threat model and security protection analysis paper](https://github.com/kubeedge/community/blob/master/sig-security/sig-security-audit/KubeEdge-threat-model-and-security-protection-analysis.md)
-
-### Reporting security vulnerabilities
-
-We encourage security researchers, industry organizations and users to proactively report suspected vulnerabilities to our security team (`cncf-kubeedge-security@lists.cncf.io`), the team will help diagnose the severity of the issue and determine how to address the issue as soon as possible.
-
-For further details please see [Security Policy](https://github.com/kubeedge/community/blob/master/team-security/SECURITY.md) for our security process and how to report vulnerabilities.
+ContinuumX tracks the KubeEdge `main` branch. See [docs/upstream-sync.md](./docs/upstream-sync.md) for the sync runbook.
 
 ## License
 
-KubeEdge is under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.
+ContinuumX is under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.

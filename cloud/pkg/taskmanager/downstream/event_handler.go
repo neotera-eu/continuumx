@@ -20,7 +20,7 @@ import (
 	"github.com/go-logr/logr"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/wrap"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/wrap"
 )
 
 // NodeJobEventHandler is a common resource event handler for node job

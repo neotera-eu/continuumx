@@ -17,8 +17,8 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
@@ -28,28 +28,28 @@ and maintenance personnel to locate the problem`
 	edgeCheckShortDescription = `Check specific information.`
 	edgeCheckExample          = `
         # Check all items .
-        keadm debug check all
+        cxadm debug check all
 
         # Check whether the node CPU meets  requirements.
-        keadm debug check cpu
+        cxadm debug check cpu
 
         # Check whether the node memory meets  requirements.
-        keadm debug check mem
+        cxadm debug check mem
 
         # check whether the node disk meets  requirements.
-        keadm debug check disk
+        cxadm debug check disk
 
         # Check whether the node DNS can resolve a specific domain name.
-        keadm debug check dns -d www.github.com
+        cxadm debug check dns -d www.github.com
 
         # Check whether the node network meets requirements.
-        keadm debug check network
+        cxadm debug check network
 
         # Check whether the number of free processes on the node meets requirements.
-        keadm debug check pid
+        cxadm debug check pid
 
         # Check whether runtime(Docker) is installed on the node.
-        keadm debug check runtime
+        cxadm debug check runtime
 `
 )
 

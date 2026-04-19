@@ -31,11 +31,11 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	connect "github.com/kubeedge/kubeedge/edge/pkg/common/cloudconnection"
-	edgemodule "github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	metaserverconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/config"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	connect "github.com/neotera-eu/continuumx/edge/pkg/common/cloudconnection"
+	edgemodule "github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	metaserverconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/config"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
 )
 
 var DefaultAgent = NewApplicationAgent()

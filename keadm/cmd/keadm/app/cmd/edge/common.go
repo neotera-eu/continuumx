@@ -24,9 +24,9 @@ import (
 	"k8s.io/klog/v2"
 
 	cfgv1alpha2 "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	edgecoreutil "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/edgecore"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/idempotency"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	edgecoreutil "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/edgecore"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/idempotency"
 )
 
 const unknownEdgeCoreVersion = "unknown"

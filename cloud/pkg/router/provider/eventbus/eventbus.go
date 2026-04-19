@@ -10,12 +10,12 @@ import (
 	v1 "github.com/kubeedge/api/apis/rules/v1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/cloudhub"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/constants"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/listener"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/provider"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/cloud/pkg/cloudhub"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/listener"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/provider"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
 )
 
 const (

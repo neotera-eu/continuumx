@@ -7,8 +7,8 @@ import (
 	"github.com/lucas-clemente/quic-go"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/comm"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/comm"
 )
 
 const (

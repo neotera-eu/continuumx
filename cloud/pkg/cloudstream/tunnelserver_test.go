@@ -32,9 +32,9 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 	v1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	hubconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/config"
-	streamconfig "github.com/kubeedge/kubeedge/cloud/pkg/cloudstream/config"
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	hubconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/config"
+	streamconfig "github.com/neotera-eu/continuumx/cloud/pkg/cloudstream/config"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 const (

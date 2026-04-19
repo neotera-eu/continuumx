@@ -26,8 +26,8 @@ import (
 	"github.com/emicklei/go-restful"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	"github.com/neotera-eu/continuumx/common/constants"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 // ContainerMetricsConnection indicates the containerMetrics request initiated by kube-apiserver

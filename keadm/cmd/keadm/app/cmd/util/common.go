@@ -40,10 +40,10 @@ import (
 
 	apiconsts "github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/common/constants"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
-	pkgversion "github.com/kubeedge/kubeedge/pkg/version"
+	"github.com/neotera-eu/continuumx/common/constants"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
+	pkgversion "github.com/neotera-eu/continuumx/pkg/version"
 )
 
 var (
@@ -52,7 +52,7 @@ var (
 
 // Constants used by installers
 const (
-	KubeEdgeDownloadURL  = "https://github.com/kubeedge/kubeedge/releases/download"
+	KubeEdgeDownloadURL  = "https://github.com/neotera-eu/continuumx/releases/download"
 	EdgeServiceFile      = "edgecore.service"
 	CloudServiceFile     = "cloudcore.service"
 	ServiceFileURLFormat = "https://raw.githubusercontent.com/kubeedge/kubeedge/release-%s/build/tools/%s"
@@ -379,7 +379,7 @@ func Compress(tarName string, paths []string) error {
 func keadmVersion(info string) (string, error) {
 	v, err := versionutil.ParseSemantic(info)
 	if err != nil {
-		return "", fmt.Errorf("keadm version error: %v", err)
+		return "", fmt.Errorf("cxadm version error: %v", err)
 	}
 	// There is no utility in versionutil to get the version without the metadata,
 	// so this needs some manual formatting.
@@ -612,7 +612,7 @@ func downloadServiceFile(componentType types.ComponentType, version semver.Versi
 				}
 			}
 		}
-		fmt.Printf("keadm will download version %s service file\n", strippedVersion)
+		fmt.Printf("cxadm will download version %s service file\n", strippedVersion)
 
 		ServiceFileURL := fmt.Sprintf(ServiceFileURLFormat, strippedVersion, ServiceFileName)
 		if _, err := os.Stat(ServiceFilePath); err != nil {

@@ -32,8 +32,8 @@ import (
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	edgeconfig "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	fsmv1alpha1 "github.com/kubeedge/api/apis/fsm/v1alpha1"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 // Deprecated: New node jobs no longer use the event field.

@@ -26,8 +26,8 @@ import (
 	fsmapi "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	v1alpha12 "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	"github.com/kubeedge/api/apis/operations/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 func currentPrePullNodeState(id, nodeName string) (v1alpha12.State, error) {

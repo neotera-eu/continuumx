@@ -7,9 +7,9 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/constants"
-	"github.com/kubeedge/kubeedge/cloud/pkg/router/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/router/messagelayer"
 )
 
 type ExecResult struct {

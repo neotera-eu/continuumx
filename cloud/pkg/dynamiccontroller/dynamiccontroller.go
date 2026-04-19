@@ -24,13 +24,13 @@ import (
 	configv1alpha1 "github.com/kubeedge/api/apis/componentconfig/cloudcore/v1alpha1"
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/informers"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/application"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter/defaultmaster"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/filter/endpointresource"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/informers"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/application"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter/defaultmaster"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/filter/endpointresource"
 )
 
 // DynamicController use dynamicSharedInformer to dispatch messages

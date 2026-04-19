@@ -23,7 +23,7 @@ import (
 	"github.com/blang/semver"
 	"github.com/stretchr/testify/assert"
 
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
 )
 
 const pacmanTestVersion = "1.6.0"

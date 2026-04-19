@@ -9,7 +9,7 @@ import (
 	"k8s.io/apiserver/pkg/storage"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
 )
 
 var (

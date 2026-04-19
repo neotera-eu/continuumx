@@ -25,9 +25,9 @@ import (
 	"sigs.k8s.io/yaml"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	upgrdeedge "github.com/kubeedge/kubeedge/pkg/upgrade/edge"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	upgrdeedge "github.com/neotera-eu/continuumx/pkg/upgrade/edge"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 func NewEdgeConfigUpdate() *cobra.Command {

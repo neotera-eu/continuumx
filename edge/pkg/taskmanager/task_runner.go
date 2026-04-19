@@ -21,8 +21,8 @@ import (
 	"fmt"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/edge/pkg/taskmanager/actions"
-	nodetaskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/taskmanager/actions"
+	nodetaskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
 )
 
 func InitRunner() {

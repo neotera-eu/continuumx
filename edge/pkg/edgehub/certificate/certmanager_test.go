@@ -31,10 +31,10 @@ import (
 	"github.com/agiledragon/gomonkey/v2"
 	"github.com/stretchr/testify/require"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	commhttp "github.com/kubeedge/kubeedge/edge/pkg/edgehub/certificate/http"
-	httpfake "github.com/kubeedge/kubeedge/edge/pkg/edgehub/certificate/http/fake"
-	"github.com/kubeedge/kubeedge/pkg/security/certs"
+	"github.com/neotera-eu/continuumx/common/constants"
+	commhttp "github.com/neotera-eu/continuumx/edge/pkg/edgehub/certificate/http"
+	httpfake "github.com/neotera-eu/continuumx/edge/pkg/edgehub/certificate/http/fake"
+	"github.com/neotera-eu/continuumx/pkg/security/certs"
 )
 
 func TestGetCurrent(t *testing.T) {

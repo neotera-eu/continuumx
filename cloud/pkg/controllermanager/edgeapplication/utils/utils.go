@@ -10,7 +10,7 @@ import (
 	"k8s.io/klog/v2"
 
 	appsv1alpha1 "github.com/kubeedge/api/apis/apps/v1alpha1"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/edgeapplication/overridemanager"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/edgeapplication/overridemanager"
 )
 
 type ResourceInfo struct {

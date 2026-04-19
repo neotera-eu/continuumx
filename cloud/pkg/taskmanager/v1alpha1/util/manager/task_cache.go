@@ -22,7 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/config"
 )
 
 // TaskCache is a manager watch CRD change event

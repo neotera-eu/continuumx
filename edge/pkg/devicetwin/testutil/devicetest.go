@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dttype"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dttype"
 )
 
 // GenerateAddDevicePalyloadMsg generates content for adding device payload message

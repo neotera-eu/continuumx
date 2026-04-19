@@ -27,7 +27,7 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	clientset "k8s.io/client-go/kubernetes"
 
-	"github.com/kubeedge/kubeedge/tests/e2e/constants"
+	"github.com/neotera-eu/continuumx/tests/e2e/constants"
 )
 
 func CreateMapperDeployment(c clientset.Interface, replica int32, deplName string) *corev1.PodList {

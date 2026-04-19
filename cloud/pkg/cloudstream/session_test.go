@@ -11,7 +11,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kubeedge/kubeedge/pkg/stream"
+	"github.com/neotera-eu/continuumx/pkg/stream"
 )
 
 // mockTunnel implements stream.SafeWriteTunneler for testing

@@ -34,10 +34,10 @@ import (
 
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	connect "github.com/kubeedge/kubeedge/edge/pkg/common/cloudconnection"
-	metaserverconfig "github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/config"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	connect "github.com/neotera-eu/continuumx/edge/pkg/common/cloudconnection"
+	metaserverconfig "github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/config"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
 )
 
 const (

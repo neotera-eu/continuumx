@@ -22,7 +22,7 @@ import (
 
 	"k8s.io/apiserver/pkg/endpoints/request"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/metaserver/common"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/metaserver/common"
 )
 
 func (f *Factory) Exec(request *request.RequestInfo) http.Handler {

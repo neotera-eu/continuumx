@@ -28,7 +28,7 @@ import (
 
 	certutil "k8s.io/client-go/util/cert"
 
-	"github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 type x509CAHandler struct{}

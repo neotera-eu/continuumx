@@ -23,7 +23,7 @@ import (
 
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/monitor"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/monitor"
 )
 
 type Manager struct {

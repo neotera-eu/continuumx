@@ -10,13 +10,13 @@ import (
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	messagepkg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/edge/pkg/eventbus/common/util"
-	eventconfig "github.com/kubeedge/kubeedge/edge/pkg/eventbus/config"
-	mqttBus "github.com/kubeedge/kubeedge/edge/pkg/eventbus/mqtt"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	messagepkg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/edge/pkg/eventbus/common/util"
+	eventconfig "github.com/neotera-eu/continuumx/edge/pkg/eventbus/config"
+	mqttBus "github.com/neotera-eu/continuumx/edge/pkg/eventbus/mqtt"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 var mqttServer *mqttBus.Server

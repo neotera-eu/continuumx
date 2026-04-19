@@ -17,7 +17,7 @@ limitations under the License.
 package edgesite
 
 import (
-	"github.com/kubeedge/kubeedge/tests/e2e/utils"
+	"github.com/neotera-eu/continuumx/tests/e2e/utils"
 )
 
 var (

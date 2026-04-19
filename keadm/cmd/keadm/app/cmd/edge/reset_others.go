@@ -32,19 +32,19 @@ import (
 	phases "k8s.io/kubernetes/cmd/kubeadm/app/cmd/phases/reset"
 
 	"github.com/kubeedge/api/apis/common/constants"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util/extsystem"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util/extsystem"
 )
 
 var (
 	resetLongDescription = `
-keadm reset edge command can be executed edge node
+cxadm reset edge command can be executed edge node
 In edge node it shuts down the edge processes of KubeEdge
 `
 	resetExample = `
 For edge node edge:
-keadm reset edge
+cxadm reset edge
 `
 )
 
@@ -170,7 +170,7 @@ func addResetFlags(cmd *cobra.Command, resetOpts *common.ResetOptions) {
 	cmd.Flags().StringVar(&resetOpts.Endpoint, "remote-runtime-endpoint", resetOpts.Endpoint,
 		"Use this key to set container runtime endpoint")
 	cmd.Flags().StringVar(&resetOpts.PreRun, common.FlagNamePreRun, resetOpts.PreRun,
-		"Execute the prescript before resetting the node. (for example: keadm reset edge --pre-run=./test-script.sh ...)")
+		"Execute the prescript before resetting the node. (for example: cxadm reset edge --pre-run=./test-script.sh ...)")
 	cmd.Flags().StringVar(&resetOpts.PostRun, common.FlagNamePostRun, resetOpts.PostRun,
-		"Execute the postscript after resetting the node. (for example: keadm reset edge --post-run=./test-script.sh ...)")
+		"Execute the postscript after resetting the node. (for example: cxadm reset edge --post-run=./test-script.sh ...)")
 }

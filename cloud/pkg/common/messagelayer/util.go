@@ -24,8 +24,8 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/common/constants"
-	pkgutil "github.com/kubeedge/kubeedge/pkg/util"
+	"github.com/neotera-eu/continuumx/common/constants"
+	pkgutil "github.com/neotera-eu/continuumx/pkg/util"
 )
 
 const (

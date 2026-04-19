@@ -27,10 +27,10 @@ import (
 	"github.com/kubeedge/api/apis/common/constants"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2/validation"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/pkg/util"
-	"github.com/kubeedge/kubeedge/pkg/version"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/api"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/pkg/util"
+	"github.com/neotera-eu/continuumx/pkg/version"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/api"
 )
 
 // KubeEdgeInstTool embeds Common struct and contains cloud node ip:port information

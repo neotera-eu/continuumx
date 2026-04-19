@@ -5,11 +5,11 @@ import (
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	"github.com/kubeedge/beehive/pkg/core"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/modules"
-	deviceconfig "github.com/kubeedge/kubeedge/edge/pkg/devicetwin/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtcontext"
-	"github.com/kubeedge/kubeedge/edge/pkg/devicetwin/dtmodule"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/modules"
+	deviceconfig "github.com/neotera-eu/continuumx/edge/pkg/devicetwin/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtcontext"
+	"github.com/neotera-eu/continuumx/edge/pkg/devicetwin/dtmodule"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 // DeviceTwin the module

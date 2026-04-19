@@ -27,8 +27,8 @@ import (
 	"k8s.io/client-go/dynamic"
 	"k8s.io/client-go/rest"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	commfake "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common/fake"
+	"github.com/neotera-eu/continuumx/common/constants"
+	commfake "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common/fake"
 )
 
 func TestK8SInstToolInstallTools(t *testing.T) {

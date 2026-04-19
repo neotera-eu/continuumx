@@ -1,6 +1,6 @@
 ---
 name: Enhancement Request
-about: Suggest an enhancement to the KubeEdge project
+about: Suggest an enhancement to the ContinuumX project
 labels: kind/feature
 
 ---

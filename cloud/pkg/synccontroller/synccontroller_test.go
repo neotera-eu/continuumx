@@ -32,9 +32,9 @@ import (
 	crdfake "github.com/kubeedge/api/client/clientset/versioned/fake"
 	crdinformers "github.com/kubeedge/api/client/informers/externalversions"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	tf "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/testing"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/synccontroller/config"
+	tf "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/testing"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/synccontroller/config"
 )
 
 func TestNewSyncControllerAndStartIt(t *testing.T) {

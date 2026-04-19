@@ -33,14 +33,14 @@ import (
 	"github.com/kubeedge/api/apis/operations/v1alpha1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/nodeupgradecontroller"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util/controller"
-	"github.com/kubeedge/kubeedge/common/constants"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
-	"github.com/kubeedge/kubeedge/pkg/util/fsm"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/nodeupgradecontroller"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util/controller"
+	"github.com/neotera-eu/continuumx/common/constants"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
+	"github.com/neotera-eu/continuumx/pkg/util/fsm"
 )
 
 const TimeOutSecond = 300
@@ -189,7 +189,7 @@ func (e *Executor) initHistoryMessage(node v1alpha1.TaskStatus) *model.Message {
 	upgradeReq := commontypes.NodeUpgradeJobRequest{
 		UpgradeID:   e.task.Name,
 		HistoryID:   uuid.New().String(),
-		UpgradeTool: "keadm",
+		UpgradeTool: "cxadm",
 		Version:     req.Version,
 		Image:       req.Image,
 	}

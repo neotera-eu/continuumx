@@ -23,28 +23,28 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/kubeedge/kubeedge/common/constants"
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/helm"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	"github.com/neotera-eu/continuumx/common/constants"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/helm"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
 	cloudManifestLongDescription = `
-"keadm manifest" command renders charts by using a list of set flags like helm, and generates kubernetes resources.
+"cxadm manifest" command renders charts by using a list of set flags like helm, and generates kubernetes resources.
 `
 
 	cloudManifestGenerateExample = `
 keadm manifest
 - This command will render and generate Kubernetes resources
 
-keadm manifest --advertise-address=127.0.0.1 --profile version=v%s --kube-config=/root/.kube/config
+cxadm manifest --advertise-address=127.0.0.1 --profile version=v%s --kube-config=/root/.kube/config
   - kube-config is the absolute path of kubeconfig which used to secure connectivity between cloudcore and kube-apiserver
-	- a list of helm style set flags like "--set key=value" can be implemented, ref: https://github.com/kubeedge/kubeedge/tree/master/manifests/charts/cloudcore/README.md
+	- a list of helm style set flags like "--set key=value" can be implemented, ref: https://github.com/neotera-eu/continuumx/tree/master/manifests/charts/cloudcore/README.md
 `
 )
 
-// NewManifestGenerate represents the keadm manifest command for cloud component
+// NewManifestGenerate represents the cxadm manifest command for cloud component
 func NewManifestGenerate() *cobra.Command {
 	opts := newInitOptions()
 	tools := make(map[string]types.ToolsInstaller)

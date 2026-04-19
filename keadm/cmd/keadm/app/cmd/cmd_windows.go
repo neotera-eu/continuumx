@@ -21,17 +21,17 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/edge"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/edge"
 )
 
 var (
 	keadmLongDescription = `
     +----------------------------------------------------------+
-    | KEADM                                                    |
-    | Easily bootstrap a KubeEdge cluster                      |
+    | CXADM                                                    |
+    | Easily bootstrap a ContinuumX cluster                      |
     |                                                          |
     | Please give us feedback at:                              |
-    | https://github.com/kubeedge/kubeedge/issues              |
+    | https://github.com/neotera-eu/continuumx/issues          |
     +----------------------------------------------------------+
 
     Create a cluster with cloud node
@@ -44,7 +44,7 @@ var (
     +------------------------------------------------------------------+
     | On the edge machine(current don't support cloudcore on windows): |                                    |
     +------------------------------------------------------------------+
-    | worker node (at the edge)# keadm join <flags>                    |
+    | worker node (at the edge)# cxadm join <flags>                    |
     +------------------------------------------------------------------+
 
     You can then repeat the second step on, as many other machines as you like.
@@ -54,8 +54,8 @@ var (
 // NewKubeedgeCommand returns cobra.Command to run keadm commands
 func NewKubeedgeCommand() *cobra.Command {
 	cmds := &cobra.Command{
-		Use:     "keadm",
-		Short:   "keadm: Bootstrap KubeEdge cluster",
+		Use:     "cxadm",
+		Short:   "cxadm: Bootstrap ContinuumX cluster",
 		Long:    keadmLongDescription,
 		Example: keadmExample,
 	}

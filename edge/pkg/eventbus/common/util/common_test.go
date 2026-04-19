@@ -30,7 +30,7 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
-	eventconfig "github.com/kubeedge/kubeedge/edge/pkg/eventbus/config"
+	eventconfig "github.com/neotera-eu/continuumx/edge/pkg/eventbus/config"
 )
 
 var clientOptions = MQTT.NewClientOptions()

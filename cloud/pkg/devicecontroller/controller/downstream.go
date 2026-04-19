@@ -40,13 +40,13 @@ import (
 	crdinformers "github.com/kubeedge/api/client/informers/externalversions"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/constants"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/manager"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/types"
-	"github.com/kubeedge/kubeedge/pkg/util"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/manager"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/types"
+	"github.com/neotera-eu/continuumx/pkg/util"
 )
 
 // DownstreamController watch kubernetes api server and send change to edge

@@ -36,8 +36,8 @@ import (
 	edgescheme "github.com/kubeedge/api/client/clientset/versioned/scheme"
 	edgeinformers "github.com/kubeedge/api/client/informers/externalversions"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	"github.com/kubeedge/kubeedge/common/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	"github.com/neotera-eu/continuumx/common/constants"
 )
 
 var (

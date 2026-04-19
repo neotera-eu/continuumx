@@ -22,7 +22,7 @@ import (
 	"github.com/kubeedge/beehive/pkg/common"
 	"github.com/kubeedge/beehive/pkg/core"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
-	commodule "github.com/kubeedge/kubeedge/edge/pkg/common/modules"
+	commodule "github.com/neotera-eu/continuumx/edge/pkg/common/modules"
 )
 
 // metaModule is metamanager implementation of Module interface

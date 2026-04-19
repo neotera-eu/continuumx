@@ -42,11 +42,11 @@ import (
 	clienttesting "k8s.io/client-go/testing"
 
 	"github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/dynamiccontroller/config"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	edgemsg "github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/pkg/metaserver"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dynamiccontroller/config"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	edgemsg "github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/pkg/metaserver"
 )
 
 func TestOptionTo(t *testing.T) {

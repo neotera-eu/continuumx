@@ -40,7 +40,7 @@ import (
 
 	"github.com/kubeedge/api/apis/devices/v1beta1"
 	edgeclientset "github.com/kubeedge/api/client/clientset/versioned"
-	"github.com/kubeedge/kubeedge/tests/e2e/constants"
+	"github.com/neotera-eu/continuumx/tests/e2e/constants"
 )
 
 const (

@@ -24,14 +24,14 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	types "github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/util"
+	types "github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/util"
 )
 
 var (
 	cloudInitLongDescription = `
 Deprecated:
-"keadm deprecated init" command install KubeEdge's master node (on the cloud) component.
+"cxadm deprecated init" command install KubeEdge's master node (on the cloud) component.
 It checks if the Kubernetes Master are installed already,
 If not installed, please install the Kubernetes first.
 `
@@ -47,7 +47,7 @@ keadm deprecated init --kubeedge-version=%s  --kube-config=/root/.kube/config
 `
 )
 
-// NewDeprecatedCloudInit represents the keadm init command for cloud component
+// NewDeprecatedCloudInit represents the cxadm init command for cloud component
 func NewDeprecatedCloudInit() *cobra.Command {
 	init := newInitOptions()
 

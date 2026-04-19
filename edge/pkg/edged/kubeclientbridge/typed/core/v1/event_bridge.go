@@ -25,7 +25,7 @@ import (
 	appcorev1 "k8s.io/client-go/applyconfigurations/core/v1"
 	typedcorev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 // EventBridge is a structure that handles event operations.

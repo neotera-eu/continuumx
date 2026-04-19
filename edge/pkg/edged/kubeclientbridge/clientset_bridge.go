@@ -33,10 +33,10 @@ import (
 	storagev1 "k8s.io/client-go/kubernetes/typed/storage/v1"
 	fakestoragev1 "k8s.io/client-go/kubernetes/typed/storage/v1/fake"
 
-	kecoordinationv1 "github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge/typed/coordination/v1"
-	kecorev1 "github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge/typed/core/v1"
-	kestoragev1 "github.com/kubeedge/kubeedge/edge/pkg/edged/kubeclientbridge/typed/storage/v1"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/client"
+	kecoordinationv1 "github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge/typed/coordination/v1"
+	kecorev1 "github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge/typed/core/v1"
+	kestoragev1 "github.com/neotera-eu/continuumx/edge/pkg/edged/kubeclientbridge/typed/storage/v1"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/client"
 )
 
 // NewSimpleClientset is new interface

@@ -8,8 +8,8 @@ import (
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/eventbus/common/util"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/edge/pkg/eventbus/common/util"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
 )
 
 const UploadTopic = "SYS/dis/upload_records"

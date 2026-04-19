@@ -26,7 +26,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/cache"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/nodes"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/nodes"
 )
 
 // NodeVerificationResult is the result of node verification.

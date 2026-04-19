@@ -31,8 +31,8 @@ import (
 	"k8s.io/kubernetes/plugin/pkg/auth/authorizer/rbac/bootstrappolicy"
 
 	beehivemodel "github.com/kubeedge/beehive/pkg/core/model"
-	cloudhubmodel "github.com/kubeedge/kubeedge/cloud/pkg/cloudhub/common/model"
-	"github.com/kubeedge/kubeedge/pkg/viaduct/pkg/conn"
+	cloudhubmodel "github.com/neotera-eu/continuumx/cloud/pkg/cloudhub/common/model"
+	"github.com/neotera-eu/continuumx/pkg/viaduct/pkg/conn"
 )
 
 // Authorizer provides authorization enhancements for CloudHub

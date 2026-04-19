@@ -19,7 +19,7 @@ package mocks
 import (
 	"sync"
 
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/models"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/models"
 )
 
 // MockDeviceService provides a mock implementation of DeviceService for testing

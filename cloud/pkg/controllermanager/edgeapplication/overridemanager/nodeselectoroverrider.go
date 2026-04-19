@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodegroup"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodegroup"
 )
 
 type NodeSelectorOverrider struct{}

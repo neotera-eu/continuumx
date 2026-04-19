@@ -21,10 +21,10 @@ import (
 
 	appsv1alpha1 "github.com/kubeedge/api/apis/apps/v1alpha1"
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/edgeapplication"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodegroup"
-	"github.com/kubeedge/kubeedge/cloud/pkg/controllermanager/nodetask"
-	"github.com/kubeedge/kubeedge/pkg/features"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/edgeapplication"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodegroup"
+	"github.com/neotera-eu/continuumx/cloud/pkg/controllermanager/nodetask"
+	"github.com/neotera-eu/continuumx/pkg/features"
 )
 
 var kubeedgeScheme = runtime.NewScheme()

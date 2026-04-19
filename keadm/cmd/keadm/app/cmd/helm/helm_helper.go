@@ -29,7 +29,7 @@ import (
 	"k8s.io/klog/v2"
 	"sigs.k8s.io/yaml"
 
-	kecharts "github.com/kubeedge/kubeedge/manifests"
+	kecharts "github.com/neotera-eu/continuumx/manifests"
 )
 
 // MergeProfileValues merges values from specified profile and directly via --set.

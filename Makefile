@@ -10,7 +10,7 @@ BINARIES=cloudcore \
 	edgecore \
 	edgesite-agent \
 	edgesite-server \
-	keadm \
+	cxadm \
 	csidriver \
 	iptablesmanager \
 	edgemark \

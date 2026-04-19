@@ -27,14 +27,14 @@ import (
 	crdClientset "github.com/kubeedge/api/client/clientset/versioned"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	"github.com/kubeedge/beehive/pkg/core/model"
-	keclient "github.com/kubeedge/kubeedge/cloud/pkg/common/client"
-	utilcontext "github.com/kubeedge/kubeedge/cloud/pkg/common/context"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/messagelayer"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/config"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/constants"
-	"github.com/kubeedge/kubeedge/cloud/pkg/devicecontroller/types"
-	commonconst "github.com/kubeedge/kubeedge/common/constants"
+	keclient "github.com/neotera-eu/continuumx/cloud/pkg/common/client"
+	utilcontext "github.com/neotera-eu/continuumx/cloud/pkg/common/context"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/messagelayer"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/config"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/constants"
+	"github.com/neotera-eu/continuumx/cloud/pkg/devicecontroller/types"
+	commonconst "github.com/neotera-eu/continuumx/common/constants"
 )
 
 // DeviceStatus is structure to patch device status

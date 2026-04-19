@@ -35,14 +35,14 @@ import (
 	"gopkg.in/yaml.v2"
 	"k8s.io/klog/v2"
 
-	"github.com/kubeedge/kubeedge/keadm/cmd/keadm/app/cmd/common"
+	"github.com/neotera-eu/continuumx/keadm/cmd/keadm/app/cmd/common"
 )
 
 const (
 	baseDir                = "/tmp/kubeedge/keadm"
 	packageDir             = baseDir + "/package"
 	binDir                 = baseDir + "/bin"
-	defautKeadmDownloadURL = "https://github.com/kubeedge/kubeedge/releases/download"
+	defautKeadmDownloadURL = "https://github.com/neotera-eu/continuumx/releases/download"
 	defautSSHPort          = 22
 	defaultMaxRunNum       = 5
 )
@@ -279,8 +279,8 @@ func processNode(node *common.Node, cfg *common.Config) error {
 	if err != nil {
 		return err
 	}
-	keadmPath := filepath.Join(binDir, arch, fmt.Sprintf("keadm-%s-linux-%s/keadm/keadm", cfg.Keadm.KeadmVersion, arch))
-	if err = uploadFile(client, node.NodeName, keadmPath, filepath.Join(baseDir, "keadm")); err != nil {
+	keadmPath := filepath.Join(binDir, arch, fmt.Sprintf("cxadm-%s-linux-%s/cxadm/cxadm", cfg.Keadm.KeadmVersion, arch))
+	if err = uploadFile(client, node.NodeName, keadmPath, filepath.Join(baseDir, "cxadm")); err != nil {
 		return err
 	}
 

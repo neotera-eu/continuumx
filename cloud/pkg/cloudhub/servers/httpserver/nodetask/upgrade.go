@@ -28,9 +28,9 @@ import (
 	api "github.com/kubeedge/api/apis/fsm/v1alpha1"
 	beehiveContext "github.com/kubeedge/beehive/pkg/core/context"
 	beehiveModel "github.com/kubeedge/beehive/pkg/core/model"
-	"github.com/kubeedge/kubeedge/cloud/pkg/common/modules"
-	"github.com/kubeedge/kubeedge/cloud/pkg/taskmanager/v1alpha1/util"
-	commontypes "github.com/kubeedge/kubeedge/common/types"
+	"github.com/neotera-eu/continuumx/cloud/pkg/common/modules"
+	"github.com/neotera-eu/continuumx/cloud/pkg/taskmanager/v1alpha1/util"
+	commontypes "github.com/neotera-eu/continuumx/common/types"
 )
 
 const (

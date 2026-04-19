@@ -30,13 +30,13 @@ import (
 
 	cfgv1alpha2 "github.com/kubeedge/api/apis/componentconfig/edgecore/v1alpha2"
 	operationsv1alpha2 "github.com/kubeedge/api/apis/operations/v1alpha2"
-	"github.com/kubeedge/kubeedge/edge/cmd/edgecore/app/options"
-	"github.com/kubeedge/kubeedge/edge/pkg/common/message"
-	"github.com/kubeedge/kubeedge/edge/pkg/metamanager/dao/dbclient"
-	"github.com/kubeedge/kubeedge/pkg/containers"
-	taskmsg "github.com/kubeedge/kubeedge/pkg/nodetask/message"
-	upgradeedge "github.com/kubeedge/kubeedge/pkg/upgrade/edge"
-	"github.com/kubeedge/kubeedge/pkg/util/execs"
+	"github.com/neotera-eu/continuumx/edge/cmd/edgecore/app/options"
+	"github.com/neotera-eu/continuumx/edge/pkg/common/message"
+	"github.com/neotera-eu/continuumx/edge/pkg/metamanager/dao/dbclient"
+	"github.com/neotera-eu/continuumx/pkg/containers"
+	taskmsg "github.com/neotera-eu/continuumx/pkg/nodetask/message"
+	upgradeedge "github.com/neotera-eu/continuumx/pkg/upgrade/edge"
+	"github.com/neotera-eu/continuumx/pkg/util/execs"
 )
 
 func TestNodeUpgradeJobPreRun(t *testing.T) {
