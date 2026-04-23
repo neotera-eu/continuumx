@@ -94,9 +94,18 @@ sed_inplace 's|^module github\.com/kubeedge/kubeedge$|module github.com/neotera-
 # ---------------------------------------------------------------------------
 log "B3: updating Dockerfile COPY and go build paths"
 
-find "$REPO_ROOT/build" -name 'Dockerfile*' -not -path '*/vendor/*' | while IFS= read -r f; do
+find "$REPO_ROOT/build" \( -name 'Dockerfile*' -o -name '*.dockerfile' \) \
+  -not -path '*/vendor/*' | while IFS= read -r f; do
   sed_inplace 's|github\.com/kubeedge/kubeedge|github.com/neotera-eu/continuumx|g' "$f"
 done
+
+# installation-package.dockerfile: binary name keadm → cxadm
+INSTALL_PKG_DF="$REPO_ROOT/build/docker/installation-package/installation-package.dockerfile"
+if [ -f "$INSTALL_PKG_DF" ]; then
+  sed_inplace 's|make WHAT=keadm|make WHAT=cxadm|g' "$INSTALL_PKG_DF"
+  sed_inplace 's|bin/keadm|bin/cxadm|g' "$INSTALL_PKG_DF"
+  sed_inplace 's|/usr/local/bin/keadm|/usr/local/bin/cxadm|g' "$INSTALL_PKG_DF"
+fi
 
 # Image build scripts: docker tag org  kubeedge/ → neotera/
 log "B3b: updating image org in hack/make-rules build scripts"
