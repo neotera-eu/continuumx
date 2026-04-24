@@ -155,6 +155,12 @@ if [ -f "$BATCH_FILE" ]; then
   sed_inplace 's|filepath\.Join(baseDir, "keadm")|filepath.Join(baseDir, "cxadm")|g' "$BATCH_FILE"
 fi
 
+# Node version string reported by edgecore to the API server
+EDGED_FILE="$REPO_ROOT/edge/pkg/edged/edged.go"
+if [ -f "$EDGED_FILE" ]; then
+  sed_inplace 's|-kubeedge-|-continuumx-|g' "$EDGED_FILE"
+fi
+
 # ---------------------------------------------------------------------------
 # A1 — Makefile: rename keadm binary in BINARIES list
 # ---------------------------------------------------------------------------

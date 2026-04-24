@@ -253,7 +253,7 @@ func newEdged(enable bool, nodeName, namespace string) (*edged, error) {
 	}
 
 	// set edged version
-	nodestatus.KubeletVersion = fmt.Sprintf("%s-kubeedge-%s", constants.CurrentSupportK8sVersion, version.Get())
+	nodestatus.KubeletVersion = fmt.Sprintf("%s-continuumx-%s", constants.CurrentSupportK8sVersion, version.Get())
 
 	// use kubeletServer to construct the default KubeletDeps
 	kubeletDeps, err := DefaultKubeletDeps(&kubeletServer, utilfeature.DefaultFeatureGate)
