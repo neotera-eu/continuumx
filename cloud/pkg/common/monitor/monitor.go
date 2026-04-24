@@ -32,7 +32,7 @@ import (
 )
 
 const (
-	metricNamespace = "KubeEdge"
+	metricNamespace = "ContinuumX"
 
 	// CloudHubSubsystem - subsystem name used by CloudHub
 	CloudHubSubsystem = "CloudHub"

@@ -82,7 +82,7 @@ check_prerequisites() {
     }
 
     if ! kubectl get ns "$KUBEEDGE_NAMESPACE" &>/dev/null; then
-      echo "[ERROR] Namespace ${KUBEEDGE_NAMESPACE} not found. Please installing KubeEdge with keadm first."
+      echo "[ERROR] Namespace ${KUBEEDGE_NAMESPACE} not found. Please install ContinuumX with cxadm first."
       exit 1
     fi
 
@@ -160,7 +160,7 @@ enable_dynamic_controller() {
 }
 
 patch_cilium_rbac() {
-  echo "Updating Cilium ClusterRole with KubeEdge permissions..."
+  echo "Updating Cilium ClusterRole with ContinuumX permissions..."
   FILE_NAME="${WORK_DIR}/cilium-clusterrole.yaml"
   if ! kubectl get clusterrole cilium -o yaml >"$FILE_NAME"; then
     echo "[ERROR] Failed to retrieve Cilium ClusterRole. Ensure it exists and kubectl has permissions."
@@ -221,7 +221,7 @@ update_edgecore_configuration() {
 }
 
 deploy_edge_daemonset() {
-  echo "Deploying cilium-kubeedge DaemonSet for edge nodes..."
+  echo "Deploying cilium-continuumx DaemonSet for edge nodes..."
   FILE_NAME="${WORK_DIR}/cilium-kubeedge.yaml"
   if ! kubectl get daemonset -n kube-system cilium -o yaml >"$FILE_NAME"; then
     echo "[ERROR] Failed to retrieve Cilium DaemonSet. Ensure it exists and kubectl has permissions."
@@ -283,17 +283,17 @@ cleanup() {
 }
 
 #######################################
-# KubeEdge Cilium Integration Script
+# ContinuumX Cilium Integration Script
 
 # Overview:
-#   This script configures Cilium CNI to work seamlessly with KubeEdge by making
+#   This script configures Cilium CNI to work seamlessly with ContinuumX by making
 #   both cloud-side and edge-side modifications.
 
 # Key Changes:
 # Cloud Side:
 # - Patches main Cilium DaemonSet to exclude edge nodes
 # - Enables dynamicController in CloudCore ConfigMap
-# - Updates Cilium ClusterRole with KubeEdge permissions
+# - Updates Cilium ClusterRole with ContinuumX permissions
 # - Deploys cilium-kubeedge DaemonSet for edge nodes
 #
 # Edge Side:

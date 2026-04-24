@@ -270,7 +270,7 @@ func (ifs *informers) forResource(gvr schema.GroupVersionResource) (k8sinformer.
 		ifs.kubeInformerFactory.Start(ifs.stopCh)
 
 	case kubeEdgeScheme.Recognizes(gvk):
-		klog.V(4).Infof("KubeEdge CRD resource %s informer", gvr.String())
+		klog.V(4).Infof("ContinuumX CRD resource %s informer", gvr.String())
 
 		genericInformer, err = ifs.kubeEdgeInformerFactory.ForResource(gvr)
 		if err != nil {

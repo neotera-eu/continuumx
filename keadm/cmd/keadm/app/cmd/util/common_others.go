@@ -238,9 +238,9 @@ func runEdgeCore() error {
 	fmt.Println(cmd.GetStdOut())
 
 	if systemdExist {
-		fmt.Printf("KubeEdge edgecore is running, For logs visit: journalctl -u %s.service -xe\n", types.EdgeCore)
+		fmt.Printf("ContinuumX edgecore is running, For logs visit: journalctl -u %s.service -xe\n", types.EdgeCore)
 	} else {
-		fmt.Println("KubeEdge edgecore is running, For logs visit: ",
+		fmt.Println("ContinuumX edgecore is running, For logs visit: ",
 			filepath.Join(apiconsts.KubeEdgeLogPath, apiconsts.KubeEdgeBinaryName+".log"))
 	}
 	return nil

@@ -10,8 +10,8 @@ import (
 const (
 	// SyncController
 	DefaultContextSendModuleName = "cloudhub"
-	ProjectName                  = "KubeEdge"
-	SystemName                   = "kubeedge"
+	ProjectName                  = "ContinuumX"
+	SystemName                   = "continuumx"
 	SystemNamespace              = SystemName
 	CloudConfigMapName           = "cloudcore"
 	EdgeMappingCloudKey          = "cloudcore"

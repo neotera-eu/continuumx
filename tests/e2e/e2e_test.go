@@ -68,5 +68,5 @@ func TestE2E(t *testing.T) {
 	}
 
 	suiteConfig, reporterConfig := framework.CreateGinkgoConfig()
-	ginkgo.RunSpecs(t, "KubeEdge e2e suite", suiteConfig, reporterConfig)
+	ginkgo.RunSpecs(t, "ContinuumX e2e suite", suiteConfig, reporterConfig)
 }

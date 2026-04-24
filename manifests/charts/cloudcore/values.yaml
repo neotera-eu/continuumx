@@ -38,7 +38,7 @@ cloudCore:
     requireAuthorization: false
   modules:
     cloudHub:
-      # Caution!: Leave this entry to empty will cause CloudCore to exit abnormally once KubeEdge is enabled.
+      # Caution!: Leave this entry to empty will cause CloudCore to exit abnormally once ContinuumX is enabled.
       # At least a public IP Address or an IP which can be accessed by edge nodes must be provided!
       advertiseAddress:
         - ""

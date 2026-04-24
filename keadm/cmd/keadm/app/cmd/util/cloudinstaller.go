@@ -106,7 +106,7 @@ func (cu *KubeCloudInstTool) RunCloudCore() error {
 
 	fmt.Println(cmd.GetStdOut())
 
-	fmt.Println("KubeEdge cloudcore is running, For logs visit: ",
+	fmt.Println("ContinuumX cloudcore is running, For logs visit: ",
 		filepath.Join(apiconsts.KubeEdgeLogPath, KubeCloudBinaryName+".log"))
 
 	return nil

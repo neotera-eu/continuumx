@@ -62,10 +62,10 @@ func AddJoinOtherFlags(cmd *cobra.Command, joinOptions *common.JoinOptions) {
 	}
 
 	flags.StringVarP(&joinOptions.EdgeNodeName, common.FlagNameEdgeNodeName, "i", joinOptions.EdgeNodeName,
-		"KubeEdge Node unique identification string, if flag not used then the command will generate a unique id on its own")
+		"ContinuumX Node unique identification string, if flag not used then the command will generate a unique id on its own")
 
 	flags.StringVarP(&joinOptions.RemoteRuntimeEndpoint, common.FlagNameRemoteRuntimeEndpoint, "p", joinOptions.RemoteRuntimeEndpoint,
-		"KubeEdge Edge Node RemoteRuntimeEndpoint string.")
+		"ContinuumX Edge Node RemoteRuntimeEndpoint string.")
 
 	flags.StringVarP(&joinOptions.Token, common.FlagNameToken, "t", joinOptions.Token,
 		"Used for edge to apply for the certificate")

@@ -162,6 +162,79 @@ if [ -f "$EDGED_FILE" ]; then
 fi
 
 # ---------------------------------------------------------------------------
+# B5 — Project name constants, version banner, Prometheus namespace, user messages
+# ---------------------------------------------------------------------------
+log "B5: updating project name constants and user-visible strings"
+
+# ProjectName / SystemName constants
+COMMON_CONST="$REPO_ROOT/common/constants/default.go"
+if [ -f "$COMMON_CONST" ]; then
+  sed_inplace 's|ProjectName\s*=\s*"KubeEdge"|ProjectName                  = "ContinuumX"|' "$COMMON_CONST"
+  sed_inplace 's|SystemName\s*=\s*"kubeedge"|SystemName                   = "continuumx"|' "$COMMON_CONST"
+fi
+
+# Version banner: "KubeEdge <version>"
+VERFLAG="$REPO_ROOT/pkg/version/verflag/verflag.go"
+if [ -f "$VERFLAG" ]; then
+  sed_inplace 's|"KubeEdge %s\\n"|"ContinuumX %s\\n"|g' "$VERFLAG"
+fi
+
+# Prometheus metric namespace
+MONITOR="$REPO_ROOT/cloud/pkg/common/monitor/monitor.go"
+if [ -f "$MONITOR" ]; then
+  sed_inplace 's|metricNamespace = "KubeEdge"|metricNamespace = "ContinuumX"|' "$MONITOR"
+fi
+
+# cxadm CLI user-facing status messages (join/init output)
+for f in \
+  "$REPO_ROOT/keadm/cmd/keadm/app/cmd/util/common_others.go" \
+  "$REPO_ROOT/keadm/cmd/keadm/app/cmd/util/cloudinstaller.go" \
+  "$REPO_ROOT/keadm/cmd/keadm/app/cmd/edge/join_others.go" \
+  "$REPO_ROOT/keadm/cmd/keadm/app/cmd/edge/join_windows.go"; do
+  if [ -f "$f" ]; then
+    sed_inplace 's|KubeEdge edgecore is running|ContinuumX edgecore is running|g' "$f"
+    sed_inplace 's|KubeEdge cloudcore is running|ContinuumX cloudcore is running|g' "$f"
+    sed_inplace 's|KubeEdge Node unique identification|ContinuumX Node unique identification|g' "$f"
+    sed_inplace 's|KubeEdge Edge Node RemoteRuntimeEndpoint|ContinuumX Edge Node RemoteRuntimeEndpoint|g' "$f"
+  fi
+done
+
+# cloudcore informer log message
+INFORMER_MGR="$REPO_ROOT/cloud/pkg/common/informers/informer_manager.go"
+if [ -f "$INFORMER_MGR" ]; then
+  sed_inplace 's|"KubeEdge CRD resource|"ContinuumX CRD resource|g' "$INFORMER_MGR"
+fi
+
+# YAML manifest comments
+for f in \
+  "$REPO_ROOT/manifests/profiles/version.yaml" \
+  "$REPO_ROOT/manifests/charts/cloudcore/values.yaml"; do
+  if [ -f "$f" ]; then
+    sed_inplace 's|once KubeEdge is enabled|once ContinuumX is enabled|g' "$f"
+  fi
+done
+
+# e2e test suite name
+E2E_TEST="$REPO_ROOT/tests/e2e/e2e_test.go"
+if [ -f "$E2E_TEST" ]; then
+  sed_inplace 's|"KubeEdge e2e suite"|"ContinuumX e2e suite"|g' "$E2E_TEST"
+fi
+
+# Cilium integration scripts
+for f in \
+  "$REPO_ROOT/hack/cilium_e2e_test.sh" \
+  "$REPO_ROOT/hack/configure_cilium.sh"; do
+  if [ -f "$f" ]; then
+    sed_inplace 's|for KubeEdge compatibility|for ContinuumX compatibility|g' "$f"
+    sed_inplace 's|with KubeEdge permissions|with ContinuumX permissions|g' "$f"
+    sed_inplace 's|with KubeEdge by making|with ContinuumX by making|g' "$f"
+    sed_inplace 's|KubeEdge Cilium Integration Script|ContinuumX Cilium Integration Script|g' "$f"
+    sed_inplace 's|installing KubeEdge with keadm|install ContinuumX with cxadm|g' "$f"
+    sed_inplace 's|cilium-kubeedge DaemonSet|cilium-continuumx DaemonSet|g' "$f"
+  fi
+done
+
+# ---------------------------------------------------------------------------
 # A1 — Makefile: rename keadm binary in BINARIES list
 # ---------------------------------------------------------------------------
 log "A1: Makefile BINARIES list (keadm → cxadm)"

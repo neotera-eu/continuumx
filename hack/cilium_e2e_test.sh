@@ -64,7 +64,7 @@ spec:
 }
 
 patch_cilium_rbac() {
-  echo "Updating Cilium RBAC for KubeEdge compatibility..."
+  echo "Updating Cilium RBAC for ContinuumX compatibility..."
   FILE_NAME="${WORK_DIR}/cilium-clusterrole.yaml"
   kubectl get clusterrole cilium -o yaml >"$FILE_NAME"
   yq e '(.rules[] | select(.apiGroups[] == "cilium.io" and .resources[] == "ciliumpodippools").verbs) |= (. + ["get"] | unique)' -i "$FILE_NAME"
@@ -77,7 +77,7 @@ patch_cilium_rbac() {
 }
 
 deploy_edge_daemonset() {
-  echo "Deploying cilium-kubeedge DaemonSet for edge nodes..."
+  echo "Deploying cilium-continuumx DaemonSet for edge nodes..."
   FILE_NAME="${WORK_DIR}/cilium-kubeedge.yaml"
   kubectl get daemonset -n kube-system "$CILIUM_DS" -o yaml >"$FILE_NAME"
   yq e 'del(.status)' -i "$FILE_NAME"

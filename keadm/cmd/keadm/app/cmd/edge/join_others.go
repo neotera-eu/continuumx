@@ -67,10 +67,10 @@ func AddJoinOtherFlags(cmd *cobra.Command, joinOptions *common.JoinOptions) {
 	}
 
 	cmd.Flags().StringVarP(&joinOptions.EdgeNodeName, common.FlagNameEdgeNodeName, "i", joinOptions.EdgeNodeName,
-		"KubeEdge Node unique identification string, if flag not used then the command will generate a unique id on its own")
+		"ContinuumX Node unique identification string, if flag not used then the command will generate a unique id on its own")
 
 	cmd.Flags().StringVarP(&joinOptions.RemoteRuntimeEndpoint, common.FlagNameRemoteRuntimeEndpoint, "p", joinOptions.RemoteRuntimeEndpoint,
-		"KubeEdge Edge Node RemoteRuntimeEndpoint string.")
+		"ContinuumX Edge Node RemoteRuntimeEndpoint string.")
 
 	cmd.Flags().StringVarP(&joinOptions.Token, common.FlagNameToken, "t", joinOptions.Token,
 		"Used for edge to apply for the certificate")
@@ -280,13 +280,13 @@ func runEdgeCore() error {
 
 	var binExec, tip string
 	if systemdExist {
-		tip = fmt.Sprintf("KubeEdge edgecore is running, For logs visit: journalctl -u %s.service -xe", common.EdgeCore)
+		tip = fmt.Sprintf("ContinuumX edgecore is running, For logs visit: journalctl -u %s.service -xe", common.EdgeCore)
 		binExec = fmt.Sprintf(
 			"sudo systemctl daemon-reload && sudo systemctl enable %s && sudo systemctl start %s",
 			common.EdgeCore, common.EdgeCore)
 	} else {
 		logFiles := filepath.Join(constants.KubeEdgeLogPath, constants.KubeEdgeBinaryName+".log")
-		tip = fmt.Sprintf("KubeEdge edgecore is running, For logs visit: %s", logFiles)
+		tip = fmt.Sprintf("ContinuumX edgecore is running, For logs visit: %s", logFiles)
 		binExec = fmt.Sprintf("%s > %s 2>&1 &",
 			filepath.Join(constants.KubeEdgeUsrBinPath, constants.KubeEdgeBinaryName),
 			logFiles,
