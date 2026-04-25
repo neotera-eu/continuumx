@@ -220,17 +220,29 @@ if [ -f "$E2E_TEST" ]; then
   sed_inplace 's|"KubeEdge e2e suite"|"ContinuumX e2e suite"|g' "$E2E_TEST"
 fi
 
-# Cilium integration scripts
+# Cilium integration scripts — user-visible strings and namespace variable.
+# Safe: ' -n kubeedge ' (space-padded) cannot match '--selector=kubeedge=...',
+# 'cilium-kubeedge', or '/etc/kubeedge/' — those are intentionally Tier C.
 for f in \
   "$REPO_ROOT/hack/cilium_e2e_test.sh" \
   "$REPO_ROOT/hack/configure_cilium.sh"; do
   if [ -f "$f" ]; then
+    # User-visible echo strings
     sed_inplace 's|for KubeEdge compatibility|for ContinuumX compatibility|g' "$f"
     sed_inplace 's|with KubeEdge permissions|with ContinuumX permissions|g' "$f"
     sed_inplace 's|with KubeEdge by making|with ContinuumX by making|g' "$f"
     sed_inplace 's|KubeEdge Cilium Integration Script|ContinuumX Cilium Integration Script|g' "$f"
     sed_inplace 's|installing KubeEdge with keadm|install ContinuumX with cxadm|g' "$f"
-    sed_inplace 's|cilium-kubeedge DaemonSet|cilium-continuumx DaemonSet|g' "$f"
+    # Namespace shell variable: rename token and update default/assigned value
+    sed_inplace 's|KUBEEDGE_NAMESPACE|CONTINUUMX_NAMESPACE|g' "$f"
+    sed_inplace 's|CONTINUUMX_NAMESPACE:-kubeedge|CONTINUUMX_NAMESPACE:-continuumx|g' "$f"
+    sed_inplace 's|CONTINUUMX_NAMESPACE="kubeedge"|CONTINUUMX_NAMESPACE="continuumx"|g' "$f"
+    # Hardcoded ' -n kubeedge ' in kubectl commands (space-padded)
+    sed_inplace 's| -n kubeedge | -n continuumx |g' "$f"
+    # Hardcoded namespace in yq ClusterRoleBinding subject patch
+    sed_inplace 's|"namespace": "kubeedge"|"namespace": "continuumx"|g' "$f"
+    # Temp dir prefix
+    sed_inplace 's|/tmp/kubeedge-work-|/tmp/continuumx-work-|g' "$f"
   fi
 done
 

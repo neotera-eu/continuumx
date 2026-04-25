@@ -17,8 +17,8 @@
 set -euo pipefail
 
 CILIUM_DS="cilium"
-KUBEEDGE_NAMESPACE="kubeedge"
-WORK_DIR=$(mktemp -d /tmp/kubeedge-work-XXXXXX)
+CONTINUUMX_NAMESPACE="continuumx"
+WORK_DIR=$(mktemp -d /tmp/continuumx-work-XXXXXX)
 
 trap cleanup EXIT
 trap exit_trap ERR
@@ -81,8 +81,8 @@ check_prerequisites() {
       exit 1
     }
 
-    if ! kubectl get ns "$KUBEEDGE_NAMESPACE" &>/dev/null; then
-      echo "[ERROR] Namespace ${KUBEEDGE_NAMESPACE} not found. Please install ContinuumX with cxadm first."
+    if ! kubectl get ns "$CONTINUUMX_NAMESPACE" &>/dev/null; then
+      echo "[ERROR] Namespace ${CONTINUUMX_NAMESPACE} not found. Please install ContinuumX with cxadm first."
       exit 1
     fi
 
@@ -91,8 +91,8 @@ check_prerequisites() {
       exit 1
     fi
 
-    if ! kubectl -n "$KUBEEDGE_NAMESPACE" get cm cloudcore &>/dev/null; then
-      echo "[ERROR] CloudCore ConfigMap not found in ${KUBEEDGE_NAMESPACE} namespace. Ensure CloudCore is properly installed with keadm."
+    if ! kubectl -n "$CONTINUUMX_NAMESPACE" get cm cloudcore &>/dev/null; then
+      echo "[ERROR] CloudCore ConfigMap not found in ${CONTINUUMX_NAMESPACE} namespace. Ensure CloudCore is properly installed with cxadm."
       exit 1
     fi
     ;;
@@ -129,9 +129,9 @@ enable_dynamic_controller() {
   echo "Enabling dynamicController in CloudCore ConfigMap..."
   FILE_NAME="${WORK_DIR}/cloudcore-configmap.yaml"
 
-  if ! kubectl get cm -n kubeedge cloudcore -o yaml >"$FILE_NAME" 2>/dev/null; then
+  if ! kubectl get cm -n "$CONTINUUMX_NAMESPACE" cloudcore -o yaml >"$FILE_NAME" 2>/dev/null; then
     echo "[ERROR] Failed to retrieve CloudCore ConfigMap. Ensure the ConfigMap exists and kubectl has appropriate permissions."
-    echo "[INFO] Run 'kubectl -n kubeedge get cm cloudcore' to verify ConfigMap existence."
+    echo "[INFO] Run 'kubectl -n ${CONTINUUMX_NAMESPACE} get cm cloudcore' to verify ConfigMap existence."
     exit 1
   fi
 
@@ -152,10 +152,10 @@ enable_dynamic_controller() {
     exit 1
   fi
 
-  if kubectl delete pod -n kubeedge --selector=kubeedge=cloudcore; then
+  if kubectl delete pod -n "$CONTINUUMX_NAMESPACE" --selector=kubeedge=cloudcore; then
     echo "CloudCore pods restarted successfully."
   else
-    echo "[WARNING] Failed to restart CloudCore pods. You may need to manually delete pods with 'kubectl delete pod -n kubeedge --selector=kubeedge=cloudcore'."
+    echo "[WARNING] Failed to restart CloudCore pods. You may need to manually delete pods with 'kubectl delete pod -n ${CONTINUUMX_NAMESPACE} --selector=kubeedge=cloudcore'."
   fi
 }
 
@@ -183,7 +183,7 @@ patch_cilium_rbac() {
     exit 1
   fi
 
-  if yq e '.subjects += [{"kind": "ServiceAccount", "name": "cloudcore", "namespace": "kubeedge"}, {"kind": "ServiceAccount", "name": "cloudcore", "namespace": "default"}]' -i "$FILE_NAME"; then
+  if yq e '.subjects += [{"kind": "ServiceAccount", "name": "cloudcore", "namespace": "continuumx"}, {"kind": "ServiceAccount", "name": "cloudcore", "namespace": "default"}]' -i "$FILE_NAME"; then
     kubectl apply -f "$FILE_NAME" || {
       echo "[ERROR] Failed to apply updated Cilium ClusterRoleBinding. Check YAML content in ${FILE_NAME}."
       exit 1

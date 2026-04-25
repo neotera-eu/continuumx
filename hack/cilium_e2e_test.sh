@@ -17,10 +17,10 @@
 set -euo pipefail
 
 CILIUM_VERSION="${CILIUM_VERSION:-v1.15.15}"
-KUBEEDGE_NAMESPACE="${KUBEEDGE_NAMESPACE:-kubeedge}"
+CONTINUUMX_NAMESPACE="${CONTINUUMX_NAMESPACE:-continuumx}"
 EDGE_API_SERVER="${EDGE_API_SERVER:-127.0.0.1:10550}"
 CILIUM_DS="cilium"
-WORK_DIR=$(mktemp -d /tmp/kubeedge-work-XXXXXX)
+WORK_DIR=$(mktemp -d /tmp/continuumx-work-XXXXXX)
 LOG_DIR="${WORK_DIR}/logs"
 mkdir -p "$LOG_DIR"
 
@@ -72,7 +72,7 @@ patch_cilium_rbac() {
 
   FILE_NAME="${WORK_DIR}/cilium-clusterrolebinding.yaml"
   kubectl get clusterrolebinding cilium -o yaml >"$FILE_NAME"
-  yq e '.subjects += [{"kind": "ServiceAccount", "name": "cloudcore", "namespace": "'"$KUBEEDGE_NAMESPACE"'"}, {"kind": "ServiceAccount", "name": "cloudcore", "namespace": "default"}]' -i "$FILE_NAME"
+  yq e '.subjects += [{"kind": "ServiceAccount", "name": "cloudcore", "namespace": "'"$CONTINUUMX_NAMESPACE"'"}, {"kind": "ServiceAccount", "name": "cloudcore", "namespace": "default"}]' -i "$FILE_NAME"
   kubectl apply -f "$FILE_NAME"
 }
 
