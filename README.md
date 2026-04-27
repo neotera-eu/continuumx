@@ -47,10 +47,6 @@ ContinuumX consists of a cloud part and an edge part.
 
 |                           | Kubernetes 1.27 | Kubernetes 1.28 | Kubernetes 1.29 | Kubernetes 1.30 | Kubernetes 1.31 | Kubernetes 1.32 |
 |---------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| ContinuumX 1.19 (KE 1.19) | ✓               | ✓               | ✓               | -               | -               | -               |
-| ContinuumX 1.20 (KE 1.20) | +               | ✓               | ✓               | ✓               | -               | -               |
-| ContinuumX 1.21 (KE 1.21) | +               | ✓               | ✓               | ✓               | -               | -               |
-| ContinuumX 1.22 (KE 1.22) | +               | +               | ✓               | ✓               | ✓               | -               |
 | ContinuumX 1.23 (KE 1.23) | +               | +               | +               | ✓               | ✓               | ✓               |
 
 Key:
