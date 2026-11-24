@@ -5,7 +5,7 @@ metadata:
     k8s-app: kubeedge
     kubeedge: cloudcore
   name: cloudcore
-  namespace: kubeedge
+  namespace: continuumx
 spec:
   selector:
     matchLabels:
@@ -20,7 +20,7 @@ spec:
       hostNetwork: true
       containers:
         - name: cloudcore
-          image: kubeedge/cloudcore:v1.23.0
+          image: neotera/cloudcore:v1.23.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 10000

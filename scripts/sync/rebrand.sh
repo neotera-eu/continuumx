@@ -131,6 +131,22 @@ if [ -f "$CHART_YAML" ]; then
   sed_inplace 's|The KubeEdge cloudcore component|The ContinuumX cloudcore component|g' "$CHART_YAML"
 fi
 
+# Raw cloudcore manifests: namespace kubeedge → continuumx (matches
+# SystemNamespace in common/constants, which cxadm installs into) and image
+# org kubeedge/ → neotera/. Labels (k8s-app: kubeedge, kubeedge: cloudcore),
+# /etc/kubeedge paths and API groups are Tier C and are left unchanged.
+log "B3d: updating namespace and image org in build/cloud raw manifests"
+for f in "$REPO_ROOT"/build/cloud/*.yaml "$REPO_ROOT"/build/cloud/*.yaml.example; do
+  if [ -f "$f" ]; then
+    sed_inplace 's|namespace: kubeedge$|namespace: continuumx|' "$f"
+    sed_inplace 's|image: kubeedge/|image: neotera/|g' "$f"
+  fi
+done
+RAW_NS="$REPO_ROOT/build/cloud/01-namespace.yaml"
+if [ -f "$RAW_NS" ]; then
+  sed_inplace 's|^  name: kubeedge$|  name: continuumx|' "$RAW_NS"
+fi
+
 # ---------------------------------------------------------------------------
 # B4 — Binary name constants and user-visible tool strings
 # ---------------------------------------------------------------------------
@@ -453,6 +469,15 @@ found=$(find "$REPO_ROOT/build" -name 'Dockerfile*' \
         | xargs grep -l 'github\.com/kubeedge/kubeedge' 2>/dev/null || true)
 if [ -n "$found" ]; then
   log "LEAK: Dockerfiles still reference github.com/kubeedge/kubeedge path:"
+  echo "$found"
+  LEAKS=$((LEAKS + 1))
+fi
+
+# 5b. Raw cloudcore manifests must use the continuumx namespace and neotera/ image org
+found=$(grep -lE 'namespace: kubeedge$|image: kubeedge/|^  name: kubeedge$' \
+        "$REPO_ROOT"/build/cloud/*.yaml "$REPO_ROOT"/build/cloud/*.yaml.example 2>/dev/null || true)
+if [ -n "$found" ]; then
+  log "LEAK: build/cloud manifests still use the kubeedge namespace or image org:"
   echo "$found"
   LEAKS=$((LEAKS + 1))
 fi
