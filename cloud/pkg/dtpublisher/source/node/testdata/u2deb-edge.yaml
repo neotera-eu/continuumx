@@ -1,0 +1,105 @@
+# Copyright 2026 Neotera.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Output of "kubectl get node u2deb-edge -oyaml" on the UP2DATE4SDV playground,
+# provided by the CID 93 owner as the reference edge-worker node.
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    cloudcore: 10.0.2.15
+    node.alpha.kubernetes.io/ttl: "0"
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: "2026-04-25T19:57:23Z"
+  labels:
+    beta.kubernetes.io/arch: amd64
+    beta.kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+    kubernetes.io/hostname: u2deb-edge
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/agent: ""
+    node-role.kubernetes.io/edge: ""
+  name: u2deb-edge
+  resourceVersion: "1101990"
+  uid: e8c45dd9-59d5-4356-989d-bf068f715ef2
+spec:
+  podCIDR: 10.244.1.0/24
+  podCIDRs:
+  - 10.244.1.0/24
+status:
+  addresses:
+  - address: 10.0.2.15
+    type: InternalIP
+  - address: u2deb-edge
+    type: Hostname
+  allocatable:
+    cpu: "2"
+    ephemeral-storage: "3711331118"
+    hugepages-2Mi: "0"
+    memory: 3990604Ki
+    pods: "110"
+  capacity:
+    cpu: "2"
+    ephemeral-storage: 4027052Ki
+    hugepages-2Mi: "0"
+    memory: 4093004Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: "2026-11-22T20:16:51Z"
+    lastTransitionTime: "2026-11-05T16:39:28Z"
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: "2026-11-22T20:16:51Z"
+    lastTransitionTime: "2026-11-05T16:39:28Z"
+    message: kubelet has no disk pressure
+    reason: KubeletHasNoDiskPressure
+    status: "False"
+    type: DiskPressure
+  - lastHeartbeatTime: "2026-11-22T20:16:51Z"
+    lastTransitionTime: "2026-11-05T16:39:28Z"
+    message: kubelet has sufficient PID available
+    reason: KubeletHasSufficientPID
+    status: "False"
+    type: PIDPressure
+  - lastHeartbeatTime: "2026-11-22T20:16:51Z"
+    lastTransitionTime: "2026-11-05T16:39:28Z"
+    message: edge is posting ready status
+    reason: EdgeReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10350
+  nodeInfo:
+    architecture: amd64
+    bootID: 0688abab-08dc-46f7-baf9-874b5ec79437
+    containerRuntimeVersion: containerd://2.4.2
+    kernelVersion: 6.12.115+deb13.1-amd64
+    kubeProxyVersion: v0.0.0-master+$Format:%H$
+    kubeletVersion: v1.32.10-continuumx-v1.23.0-6+2e0beec718a64b
+    machineID: ec7fb05938a643dda6da0de11af71303
+    operatingSystem: linux
+    osImage: Debian GNU/Linux 13 (trixie)
+    systemUUID: 30a2531c-ef27-8b4f-ade2-c4caa35e8b13
+  runtimeHandlers:
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: ""
+  - features:
+      recursiveReadOnlyMounts: true
+      userNamespaces: true
+    name: runc
