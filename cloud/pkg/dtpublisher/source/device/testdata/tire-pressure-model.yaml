@@ -1,0 +1,59 @@
+# Copyright 2026 Neotera.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Trimmed from the UP2DATE4SDV playground DeviceModel automotive-tire-pressure-ecu-fw-demo
+# (manifests/samples/devices/tire-pressure-device-model.yaml): six of its 19 properties.
+apiVersion: devices.kubeedge.io/v1beta1
+kind: DeviceModel
+metadata:
+  name: automotive-tire-pressure-ecu-fw-demo
+  namespace: default
+  resourceVersion: "100"
+  labels:
+    app: up2date4sdv-demo
+    domain: automotive
+    device-type: tire-pressure
+spec:
+  protocol: virtual-ethernet
+  properties:
+  - name: frontLeftPressure
+    description: Front-left tire gauge pressure
+    type: FLOAT
+    accessMode: ReadOnly
+    minimum: '0'
+    maximum: '500'
+    unit: kPa
+  - name: lowPressureWarning
+    description: One or more tires below configured threshold
+    type: BOOLEAN
+    accessMode: ReadOnly
+  - name: lowPressureWheels
+    description: Comma-separated wheel codes or NONE
+    type: STRING
+    accessMode: ReadOnly
+  - name: firmwareVersion
+    description: Desired firmware version; reported value is currently running firmware
+    type: STRING
+    accessMode: ReadWrite
+  - name: pressureThreshold
+    description: Pressure threshold for low-pressure warning
+    type: FLOAT
+    accessMode: ReadWrite
+    minimum: '150'
+    maximum: '300'
+    unit: kPa
+  - name: leakEnabled
+    description: Enable controlled virtual tire leak
+    type: BOOLEAN
+    accessMode: ReadWrite

@@ -36,6 +36,8 @@ type Kind string
 const (
 	// KindNode is a Kubernetes node: cloud control plane, cloud worker or edge worker.
 	KindNode Kind = "Node"
+	// KindDevice is a device twin of a device reached through a mapper.
+	KindDevice Kind = "Device"
 )
 
 // Resource is the envelope of every published resource.
@@ -61,7 +63,8 @@ type Resource struct {
 
 // SourceRef references the object a resource was built from.
 type SourceRef struct {
-	// ResourceVersion is the Kubernetes resourceVersion of the source object.
+	// ResourceVersion is the Kubernetes resourceVersion of the source object. For a device
+	// with a DeviceStatus it is "<Device resourceVersion>,<DeviceStatus resourceVersion>".
 	ResourceVersion string `json:"resourceVersion,omitempty"`
 }
 

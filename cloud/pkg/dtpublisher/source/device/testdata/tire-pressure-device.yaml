@@ -1,0 +1,79 @@
+# Copyright 2026 Neotera.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Trimmed from the UP2DATE4SDV playground Device automotive-tire-pressure-ecu-fw-001
+# (manifests/samples/devices/tire-pressure-device-instance.yaml): the six properties of
+# tire-pressure-model.yaml, with the playground's initial desired values.
+apiVersion: devices.kubeedge.io/v1beta1
+kind: Device
+metadata:
+  name: automotive-tire-pressure-ecu-fw-001
+  namespace: default
+  resourceVersion: "200"
+  labels:
+    app: up2date4sdv-demo
+    device-type: automotive-tire-pressure-ecu
+    vehicle-domain: tire-pressure
+  annotations:
+    description: Four-wheel virtual TPMS ECU running separately from the thermal ECU
+    vehicle-subsystem: tire-pressure-monitoring
+spec:
+  deviceModelRef:
+    name: automotive-tire-pressure-ecu-fw-demo
+  nodeName: u2deb-edge
+  protocol:
+    protocolName: virtual-ethernet
+  stateReport:
+    reportToCloud: true
+    reportCycle: 60000
+  properties:
+  - name: frontLeftPressure
+    reportToCloud: true
+    collectCycle: 10000
+    reportCycle: 10000
+  - name: lowPressureWarning
+    reportToCloud: true
+    collectCycle: 10000
+    reportCycle: 10000
+  - name: lowPressureWheels
+    reportToCloud: true
+    collectCycle: 10000
+    reportCycle: 10000
+  - name: firmwareVersion
+    reportToCloud: true
+    collectCycle: 10000
+    reportCycle: 10000
+    desired:
+      value: sim-1.0.0
+      metadata:
+        source: cloud
+        reason: initial-configuration
+  - name: pressureThreshold
+    reportToCloud: true
+    collectCycle: 20000
+    reportCycle: 20000
+    desired:
+      value: '210.0'
+      metadata:
+        source: cloud
+        reason: initial-configuration
+  - name: leakEnabled
+    reportToCloud: true
+    collectCycle: 20000
+    reportCycle: 20000
+    desired:
+      value: 'false'
+      metadata:
+        source: cloud
+        reason: initial-configuration

@@ -24,6 +24,7 @@ import (
 
 	"github.com/neotera-eu/continuumx/cloud/pkg/common/nodes"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/model"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/source/internal/maputil"
 )
 
 // ControlPlaneRoleLabel marks a cloud control-plane node (kubeadm convention).
@@ -53,8 +54,8 @@ func Project(node *corev1.Node, cfg Config) model.Resource {
 	spec := &model.NodeSpec{
 		Name:            node.Name,
 		Category:        category,
-		Labels:          copyMap(node.Labels),
-		Annotations:     selectKeys(node.Annotations, cfg.AnnotationKeys),
+		Labels:          maputil.Copy(node.Labels),
+		Annotations:     maputil.Select(node.Annotations, cfg.AnnotationKeys),
 		Addresses:       projectAddresses(node.Status.Addresses),
 		Capacity:        projectResources(node.Status.Capacity),
 		Allocatable:     projectResources(node.Status.Allocatable),
@@ -76,32 +77,6 @@ func Project(node *corev1.Node, cfg Config) model.Resource {
 		Source: model.SourceRef{ResourceVersion: node.ResourceVersion},
 		Spec:   spec,
 	}
-}
-
-func copyMap(in map[string]string) map[string]string {
-	if len(in) == 0 {
-		return nil
-	}
-	out := make(map[string]string, len(in))
-	for k, v := range in {
-		out[k] = v
-	}
-	return out
-}
-
-func selectKeys(in map[string]string, keys []string) map[string]string {
-	var out map[string]string
-	for _, k := range keys {
-		v, ok := in[k]
-		if !ok {
-			continue
-		}
-		if out == nil {
-			out = make(map[string]string, len(keys))
-		}
-		out[k] = v
-	}
-	return out
 }
 
 func projectAddresses(in []corev1.NodeAddress) []model.NodeAddress {

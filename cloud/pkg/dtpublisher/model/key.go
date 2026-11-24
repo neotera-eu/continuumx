@@ -27,11 +27,18 @@ const (
 	KeySeparator = "/"
 	// NodesPrefix is the first key segment of every node.
 	NodesPrefix = "nodes"
+	// DevicesPrefix is the first key segment of every device.
+	DevicesPrefix = "devices"
 )
 
 // NodeKey returns the key of a node: "nodes/<category>/<name>".
 func NodeKey(category NodeCategory, name string) string {
 	return strings.Join([]string{NodesPrefix, string(category), name}, KeySeparator)
+}
+
+// DeviceKey returns the key of a device: "devices/<namespace>/<name>".
+func DeviceKey(namespace, name string) string {
+	return strings.Join([]string{DevicesPrefix, namespace, name}, KeySeparator)
 }
 
 // ValidateKey checks that a key has at least two segments, none of them empty, and no
