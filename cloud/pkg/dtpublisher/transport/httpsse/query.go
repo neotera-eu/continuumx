@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/model"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/security"
 )
 
 // query wraps a list or get handler: it answers 404 with ReasonQueryDisabled unless the
@@ -44,6 +45,9 @@ func (s *Server) serveListNodes(w http.ResponseWriter, r *http.Request) {
 		}
 		prefix += category + model.KeySeparator
 	}
+	if !s.authorize(w, r, prefix) {
+		return
+	}
 	s.writeList(w, prefix, nil)
 }
 
@@ -52,6 +56,9 @@ func (s *Server) serveListDevices(w http.ResponseWriter, r *http.Request) {
 	prefix := model.DevicesPrefix + model.KeySeparator
 	if namespace := q.Get(ParamNamespace); namespace != "" {
 		prefix += namespace + model.KeySeparator
+	}
+	if !s.authorize(w, r, prefix) {
+		return
 	}
 	var keep func(model.Resource) bool
 	if node := q.Get(ParamNode); node != "" {
@@ -78,14 +85,28 @@ func (s *Server) writeList(w http.ResponseWriter, prefix string, keep func(model
 }
 
 // serveGetNode finds a node by name. Node names are unique in a cluster, so the category
-// is not part of the request.
+// is not part of the request. Only the categories the consumer may read are searched, so the
+// answer does not tell whether a node exists in another category.
 func (s *Server) serveGetNode(w http.ResponseWriter, r *http.Request) {
 	name := r.PathValue("name")
+	id := security.Identity(r.TLS)
+	var refused error
+	searched := 0
 	for _, category := range model.NodeCategories() {
-		if res, ok := s.store.Get(model.NodeKey(category, name)); ok {
+		key := model.NodeKey(category, name)
+		if err := s.opts.Authorizer.Authorize(id, key); err != nil {
+			refused = err
+			continue
+		}
+		searched++
+		if res, ok := s.store.Get(key); ok {
 			writeJSON(w, http.StatusOK, res)
 			return
 		}
+	}
+	if searched == 0 {
+		s.allowed(w, r, refused)
+		return
 	}
 	writeError(w, http.StatusNotFound, ReasonNotFound, "node %q is not published", name)
 }
@@ -94,7 +115,11 @@ func (s *Server) serveGetNode(w http.ResponseWriter, r *http.Request) {
 // given. A requested property the device does not have is an error, not an empty answer.
 func (s *Server) serveGetDevice(w http.ResponseWriter, r *http.Request) {
 	namespace, name := r.PathValue("namespace"), r.PathValue("name")
-	res, ok := s.store.Get(model.DeviceKey(namespace, name))
+	key := model.DeviceKey(namespace, name)
+	if !s.authorize(w, r, key) {
+		return
+	}
+	res, ok := s.store.Get(key)
 	if !ok {
 		writeError(w, http.StatusNotFound, ReasonNotFound, "device %s/%s is not published", namespace, name)
 		return

@@ -173,6 +173,12 @@ type stream struct {
 // watch opens a watch stream. header may be nil.
 func watch(t *testing.T, baseURL, query string, header http.Header) *stream {
 	t.Helper()
+	return watchWith(t, http.DefaultClient, baseURL, query, header)
+}
+
+// watchWith is watch with a given HTTP client.
+func watchWith(t *testing.T, hc *http.Client, baseURL, query string, header http.Header) *stream {
+	t.Helper()
 	url := baseURL + httpsse.WatchPath
 	if query != "" {
 		url += "?" + query
@@ -182,7 +188,7 @@ func watch(t *testing.T, baseURL, query string, header http.Header) *stream {
 	for k, v := range header {
 		req.Header[k] = v
 	}
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := hc.Do(req)
 	require.NoError(t, err)
 	t.Cleanup(func() { resp.Body.Close() })
 	require.Equal(t, http.StatusOK, resp.StatusCode)

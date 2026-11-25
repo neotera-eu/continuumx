@@ -24,6 +24,7 @@ package client
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -42,6 +43,10 @@ var (
 	ErrNotFound = errors.New("not found")
 	// ErrQueryDisabled matches an APIError from a publisher that does not serve list and get.
 	ErrQueryDisabled = errors.New("query operations are disabled on the publisher")
+	// ErrUnauthenticated matches an APIError for a request without a verified identity.
+	ErrUnauthenticated = errors.New("not authenticated")
+	// ErrForbidden matches an APIError for a request the consumer is not allowed to make.
+	ErrForbidden = errors.New("forbidden")
 )
 
 // maxErrorBody bounds how much of an error response is read.
@@ -64,13 +69,18 @@ func (e *APIError) Error() string {
 	return fmt.Sprintf("publisher answered %d %s: %s", e.StatusCode, e.Reason, e.Message)
 }
 
-// Is makes errors.Is match ErrNotFound and ErrQueryDisabled by reason.
+// Is makes errors.Is match ErrNotFound, ErrQueryDisabled, ErrUnauthenticated and
+// ErrForbidden by reason.
 func (e *APIError) Is(target error) bool {
 	switch target {
 	case ErrNotFound:
 		return e.Reason == httpsse.ReasonNotFound
 	case ErrQueryDisabled:
 		return e.Reason == httpsse.ReasonQueryDisabled
+	case ErrUnauthenticated:
+		return e.Reason == httpsse.ReasonUnauthenticated
+	case ErrForbidden:
+		return e.Reason == httpsse.ReasonForbidden
 	}
 	return false
 }
@@ -84,11 +94,20 @@ type Client struct {
 // Option configures a Client.
 type Option func(*Client)
 
-// WithHTTPClient sets the HTTP client, for example one with TLS client certificates. It must
-// not have a Timeout, which would cut watch streams; bound single calls with their context.
+// WithHTTPClient sets the HTTP client. It must not have a Timeout, which would cut watch
+// streams; bound single calls with their context. For TLS, WithTLS is simpler.
 func WithHTTPClient(hc *http.Client) Option {
 	return func(c *Client) {
 		c.http = hc
+	}
+}
+
+// WithTLS uses an HTTP client with cfg, for example from security.ClientConfig.TLSConfig.
+func WithTLS(cfg *tls.Config) Option {
+	return func(c *Client) {
+		tr := http.DefaultTransport.(*http.Transport).Clone()
+		tr.TLSClientConfig = cfg
+		c.http = &http.Client{Transport: tr}
 	}
 }
 

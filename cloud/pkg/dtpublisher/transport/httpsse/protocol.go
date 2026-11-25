@@ -89,6 +89,10 @@ const (
 	ReasonQueryDisabled = "QueryDisabled"
 	// ReasonInternal: the publisher failed to answer.
 	ReasonInternal = "Internal"
+	// ReasonUnauthenticated (HTTP 401): the consumer presented no verified identity.
+	ReasonUnauthenticated = "Unauthenticated"
+	// ReasonForbidden (HTTP 403): the consumer may not read what it asked for.
+	ReasonForbidden = "Forbidden"
 )
 
 // ErrorBody is the JSON body of every error response.

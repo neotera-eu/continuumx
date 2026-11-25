@@ -28,7 +28,10 @@ limitations under the License.
 //	GET /i4/v1alpha1/devices/{namespace}/{name}?property=   get one device (JSON)
 //
 // See the Event constants for the stream. TLS is required unless Options.Insecure is set
-// explicitly; the security mechanism itself is open (OPN-11).
+// explicitly; the security mechanism itself is open (OPN-11). Every request is checked by
+// Options.Authorizer with the identity of the consumer's verified client certificate:
+// capabilities need Admit, watch and list need Authorize for their prefix, get for its key.
+// A refused request is 401 Unauthenticated or 403 Forbidden.
 package httpsse
 
 import (
@@ -43,6 +46,8 @@ import (
 
 	"k8s.io/klog/v2"
 
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/access"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/security"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/store"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/transport"
 )
@@ -79,6 +84,8 @@ type Options struct {
 	// QueryEnabled serves the request/response operations list and get. Off by default: the
 	// committed behaviour of I-4 is the standing data flow (watch).
 	QueryEnabled bool
+	// Authorizer decides what each consumer may read. Nil uses access.AllowAll.
+	Authorizer access.Authorizer
 }
 
 // Server is the httpsse Publisher.
@@ -117,6 +124,9 @@ func New(opts Options, deps transport.Deps) (*Server, error) {
 	}
 	if opts.WriteTimeout <= 0 {
 		opts.WriteTimeout = DefaultWriteTimeout
+	}
+	if opts.Authorizer == nil {
+		opts.Authorizer = access.AllowAll{}
 	}
 
 	s := &Server{opts: opts, store: deps.Store, info: deps.Info}
@@ -201,8 +211,37 @@ func (s *Server) operations() transport.Operations {
 	return transport.Operations{Watch: true, List: s.opts.QueryEnabled, Get: s.opts.QueryEnabled}
 }
 
-func (s *Server) serveCapabilities(w http.ResponseWriter, _ *http.Request) {
+func (s *Server) serveCapabilities(w http.ResponseWriter, r *http.Request) {
+	if !s.admit(w, r) {
+		return
+	}
 	writeJSON(w, http.StatusOK, transport.NewCapabilities(Name, s.store, s.info, s.operations()))
+}
+
+// admit checks that the consumer may use the publisher. It answers the request if not.
+func (s *Server) admit(w http.ResponseWriter, r *http.Request) bool {
+	return s.allowed(w, r, s.opts.Authorizer.Admit(security.Identity(r.TLS)))
+}
+
+// authorize checks that the consumer may read everything under prefix. It answers the
+// request if not.
+func (s *Server) authorize(w http.ResponseWriter, r *http.Request, prefix string) bool {
+	return s.allowed(w, r, s.opts.Authorizer.Authorize(security.Identity(r.TLS), prefix))
+}
+
+func (s *Server) allowed(w http.ResponseWriter, r *http.Request, err error) bool {
+	switch {
+	case err == nil:
+		return true
+	case errors.Is(err, access.ErrUnauthenticated):
+		writeError(w, http.StatusUnauthorized, ReasonUnauthenticated, "%v", err)
+	case errors.Is(err, access.ErrForbidden):
+		writeError(w, http.StatusForbidden, ReasonForbidden, "%v", err)
+	default:
+		writeError(w, http.StatusInternalServerError, ReasonInternal, "access check failed")
+	}
+	klog.V(2).Infof("dtpublisher: %s %s from %s refused: %v", r.Method, r.URL.Path, r.RemoteAddr, err)
+	return false
 }
 
 func writeError(w http.ResponseWriter, status int, reason, format string, args ...interface{}) {

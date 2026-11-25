@@ -28,6 +28,7 @@ import (
 
 	"k8s.io/klog/v2"
 
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/security"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/store"
 )
 
@@ -71,6 +72,10 @@ func (s *Server) serveWatch(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, ReasonBadRequest, "%v", err)
 		return
 	}
+	// The prefix is fixed for the life of the stream, so one check covers every event.
+	if !s.authorize(w, r, prefix) {
+		return
+	}
 
 	// A resume point of another epoch, for example from before a publisher restart, gets a
 	// fresh start: its revisions mean nothing here.
@@ -89,7 +94,7 @@ func (s *Server) serveWatch(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	sw := &sseWriter{w: w, rc: http.NewResponseController(w), timeout: s.opts.WriteTimeout}
 
-	klog.V(2).Infof("dtpublisher: subscriber %s prefix=%q resumed=%t revision=%d", r.RemoteAddr, prefix, sub.Resumed, sub.Revision)
+	klog.V(2).Infof("dtpublisher: subscriber %s (%s) prefix=%q resumed=%t revision=%d", r.RemoteAddr, security.Identity(r.TLS), prefix, sub.Resumed, sub.Revision)
 	defer klog.V(2).Infof("dtpublisher: subscriber %s gone", r.RemoteAddr)
 
 	if err := s.writeInitial(sw, sub); err != nil {

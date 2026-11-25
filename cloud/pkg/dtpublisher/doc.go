@@ -28,7 +28,8 @@ limitations under the License.
 //   - transport: the boundary to the I-4 protocol (open decision OPN-04), with the
 //     PROVISIONAL httpsse adapter and the reserved, unimplemented zenoh name.
 //   - client:    Go client of the httpsse transport, used by "dtpublisher ctl".
-//
-// Consumer access and security of I-4 are open decisions; they are kept behind separate
-// packages added in later increments.
+//   - security:  TLS and mutual TLS, and the consumer identity from a verified client
+//     certificate (open decision OPN-11, PROVISIONAL).
+//   - access:    which consumer may read which key prefixes (open decision OPN-06,
+//     PROVISIONAL static consumer list).
 package dtpublisher
