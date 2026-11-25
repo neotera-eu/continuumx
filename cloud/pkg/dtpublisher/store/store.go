@@ -20,10 +20,17 @@ limitations under the License.
 // prefix selects its key. An update whose spec is unchanged is suppressed: it neither takes
 // a revision nor produces an event. Fan-out never blocks: a subscriber whose buffer is full
 // is closed with ErrSubscriptionOverflow and must subscribe again.
+//
+// Revisions count from 1 in each store, so they are only comparable within one Epoch, a random
+// identifier chosen when the store is created. The store keeps a bounded history of deletes,
+// so a subscriber that knows an epoch and a revision can resume with only the changes since
+// then (SubscribeSince).
 package store
 
 import (
 	"bytes"
+	"crypto/rand"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -34,8 +41,12 @@ import (
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/model"
 )
 
-// DefaultBufferSize is the event buffer of a subscription when none is given.
-const DefaultBufferSize = 256
+const (
+	// DefaultBufferSize is the event buffer of a subscription when none is given.
+	DefaultBufferSize = 256
+	// DefaultDeleteHistory is the number of deletes the store remembers for SubscribeSince.
+	DefaultDeleteHistory = 1024
+)
 
 // ErrSubscriptionOverflow is reported by a subscription closed because its buffer was full.
 var ErrSubscriptionOverflow = errors.New("subscription closed: event buffer overflow")
@@ -72,6 +83,21 @@ func WithClock(now func() time.Time) Option {
 	}
 }
 
+// WithEpoch sets the epoch instead of a random one. For tests.
+func WithEpoch(epoch string) Option {
+	return func(s *Store) {
+		s.epoch = epoch
+	}
+}
+
+// WithDeleteHistory sets how many deletes the store remembers for SubscribeSince. A value of
+// zero or less remembers none, so a subscriber can resume only if nothing was deleted since.
+func WithDeleteHistory(n int) Option {
+	return func(s *Store) {
+		s.deleteHistory = n
+	}
+}
+
 type entry struct {
 	resource    model.Resource
 	fingerprint []byte
@@ -79,25 +105,52 @@ type entry struct {
 
 // Store is the current published state. It is safe for concurrent use.
 type Store struct {
-	now func() time.Time
+	now           func() time.Time
+	epoch         string
+	deleteHistory int
 
 	mu       sync.Mutex
 	revision uint64
 	entries  map[string]entry
 	subs     map[*Subscription]struct{}
+	// deleted maps the key of each remembered delete to its revision. A key added again is
+	// removed from it: the upsert supersedes the delete.
+	deleted map[string]uint64
+	// forgotten is the highest revision of a delete no longer remembered. A subscriber can
+	// resume only from a revision at or above it.
+	forgotten uint64
 }
 
 // New creates an empty Store.
 func New(opts ...Option) *Store {
 	s := &Store{
-		now:     time.Now,
-		entries: make(map[string]entry),
-		subs:    make(map[*Subscription]struct{}),
+		now:           time.Now,
+		deleteHistory: DefaultDeleteHistory,
+		entries:       make(map[string]entry),
+		subs:          make(map[*Subscription]struct{}),
+		deleted:       make(map[string]uint64),
 	}
 	for _, opt := range opts {
 		opt(s)
 	}
+	if s.epoch == "" {
+		s.epoch = newEpoch()
+	}
 	return s
+}
+
+func newEpoch() string {
+	b := make([]byte, 8)
+	if _, err := rand.Read(b); err != nil {
+		// crypto/rand does not fail on supported platforms; fall back to the start time.
+		return fmt.Sprintf("t%x", time.Now().UnixNano())
+	}
+	return hex.EncodeToString(b)
+}
+
+// Epoch identifies this store instance. Revisions of different epochs are not comparable.
+func (s *Store) Epoch() string {
+	return s.epoch
 }
 
 // Upsert adds or replaces the resource under r.Key. It reports whether the published state
@@ -122,6 +175,7 @@ func (s *Store) Upsert(r model.Resource) (bool, error) {
 	r.Revision = s.revision
 	r.ObservedAt = s.now().UTC()
 	s.entries[r.Key] = entry{resource: r, fingerprint: fingerprint}
+	delete(s.deleted, r.Key)
 
 	published := r
 	s.broadcast(Event{Type: EventUpsert, Key: r.Key, Revision: r.Revision, Resource: &published})
@@ -138,8 +192,31 @@ func (s *Store) Delete(key string) bool {
 	}
 	delete(s.entries, key)
 	s.revision++
+	s.rememberDeleteLocked(key, s.revision)
 	s.broadcast(Event{Type: EventDelete, Key: key, Revision: s.revision})
 	return true
+}
+
+// rememberDeleteLocked must be called with s.mu held.
+func (s *Store) rememberDeleteLocked(key string, revision uint64) {
+	if s.deleteHistory <= 0 {
+		s.forgotten = revision
+		return
+	}
+	s.deleted[key] = revision
+	if len(s.deleted) <= s.deleteHistory {
+		return
+	}
+	oldestKey, oldest := "", uint64(0)
+	for k, r := range s.deleted {
+		if oldestKey == "" || r < oldest {
+			oldestKey, oldest = k, r
+		}
+	}
+	delete(s.deleted, oldestKey)
+	if oldest > s.forgotten {
+		s.forgotten = oldest
+	}
 }
 
 // Get returns the resource under key.
@@ -178,8 +255,51 @@ func (s *Store) Subscribe(prefix string, bufferSize int) *Subscription {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
+	sub := s.subscribeLocked(prefix, bufferSize)
+	sub.Snapshot = s.listLocked(prefix)
+	return sub
+}
+
+// SubscribeSince is Subscribe for a subscriber that already holds the state of prefix at
+// revision since of this store's epoch. If the store can tell what changed since then, the
+// subscription has Resumed set and Delta holds those changes instead of a Snapshot: one
+// UPSERT per matching resource changed after since, with its current value, and one DELETE
+// per matching key deleted after since, in revision order. Otherwise, because since is ahead
+// of the store or deletes after since are no longer remembered, it is a plain Subscribe.
+// The caller checks the epoch.
+func (s *Store) SubscribeSince(prefix string, since uint64, bufferSize int) *Subscription {
+	if bufferSize <= 0 {
+		bufferSize = DefaultBufferSize
+	}
+
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	sub := s.subscribeLocked(prefix, bufferSize)
+	if since > s.revision || since < s.forgotten {
+		sub.Snapshot = s.listLocked(prefix)
+		return sub
+	}
+	sub.Resumed = true
+	sub.Delta = []Event{}
+	for key, e := range s.entries {
+		if e.resource.Revision > since && model.MatchesPrefix(key, prefix) {
+			r := e.resource
+			sub.Delta = append(sub.Delta, Event{Type: EventUpsert, Key: key, Revision: r.Revision, Resource: &r})
+		}
+	}
+	for key, revision := range s.deleted {
+		if revision > since && model.MatchesPrefix(key, prefix) {
+			sub.Delta = append(sub.Delta, Event{Type: EventDelete, Key: key, Revision: revision})
+		}
+	}
+	sort.Slice(sub.Delta, func(i, j int) bool { return sub.Delta[i].Revision < sub.Delta[j].Revision })
+	return sub
+}
+
+// subscribeLocked must be called with s.mu held.
+func (s *Store) subscribeLocked(prefix string, bufferSize int) *Subscription {
 	sub := &Subscription{
-		Snapshot: s.listLocked(prefix),
 		Revision: s.revision,
 		store:    s,
 		prefix:   prefix,
@@ -227,8 +347,15 @@ func (s *Store) closeLocked(sub *Subscription, err error) {
 // Subscription is a subscriber's view of the store.
 type Subscription struct {
 	// Snapshot is the matching state when the subscription was created, sorted by key.
+	// It is nil if Resumed is set.
 	Snapshot []model.Resource
-	// Revision is the store revision of Snapshot.
+	// Resumed is set by SubscribeSince when Delta, not Snapshot, brings the subscriber to
+	// Revision.
+	Resumed bool
+	// Delta holds the changes since the revision given to SubscribeSince, in revision order,
+	// if Resumed is set.
+	Delta []Event
+	// Revision is the store revision of Snapshot, or the revision Delta brings the subscriber to.
 	Revision uint64
 
 	store  *Store

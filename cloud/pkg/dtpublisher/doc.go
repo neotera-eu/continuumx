@@ -21,11 +21,13 @@ limitations under the License.
 // never selects targets, schedules, rolls out or offloads workloads.
 //
 // Layout:
-//   - model:  the published resource envelope, schema version and key scheme.
-//   - store:  the current published state, with revisions, no-op suppression and fan-out
-//     to subscribers.
-//   - source: producers of resources (nodes; device twins in a later increment).
+//   - model:     the published resource envelope, schema version and key scheme.
+//   - store:     the current published state, with revisions, an epoch, no-op suppression,
+//     fan-out to subscribers and resume from a known revision.
+//   - source:    producers of resources (nodes, device twins) and a per-key throttle.
+//   - transport: the boundary to the I-4 protocol (open decision OPN-04), with the
+//     PROVISIONAL httpsse adapter and the reserved, unimplemented zenoh name.
 //
-// The transport, consumer access and security of I-4 are open decisions; they are kept behind
-// separate packages added in later increments.
+// Consumer access and security of I-4 are open decisions; they are kept behind separate
+// packages added in later increments.
 package dtpublisher

@@ -223,6 +223,130 @@ func TestCloseIsIdempotent(t *testing.T) {
 	assert.NoError(t, err)
 }
 
+func TestEpoch(t *testing.T) {
+	a, b := New(), New()
+	assert.Len(t, a.Epoch(), 16)
+	assert.NotEqual(t, a.Epoch(), b.Epoch(), "every store has its own epoch")
+	assert.Equal(t, "e1", New(WithEpoch("e1")).Epoch())
+}
+
+func upsert(t *testing.T, s *Store, name string, category model.NodeCategory, ready string) {
+	t.Helper()
+	changed, err := s.Upsert(nodeResource(name, category, ready, ""))
+	require.NoError(t, err)
+	require.True(t, changed)
+}
+
+type change struct {
+	Type     EventType
+	Key      string
+	Revision uint64
+}
+
+func changes(events []Event) []change {
+	out := make([]change, 0, len(events))
+	for _, ev := range events {
+		out = append(out, change{ev.Type, ev.Key, ev.Revision})
+	}
+	return out
+}
+
+func TestSubscribeSinceReturnsDelta(t *testing.T) {
+	const (
+		edge  = "nodes/edge-worker/u2deb-edge"
+		cloud = "nodes/cloud-control-plane/u2deb-cloud"
+		w1    = "nodes/cloud-worker/w1"
+		w2    = "nodes/cloud-worker/w2"
+	)
+	s := newTestStore()
+	upsert(t, s, "u2deb-edge", model.NodeCategoryEdgeWorker, "True")          // 1
+	upsert(t, s, "u2deb-cloud", model.NodeCategoryCloudControlPlane, "True")  // 2
+	upsert(t, s, "w1", model.NodeCategoryCloudWorker, "True")                 // 3
+	upsert(t, s, "w2", model.NodeCategoryCloudWorker, "True")                 // 4
+	upsert(t, s, "u2deb-edge", model.NodeCategoryEdgeWorker, "Unknown")       // 5
+	require.True(t, s.Delete(w1))                                             // 6
+	upsert(t, s, "u2deb-cloud", model.NodeCategoryCloudControlPlane, "False") // 7
+	require.True(t, s.Delete(w2))                                             // 8
+	upsert(t, s, "w2", model.NodeCategoryCloudWorker, "False")                // 9: supersedes delete 8
+
+	sub := s.SubscribeSince("", 4, 0)
+	defer sub.Close()
+	require.True(t, sub.Resumed)
+	assert.Nil(t, sub.Snapshot)
+	assert.Equal(t, uint64(9), sub.Revision)
+	assert.Equal(t, []change{
+		{EventUpsert, edge, 5},
+		{EventDelete, w1, 6},
+		{EventUpsert, cloud, 7},
+		{EventUpsert, w2, 9},
+	}, changes(sub.Delta))
+	assert.Equal(t, "Unknown", sub.Delta[0].Resource.Spec.(*model.NodeSpec).Ready)
+
+	// The delta is filtered by prefix.
+	workers := s.SubscribeSince("nodes/cloud-worker/", 4, 0)
+	defer workers.Close()
+	require.True(t, workers.Resumed)
+	assert.Equal(t, []change{{EventDelete, w1, 6}, {EventUpsert, w2, 9}}, changes(workers.Delta))
+
+	// Up to date: an empty delta, then live events.
+	current := s.SubscribeSince("", 9, 0)
+	defer current.Close()
+	require.True(t, current.Resumed)
+	assert.Empty(t, current.Delta)
+	require.True(t, s.Delete(edge))
+	ev := <-current.Events()
+	assert.Equal(t, change{EventDelete, edge, 10}, change{ev.Type, ev.Key, ev.Revision})
+}
+
+func TestSubscribeSinceFallsBackToSnapshot(t *testing.T) {
+	s := New(WithDeleteHistory(2))
+	for _, n := range []string{"a", "b", "c", "d"} {
+		upsert(t, s, n, model.NodeCategoryCloudWorker, "True") // 1-4
+	}
+
+	// Ahead of the store, for example after a publisher restart.
+	ahead := s.SubscribeSince("", 5, 0)
+	defer ahead.Close()
+	assert.False(t, ahead.Resumed)
+	assert.Len(t, ahead.Snapshot, 4)
+
+	require.True(t, s.Delete("nodes/cloud-worker/a")) // 5
+	require.True(t, s.Delete("nodes/cloud-worker/b")) // 6
+	resumed := s.SubscribeSince("", 4, 0)
+	defer resumed.Close()
+	assert.True(t, resumed.Resumed, "both deletes are remembered")
+
+	// A third delete forgets the oldest (revision 5): resuming from before it is not possible.
+	require.True(t, s.Delete("nodes/cloud-worker/c")) // 7
+	tooOld := s.SubscribeSince("", 4, 0)
+	defer tooOld.Close()
+	assert.False(t, tooOld.Resumed)
+	assert.Equal(t, []string{"nodes/cloud-worker/d"}, keys(tooOld.Snapshot))
+
+	fromForgotten := s.SubscribeSince("", 5, 0)
+	defer fromForgotten.Close()
+	require.True(t, fromForgotten.Resumed)
+	assert.Equal(t, []change{
+		{EventDelete, "nodes/cloud-worker/b", 6},
+		{EventDelete, "nodes/cloud-worker/c", 7},
+	}, changes(fromForgotten.Delta))
+}
+
+func TestSubscribeSinceWithoutDeleteHistory(t *testing.T) {
+	s := New(WithDeleteHistory(0))
+	upsert(t, s, "a", model.NodeCategoryCloudWorker, "True") // 1
+	upsert(t, s, "b", model.NodeCategoryCloudWorker, "True") // 2
+
+	sub := s.SubscribeSince("", 1, 0)
+	defer sub.Close()
+	assert.True(t, sub.Resumed, "nothing deleted since revision 1")
+
+	require.True(t, s.Delete("nodes/cloud-worker/a")) // 3
+	after := s.SubscribeSince("", 2, 0)
+	defer after.Close()
+	assert.False(t, after.Resumed)
+}
+
 func keys(resources []model.Resource) []string {
 	out := make([]string, 0, len(resources))
 	for _, r := range resources {
