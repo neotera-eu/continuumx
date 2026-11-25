@@ -39,6 +39,7 @@ ALL_IMAGES_AND_TARGETS=(
   nodeconformance:nodeconformance:build/conformance/nodeconformance.Dockerfile
   installation-package:installation-package:build/docker/installation-package/installation-package.dockerfile
   controller-manager:controller-manager:build/controllermanager/Dockerfile
+  dtpublisher:dtpublisher:build/dtpublisher/Dockerfile
 )
 
 function get_imagename_by_target() {

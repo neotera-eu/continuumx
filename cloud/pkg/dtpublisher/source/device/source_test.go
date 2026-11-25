@@ -60,9 +60,11 @@ func start(t *testing.T, objects ...interface{}) *fixture {
 		DeviceStatuses: devices.DeviceStatuses().Informer(),
 	}, Config{})
 
+	require.False(t, src.Synced(), "not synced before Run")
 	errCh := make(chan error, 1)
 	go func() { errCh <- src.Run(ctx, f.store) }()
 	factory.Start(ctx.Done())
+	require.Eventually(t, src.Synced, waitTimeout, 10*time.Millisecond, "initial state published")
 
 	t.Cleanup(func() {
 		cancel()
@@ -70,6 +72,7 @@ func start(t *testing.T, objects ...interface{}) *fixture {
 		select {
 		case err := <-errCh:
 			assert.NoError(t, err)
+			assert.False(t, src.Synced(), "not synced after Run returned")
 		case <-time.After(waitTimeout):
 			t.Error("device source did not stop")
 		}

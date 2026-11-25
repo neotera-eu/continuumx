@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 // Package testpki creates short-lived certificate authorities and certificates for tests.
-// Only test code imports it.
+// Only test code imports it; it is not linked into the binary.
 package testpki
 
 import (

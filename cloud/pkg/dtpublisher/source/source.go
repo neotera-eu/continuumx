@@ -41,4 +41,6 @@ type Source interface {
 	Name() string
 	// Run feeds sink until ctx is done. It returns an error if the source cannot start.
 	Run(ctx context.Context, sink Sink) error
+	// Synced reports whether the running source has published its initial state.
+	Synced() bool
 }

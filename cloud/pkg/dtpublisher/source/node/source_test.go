@@ -51,9 +51,11 @@ func startSource(t *testing.T, cfg Config, initial ...*corev1.Node) (*fake.Clien
 	src := New(factory.Core().V1().Nodes().Informer(), cfg)
 	st := store.New()
 
+	require.False(t, src.Synced(), "not synced before Run")
 	errCh := make(chan error, 1)
 	go func() { errCh <- src.Run(ctx, st) }()
 	factory.Start(ctx.Done())
+	require.Eventually(t, src.Synced, waitTimeout, 10*time.Millisecond, "initial state published")
 
 	t.Cleanup(func() {
 		cancel()
@@ -61,6 +63,7 @@ func startSource(t *testing.T, cfg Config, initial ...*corev1.Node) (*fake.Clien
 		select {
 		case err := <-errCh:
 			assert.NoError(t, err)
+			assert.False(t, src.Synced(), "not synced after Run returned")
 		case <-time.After(waitTimeout):
 			t.Error("node source did not stop")
 		}

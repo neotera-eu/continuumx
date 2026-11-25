@@ -21,6 +21,7 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"sync/atomic"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/tools/cache"
@@ -37,8 +38,9 @@ type Source struct {
 	informer cache.SharedIndexInformer
 	cfg      Config
 
-	mu   sync.Mutex
-	keys map[string]string // node name -> published key
+	mu     sync.Mutex
+	keys   map[string]string // node name -> published key
+	synced atomic.Bool
 }
 
 var _ source.Source = (*Source)(nil)
@@ -57,9 +59,16 @@ func (s *Source) Name() string {
 	return Name
 }
 
+// Synced reports whether the initial list of nodes has been published.
+func (s *Source) Synced() bool {
+	return s.synced.Load()
+}
+
 // Run feeds sink with node changes until ctx is done. Cancelling ctx is a normal stop and
 // returns nil, also while the informer cache is still syncing.
 func (s *Source) Run(ctx context.Context, sink source.Sink) error {
+	s.synced.Store(false)
+	defer s.synced.Store(false)
 	registration, err := s.informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc:    func(obj interface{}) { s.upsert(sink, obj) },
 		UpdateFunc: func(_, obj interface{}) { s.upsert(sink, obj) },
@@ -76,6 +85,7 @@ func (s *Source) Run(ctx context.Context, sink source.Sink) error {
 
 	// WaitForNamedCacheSync returns false only when ctx is done.
 	if cache.WaitForNamedCacheSync("dtpublisher-nodes", ctx.Done(), registration.HasSynced) {
+		s.synced.Store(true)
 		<-ctx.Done()
 	}
 	return nil

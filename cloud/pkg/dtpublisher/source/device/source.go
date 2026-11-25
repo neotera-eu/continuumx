@@ -22,6 +22,7 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"sync/atomic"
 
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog/v2"
@@ -52,6 +53,8 @@ type Source struct {
 	mu     sync.Mutex
 	sink   source.Sink
 	synced bool
+
+	published atomic.Bool // the initial state was published
 }
 
 var _ source.Source = (*Source)(nil)
@@ -66,6 +69,11 @@ func (s *Source) Name() string {
 	return Name
 }
 
+// Synced reports whether every device was published once after the caches synced.
+func (s *Source) Synced() bool {
+	return s.published.Load()
+}
+
 // Run feeds sink with device changes until ctx is done. Cancelling ctx is a normal stop and
 // returns nil, also while the caches are still syncing.
 func (s *Source) Run(ctx context.Context, sink source.Sink) error {
@@ -73,6 +81,8 @@ func (s *Source) Run(ctx context.Context, sink source.Sink) error {
 	s.sink = sink
 	s.synced = false
 	s.mu.Unlock()
+	s.published.Store(false)
+	defer s.published.Store(false)
 
 	byObjectKey := func(obj interface{}) {
 		if namespace, name, ok := objectKey(obj); ok {
@@ -118,6 +128,7 @@ func (s *Source) Run(ctx context.Context, sink source.Sink) error {
 		return nil
 	}
 	s.resyncAll()
+	s.published.Store(true)
 	<-ctx.Done()
 	return nil
 }

@@ -15,6 +15,7 @@ BINARIES=cloudcore \
 	iptablesmanager \
 	edgemark \
 	controllermanager \
+	dtpublisher \
 	conformance
 
 COMPONENTS=cloud \

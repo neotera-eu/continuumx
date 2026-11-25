@@ -119,6 +119,41 @@ type Store struct {
 	// forgotten is the highest revision of a delete no longer remembered. A subscriber can
 	// resume only from a revision at or above it.
 	forgotten uint64
+	// counters for Stats
+	upserts, deletes, overflows uint64
+}
+
+// Stats are counters of a store, for metrics.
+type Stats struct {
+	// Revision is the current revision.
+	Revision uint64
+	// Resources counts the published resources per kind.
+	Resources map[model.Kind]int
+	// Subscribers is the number of open subscriptions.
+	Subscribers int
+	// Upserts and Deletes count the accepted changes since the store was created.
+	Upserts, Deletes uint64
+	// Overflows counts the subscriptions closed with ErrSubscriptionOverflow.
+	Overflows uint64
+}
+
+// Stats returns the current counters.
+func (s *Store) Stats() Stats {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	st := Stats{
+		Revision:    s.revision,
+		Resources:   make(map[model.Kind]int),
+		Subscribers: len(s.subs),
+		Upserts:     s.upserts,
+		Deletes:     s.deletes,
+		Overflows:   s.overflows,
+	}
+	for _, e := range s.entries {
+		st.Resources[e.resource.Kind]++
+	}
+	return st
 }
 
 // New creates an empty Store.
@@ -171,6 +206,7 @@ func (s *Store) Upsert(r model.Resource) (bool, error) {
 		return false, nil
 	}
 	s.revision++
+	s.upserts++
 	r.SchemaVersion = model.SchemaVersion
 	r.Revision = s.revision
 	r.ObservedAt = s.now().UTC()
@@ -192,6 +228,7 @@ func (s *Store) Delete(key string) bool {
 	}
 	delete(s.entries, key)
 	s.revision++
+	s.deletes++
 	s.rememberDeleteLocked(key, s.revision)
 	s.broadcast(Event{Type: EventDelete, Key: key, Revision: s.revision})
 	return true
@@ -329,6 +366,7 @@ func (s *Store) broadcast(ev Event) {
 		select {
 		case sub.events <- ev:
 		default:
+			s.overflows++
 			s.closeLocked(sub, ErrSubscriptionOverflow)
 		}
 	}

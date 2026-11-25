@@ -36,6 +36,7 @@ ALL_IMAGES_AND_TARGETS=(
   conformance:conformance:build/conformance/Dockerfile
   nodeconformance:nodeconformance:build/conformance/nodeconformance.Dockerfile
   controllermanager:controller-manager:build/controllermanager/Dockerfile
+  dtpublisher:dtpublisher:build/dtpublisher/Dockerfile
   installation-package:installation-package:build/docker/installation-package/installation-package.dockerfile
 )
 

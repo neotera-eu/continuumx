@@ -186,6 +186,7 @@ ALL_BINARIES_AND_TARGETS=(
   iptablesmanager:cloud/cmd/iptablesmanager
   edgemark:edge/cmd/edgemark
   controllermanager:cloud/cmd/controllermanager
+  dtpublisher:cloud/cmd/dtpublisher
 )
 
 kubeedge::golang::get_target_by_binary() {

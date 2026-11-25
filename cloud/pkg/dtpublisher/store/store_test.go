@@ -223,6 +223,31 @@ func TestCloseIsIdempotent(t *testing.T) {
 	assert.NoError(t, err)
 }
 
+func TestStats(t *testing.T) {
+	s := newTestStore()
+	upsert(t, s, "u2deb-edge", model.NodeCategoryEdgeWorker, "True")
+	upsert(t, s, "u2deb-cloud", model.NodeCategoryCloudControlPlane, "True")
+	_, err := s.Upsert(model.Resource{Kind: model.KindDevice, Key: "devices/default/d", Spec: &model.DeviceSpec{Name: "d"}})
+	require.NoError(t, err)
+	require.True(t, s.Delete("nodes/cloud-control-plane/u2deb-cloud"))
+	slow := s.Subscribe("", 1)
+	open := s.Subscribe("devices/", 0)
+	defer open.Close()
+	upsert(t, s, "u2deb-edge", model.NodeCategoryEdgeWorker, "Unknown")
+	upsert(t, s, "u2deb-edge", model.NodeCategoryEdgeWorker, "False") // overflows slow
+
+	_, ok := <-slow.Events()
+	require.True(t, ok)
+	assert.Equal(t, Stats{
+		Revision:    6,
+		Resources:   map[model.Kind]int{model.KindNode: 1, model.KindDevice: 1},
+		Subscribers: 1,
+		Upserts:     5,
+		Deletes:     1,
+		Overflows:   1,
+	}, s.Stats())
+}
+
 func TestEpoch(t *testing.T) {
 	a, b := New(), New()
 	assert.Len(t, a.Epoch(), 16)

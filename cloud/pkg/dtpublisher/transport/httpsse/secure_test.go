@@ -28,9 +28,9 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/access"
-	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/internal/testpki"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/security"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/store"
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/testing/testpki"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/transport"
 	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/transport/httpsse"
 )

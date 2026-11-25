@@ -71,6 +71,8 @@ const (
 type Options struct {
 	// Address is the listen address used by Run, for example ":8443".
 	Address string
+	// Listener, if set, is used by Run instead of listening on Address. Run closes it.
+	Listener net.Listener
 	// TLSConfig serves HTTPS. It must hold a server certificate. Required unless Insecure.
 	TLSConfig *tls.Config
 	// Insecure serves plain HTTP. For development playgrounds only.
@@ -153,6 +155,9 @@ func (s *Server) Handler() http.Handler {
 
 // Run listens on Options.Address and serves until ctx is done.
 func (s *Server) Run(ctx context.Context) error {
+	if s.opts.Listener != nil {
+		return s.Serve(ctx, s.opts.Listener)
+	}
 	if s.opts.Address == "" {
 		return errors.New("httpsse: listen address is not set")
 	}
