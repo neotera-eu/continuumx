@@ -20,6 +20,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/neotera-eu/continuumx/cloud/pkg/dtpublisher/model"
 )
 
 const (
@@ -27,6 +29,10 @@ const (
 	BasePath = "/i4/v1alpha1"
 	// WatchPath is the subscription endpoint. It streams Server-Sent Events.
 	WatchPath = BasePath + "/watch"
+	// NodesPath lists nodes; NodesPath/{name} gets one. Opt-in.
+	NodesPath = BasePath + "/nodes"
+	// DevicesPath lists devices; DevicesPath/{namespace}/{name} gets one. Opt-in.
+	DevicesPath = BasePath + "/devices"
 
 	// ParamPrefix selects the keys of a subscription. Empty selects every key.
 	ParamPrefix = "prefix"
@@ -36,6 +42,15 @@ const (
 	ParamEpoch = "epoch"
 	// HeaderLastEventID is the standard SSE resume header. It carries an event ID.
 	HeaderLastEventID = "Last-Event-ID"
+
+	// ParamCategory selects the nodes of one category when listing nodes.
+	ParamCategory = "category"
+	// ParamNamespace selects the devices of one namespace when listing devices.
+	ParamNamespace = "namespace"
+	// ParamNode selects the devices hosted by one node when listing devices.
+	ParamNode = "node"
+	// ParamProperty selects device properties when getting a device. It can be repeated.
+	ParamProperty = "property"
 )
 
 // Server-Sent Event names of the watch stream.
@@ -63,6 +78,34 @@ const (
 
 // ReasonOverflow is the StreamError reason of a subscriber that fell too far behind.
 const ReasonOverflow = "overflow"
+
+// ErrorBody reasons.
+const (
+	// ReasonBadRequest: a parameter is invalid.
+	ReasonBadRequest = "BadRequest"
+	// ReasonNotFound: the resource or a requested property does not exist.
+	ReasonNotFound = "NotFound"
+	// ReasonQueryDisabled: list and get are not enabled on this publisher.
+	ReasonQueryDisabled = "QueryDisabled"
+	// ReasonInternal: the publisher failed to answer.
+	ReasonInternal = "Internal"
+)
+
+// ErrorBody is the JSON body of every error response.
+type ErrorBody struct {
+	// Reason is a machine-readable reason, for example ReasonNotFound.
+	Reason string `json:"reason"`
+	// Error is a human-readable description.
+	Error string `json:"error"`
+}
+
+// List is the answer of a list operation: the matching resources, sorted by key, at Cursor.
+// A subscriber can continue with a watch from Cursor.
+type List struct {
+	Cursor
+	// Items are the matching resources.
+	Items []model.Resource `json:"items"`
+}
 
 // Cursor is a position in the publisher's change sequence.
 type Cursor struct {

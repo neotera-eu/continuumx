@@ -28,6 +28,11 @@ const (
 	NodeCategoryEdgeWorker NodeCategory = "edge-worker"
 )
 
+// NodeCategories lists every node category, sorted.
+func NodeCategories() []NodeCategory {
+	return []NodeCategory{NodeCategoryCloudControlPlane, NodeCategoryCloudWorker, NodeCategoryEdgeWorker}
+}
+
 // NodeSpec is the published view of a Kubernetes node, projected from v1.Node.
 // Times are RFC 3339 in UTC; an empty string means the time is not set.
 type NodeSpec struct {

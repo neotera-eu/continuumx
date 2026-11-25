@@ -63,12 +63,12 @@ func parseResumePoint(r *http.Request) (resumePoint, error) {
 func (s *Server) serveWatch(w http.ResponseWriter, r *http.Request) {
 	prefix := r.URL.Query().Get(ParamPrefix)
 	if strings.ContainsAny(prefix, "*?#$") {
-		writeError(w, http.StatusBadRequest, "%s must not contain wildcard characters", ParamPrefix)
+		writeError(w, http.StatusBadRequest, ReasonBadRequest, "%s must not contain wildcard characters", ParamPrefix)
 		return
 	}
 	resume, err := parseResumePoint(r)
 	if err != nil {
-		writeError(w, http.StatusBadRequest, "%v", err)
+		writeError(w, http.StatusBadRequest, ReasonBadRequest, "%v", err)
 		return
 	}
 

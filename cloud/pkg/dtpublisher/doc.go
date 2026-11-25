@@ -27,6 +27,7 @@ limitations under the License.
 //   - source:    producers of resources (nodes, device twins) and a per-key throttle.
 //   - transport: the boundary to the I-4 protocol (open decision OPN-04), with the
 //     PROVISIONAL httpsse adapter and the reserved, unimplemented zenoh name.
+//   - client:    Go client of the httpsse transport, used by "dtpublisher ctl".
 //
 // Consumer access and security of I-4 are open decisions; they are kept behind separate
 // packages added in later increments.

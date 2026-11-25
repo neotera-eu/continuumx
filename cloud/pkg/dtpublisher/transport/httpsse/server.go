@@ -20,6 +20,13 @@ limitations under the License.
 //	GET /i4/v1alpha1                                  capabilities (JSON)
 //	GET /i4/v1alpha1/watch?prefix=&since=&epoch=      subscription (text/event-stream)
 //
+// Opt-in, with Options.QueryEnabled (404 with reason QueryDisabled otherwise):
+//
+//	GET /i4/v1alpha1/nodes?category=                  list nodes (JSON)
+//	GET /i4/v1alpha1/nodes/{name}                     get one node (JSON)
+//	GET /i4/v1alpha1/devices?namespace=&node=         list devices (JSON)
+//	GET /i4/v1alpha1/devices/{namespace}/{name}?property=   get one device (JSON)
+//
 // See the Event constants for the stream. TLS is required unless Options.Insecure is set
 // explicitly; the security mechanism itself is open (OPN-11).
 package httpsse
@@ -69,6 +76,9 @@ type Options struct {
 	BufferSize int
 	// WriteTimeout bounds one write to a subscriber. Zero uses DefaultWriteTimeout.
 	WriteTimeout time.Duration
+	// QueryEnabled serves the request/response operations list and get. Off by default: the
+	// committed behaviour of I-4 is the standing data flow (watch).
+	QueryEnabled bool
 }
 
 // Server is the httpsse Publisher.
@@ -113,6 +123,10 @@ func New(opts Options, deps transport.Deps) (*Server, error) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET "+BasePath, s.serveCapabilities)
 	mux.HandleFunc("GET "+WatchPath, s.serveWatch)
+	mux.HandleFunc("GET "+NodesPath, s.query(s.serveListNodes))
+	mux.HandleFunc("GET "+NodesPath+"/{name}", s.query(s.serveGetNode))
+	mux.HandleFunc("GET "+DevicesPath, s.query(s.serveListDevices))
+	mux.HandleFunc("GET "+DevicesPath+"/{namespace}/{name}", s.query(s.serveGetDevice))
 	s.handler = mux
 	return s, nil
 }
@@ -184,19 +198,15 @@ func (s *Server) Serve(ctx context.Context, ln net.Listener) error {
 }
 
 func (s *Server) operations() transport.Operations {
-	return transport.Operations{Watch: true}
+	return transport.Operations{Watch: true, List: s.opts.QueryEnabled, Get: s.opts.QueryEnabled}
 }
 
 func (s *Server) serveCapabilities(w http.ResponseWriter, _ *http.Request) {
 	writeJSON(w, http.StatusOK, transport.NewCapabilities(Name, s.store, s.info, s.operations()))
 }
 
-type errorBody struct {
-	Error string `json:"error"`
-}
-
-func writeError(w http.ResponseWriter, status int, format string, args ...interface{}) {
-	writeJSON(w, status, errorBody{Error: fmt.Sprintf(format, args...)})
+func writeError(w http.ResponseWriter, status int, reason, format string, args ...interface{}) {
+	writeJSON(w, status, ErrorBody{Reason: reason, Error: fmt.Sprintf(format, args...)})
 }
 
 func writeJSON(w http.ResponseWriter, status int, body interface{}) {
