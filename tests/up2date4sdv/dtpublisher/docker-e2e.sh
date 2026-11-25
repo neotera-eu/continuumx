@@ -95,7 +95,7 @@ e2e_target_preconditions() {
 }
 
 e2e_target_trace() {
-  local since="@${E2E_START_EPOCH}" unit
+  local since="@$((E2E_START_EPOCH - 60))" unit
   for unit in continuumx-virtual-thermal-ecu continuumx-virtual-tire-ecu edgecore; do
     e2e_edge_exec "journalctl -u ${unit} --since $(e2e_quote "$since") --no-pager -o short-iso" \
       >"${E2E_TRACE_DIR}/${unit}.log" 2>&1 || true

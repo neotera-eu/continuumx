@@ -40,7 +40,7 @@
 : "${E2E_TARGET:=unknown}"
 : "${E2E_NAMESPACE:=continuumx}"
 : "${E2E_DEVICE_NAMESPACE:=default}"
-: "${E2E_CLOUD_NODE:=u2deb-cloud}"
+: "${E2E_CLOUD_NODE:=}"            # empty: the single control-plane node, detected
 : "${E2E_EDGE_NODE:=u2deb-edge}"
 : "${E2E_REMOTE_DIR:=/tmp/cx-dtp-e2e}"
 : "${E2E_THERMAL_DEVICE:=automotive-thermal-ecu-fw-001}"
@@ -78,6 +78,7 @@ E2E_RESTORE=()
 E2E_WATCH_PID=
 E2E_EDGECORE_STOPPED=0
 E2E_DEPLOYED=0
+E2E_CLOUD_HOSTNAME=
 E2E_IMAGE=
 E2E_SERVER=
 E2E_EVENTS=
@@ -124,6 +125,9 @@ Common options:
   --allow-ecu-state-change    allow the tire scenario: the simulated leak lowers the ECU's
                               tire pressure and the ECU keeps that state (see below)
   --playground DIR            playground checkout; its commit is recorded in the trace
+  --cloud-node NAME           Kubernetes name of the cloud node (default: the single node with
+                              the control-plane role)
+  --edge-node NAME            Kubernetes name of the edge node (default: u2deb-edge)
   --skip-build                reuse the image built earlier for the same source commit
   --skip-node-restart         do not stop and start edgecore (skips the node Ready check)
   --keep                      leave the publisher deployed at the end
@@ -155,6 +159,11 @@ e2e_parse_common_arg() {
       [[ $# -ge 2 && -n "$2" ]] || e2e_die "$E2E_EXIT_USAGE" "--playground needs a directory"
       [[ -d "$2" ]] || e2e_die "$E2E_EXIT_USAGE" "--playground $2: not a directory"
       E2E_PLAYGROUND=$(cd "$2" && pwd -P)
+      E2E_ARGS_USED=2
+      ;;
+    --cloud-node | --edge-node)
+      [[ $# -ge 2 && -n "$2" ]] || e2e_die "$E2E_EXIT_USAGE" "$1 needs a node name"
+      if [[ "$1" == --cloud-node ]]; then E2E_CLOUD_NODE=$2; else E2E_EDGE_NODE=$2; fi
       E2E_ARGS_USED=2
       ;;
     --skip-build) E2E_SKIP_BUILD=1 ;;
@@ -415,6 +424,16 @@ e2e_timestamp_advances() {
 e2e_preconditions() {
   local node dev prop host
   e2e_log "checking preconditions"
+  if [[ -z "$E2E_CLOUD_NODE" ]]; then
+    local cps
+    cps=$(e2e_kubectl get nodes -l node-role.kubernetes.io/control-plane -o 'jsonpath={.items[*].metadata.name}' 2>/dev/null || true)
+    [[ -n "$cps" && "$cps" != *" "* ]] \
+      || e2e_die "$E2E_EXIT_PRECONDITION" "cannot tell the cloud node (control-plane nodes: '${cps}'); give --cloud-node"
+    E2E_CLOUD_NODE=$cps
+    e2e_log "cloud node: ${E2E_CLOUD_NODE} (control-plane role)"
+  fi
+  E2E_CLOUD_HOSTNAME=$(e2e_kubectl get node "$E2E_CLOUD_NODE" -o 'jsonpath={.metadata.labels.kubernetes\.io/hostname}' 2>/dev/null || true)
+  [[ -n "$E2E_CLOUD_HOSTNAME" ]] || E2E_CLOUD_HOSTNAME=$E2E_CLOUD_NODE
   for node in "$E2E_CLOUD_NODE" "$E2E_EDGE_NODE"; do
     [[ "$(e2e_node_ready "$node")" == True ]] \
       || e2e_die "$E2E_EXIT_PRECONDITION" "node ${node} is not Ready"
@@ -536,8 +555,9 @@ e2e_manifests() {
 }
 
 # e2e_customize IMAGE NODE NAMESPACE: on stdin the manifests as JSON (one object or a List); on
-# stdout the same with the e2e image, --enable-query, a node selector for the node holding the
-# image, and NAMESPACE for the namespaced objects and the ClusterRoleBinding subject.
+# stdout the same with the e2e image, --enable-query, a node selector (kubernetes.io/hostname =
+# NODE) for the node holding the image, and NAMESPACE for the namespaced objects and the
+# ClusterRoleBinding subject.
 e2e_customize() {
   jq -c --arg img "$1" --arg node "$2" --arg ns "$3" '
     (if .kind == "List" then .items else [.] end)
@@ -554,7 +574,7 @@ e2e_customize() {
 # e2e_manifests_json: build/dtpublisher/ as a JSON List, customized for this run.
 e2e_manifests_json() {
   e2e_manifests | e2e_kubectl_in create --dry-run=client -o json -f - \
-    | e2e_customize "$E2E_IMAGE" "$E2E_CLOUD_NODE" "$E2E_NAMESPACE"
+    | e2e_customize "$E2E_IMAGE" "$E2E_CLOUD_HOSTNAME" "$E2E_NAMESPACE"
 }
 
 e2e_undeploy() {
@@ -700,7 +720,18 @@ e2e_scenario_tire() {
     e2e_fail "tire: frontLeftPressure published before the leak" "no numeric value (got '${start}')"
     return 0
   fi
-  for prop in leakEnabled leakWheel leakRate pressureThreshold; do
+  # The threshold must be a valid value for the model; the published model carries the range.
+  local min
+  min=$(e2e_trace_events "$E2E_EVENTS" | jq -r -s --arg k "$key" '
+    [ .[] | select(.event == "UPSERT" and .data.key == $k) | .data.spec.properties[]?
+      | select(.name == "pressureThreshold") | .minimum // empty ] | last // empty')
+  if [[ -n "$min" ]] && jq -e -n --argjson s "$start" --arg m "$min" '$s < ($m | tonumber? // 0)' >/dev/null; then
+    e2e_fail "tire: leak scenario" "front-left pressure ${start} is below the pressureThreshold minimum ${min}, so no valid threshold can be set; reset the tire ECU state first"
+    return 0
+  fi
+  # Remembered in this order so that the restore (newest first) switches the leak off first,
+  # then restores the threshold and the rest, as the playground procedure says.
+  for prop in pressureThreshold leakRate leakWheel leakEnabled; do
     e2e_remember_desired "$dev" "$prop"
   done
   from=$(e2e_trace_mark "$E2E_EVENTS")
@@ -821,7 +852,7 @@ e2e_scenario_node_restart() {
 
 e2e_collect_trace() {
   local t=$E2E_TRACE_DIR since
-  since="@${E2E_START_EPOCH}"
+  since="@$((E2E_START_EPOCH - 60))"
   {
     echo "target: ${E2E_TARGET}"
     echo "ecu: ${E2E_ECU}"
@@ -924,7 +955,7 @@ e2e_main() {
   if [[ "$E2E_ECU" == both ]]; then e2e_check_both; fi
   e2e_scenario_query
   if [[ "$E2E_SKIP_NODE_RESTART" == 1 ]]; then
-    e2e_warn "node: edgecore stop/start skipped (--skip-node-restart)"
+    e2e_warn "node: edgecore stop/start not run, so the node Ready check was skipped"
   else
     e2e_scenario_node_restart
   fi

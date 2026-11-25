@@ -143,6 +143,12 @@ expect_eq "--keep consumes one" "$E2E_ARGS_USED" 1
 expect_eq "--keep sets keep" "$E2E_KEEP" 1
 e2e_parse_common_arg --cloud x
 expect_eq "unknown option consumes none" "$E2E_ARGS_USED" 0
+e2e_parse_common_arg --cloud-node u2deb-cloud.local
+expect_eq "--cloud-node sets the cloud node" "$E2E_ARGS_USED,$E2E_CLOUD_NODE" "2,u2deb-cloud.local"
+E2E_CLOUD_NODE=
+e2e_parse_common_arg --edge-node edge-2
+expect_eq "--edge-node sets the edge node" "$E2E_EDGE_NODE" edge-2
+E2E_EDGE_NODE=u2deb-edge
 code=0; (e2e_parse_common_arg --ecu nope) 2>/dev/null || code=$?
 expect_eq "--ecu nope is a usage error" "$code" "$E2E_EXIT_USAGE"
 code=0; (e2e_parse_common_arg --ecu) 2>/dev/null || code=$?
@@ -188,6 +194,39 @@ e2e_restore_desired 2>/dev/null
 expect_eq "restored" "$(e2e_desired dev leakEnabled),$(e2e_desired dev leakRate)" "false,1.0"
 expect_eq "restored newest first" "$(tail -n 2 "$PATCHES" | jq -r '.[0].value' | tr '\n' ' ')" "leakRate leakEnabled "
 expect_eq "restore list emptied" "${#E2E_RESTORE[@]}" 0
+
+# ---- tire scenario against the stub: threshold minimum and restore order --------------------
+
+TIRE_EVENTS="${TMP}/tire.jsonl"
+tire_device() {
+  jq -n -c --arg k "$TIRE_KEY" --arg fl "$1" '{schemaVersion: "v1alpha1", kind: "Device", key: $k, revision: 1,
+    spec: {node: "u2deb-edge", properties: [
+      {name: "frontLeftPressure", reported: {value: $fl}},
+      {name: "pressureThreshold", minimum: "150", maximum: "300", desired: {value: "210.0"}}]}}'
+}
+jq -n '{spec: {properties: [{name: "pressureThreshold", desired: {value: "210.0"}}, {name: "leakEnabled", desired: {value: "false"}},
+  {name: "leakWheel", desired: {value: "NONE"}}, {name: "leakRate", desired: {value: "1.0"}}]}}' >"$DEVICE_JSON"
+: >"$PATCHES"
+E2E_EVENTS=$TIRE_EVENTS
+E2E_RESULTS=()
+ev UPSERT "$(tire_device 140.0)" >"$TIRE_EVENTS"
+e2e_scenario_tire 2>/dev/null
+expect_eq "tire: pressure below the threshold minimum fails" "${E2E_RESULTS[0]%% *}" FAIL
+expect_eq "tire: nothing patched below the minimum" "$(grep -c . "$PATCHES" || true)" 0
+expect_eq "tire: nothing to restore below the minimum" "${#E2E_RESTORE[@]}" 0
+
+E2E_TRACE_DIR="${TMP}/trace"; mkdir -p "$E2E_TRACE_DIR"
+E2E_RESULTS=()
+ev UPSERT "$(tire_device 233.5)" >"$TIRE_EVENTS"
+E2E_TIMEOUT_DESIRED=1 E2E_TIMEOUT_REPORTED=1 e2e_scenario_tire 2>/dev/null
+expect_eq "tire: threshold set to the current pressure" "$(e2e_desired dev pressureThreshold)" 233.5
+expect_eq "tire: leak switched on last" "$(tail -n 1 "$PATCHES" | jq -r '.[0].value'):$(tail -n 1 "$PATCHES" | jq -r '.[1].value')" leakEnabled:true
+expect_eq "tire: no events, so both checks fail" "$(printf '%s\n' "${E2E_RESULTS[@]}" | grep -c '^FAIL')" 2
+: >"$PATCHES"
+e2e_restore_desired 2>/dev/null
+expect_eq "tire: restore switches the leak off first" "$(head -n 1 "$PATCHES" | jq -r '.[0].value'):$(head -n 1 "$PATCHES" | jq -r '.[1].value')" leakEnabled:false
+expect_eq "tire: restore ends with the threshold" "$(tail -n 1 "$PATCHES" | jq -r '.[0].value'):$(tail -n 1 "$PATCHES" | jq -r '.[1].value')" pressureThreshold:210.0
+E2E_TRACE_DIR=
 
 # ---- manifests --------------------------------------------------------------------------------
 
