@@ -40,7 +40,7 @@
 : "${E2E_TARGET:=unknown}"
 : "${E2E_NAMESPACE:=continuumx}"
 : "${E2E_DEVICE_NAMESPACE:=default}"
-: "${E2E_CLOUD_NODE:=}"            # empty: the single control-plane node, detected
+: "${E2E_CLOUD_NODE:=u2deb-cloud}"
 : "${E2E_EDGE_NODE:=u2deb-edge}"
 : "${E2E_REMOTE_DIR:=/tmp/cx-dtp-e2e}"
 : "${E2E_THERMAL_DEVICE:=automotive-thermal-ecu-fw-001}"
@@ -125,8 +125,7 @@ Common options:
   --allow-ecu-state-change    allow the tire scenario: the simulated leak lowers the ECU's
                               tire pressure and the ECU keeps that state (see below)
   --playground DIR            playground checkout; its commit is recorded in the trace
-  --cloud-node NAME           Kubernetes name of the cloud node (default: the single node with
-                              the control-plane role)
+  --cloud-node NAME           Kubernetes name of the cloud node (default: u2deb-cloud)
   --edge-node NAME            Kubernetes name of the edge node (default: u2deb-edge)
   --skip-build                reuse the image built earlier for the same source commit
   --skip-node-restart         do not stop and start edgecore (skips the node Ready check)
@@ -424,13 +423,10 @@ e2e_timestamp_advances() {
 e2e_preconditions() {
   local node dev prop host
   e2e_log "checking preconditions"
-  if [[ -z "$E2E_CLOUD_NODE" ]]; then
+  if ! e2e_kubectl get node "$E2E_CLOUD_NODE" >/dev/null 2>&1; then
     local cps
     cps=$(e2e_kubectl get nodes -l node-role.kubernetes.io/control-plane -o 'jsonpath={.items[*].metadata.name}' 2>/dev/null || true)
-    [[ -n "$cps" && "$cps" != *" "* ]] \
-      || e2e_die "$E2E_EXIT_PRECONDITION" "cannot tell the cloud node (control-plane nodes: '${cps}'); give --cloud-node"
-    E2E_CLOUD_NODE=$cps
-    e2e_log "cloud node: ${E2E_CLOUD_NODE} (control-plane role)"
+    e2e_die "$E2E_EXIT_PRECONDITION" "cloud node ${E2E_CLOUD_NODE} not found (control-plane nodes: '${cps:-none}'); give --cloud-node"
   fi
   E2E_CLOUD_HOSTNAME=$(e2e_kubectl get node "$E2E_CLOUD_NODE" -o 'jsonpath={.metadata.labels.kubernetes\.io/hostname}' 2>/dev/null || true)
   [[ -n "$E2E_CLOUD_HOSTNAME" ]] || E2E_CLOUD_HOSTNAME=$E2E_CLOUD_NODE

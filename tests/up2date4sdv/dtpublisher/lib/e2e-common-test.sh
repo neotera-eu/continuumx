@@ -143,9 +143,10 @@ expect_eq "--keep consumes one" "$E2E_ARGS_USED" 1
 expect_eq "--keep sets keep" "$E2E_KEEP" 1
 e2e_parse_common_arg --cloud x
 expect_eq "unknown option consumes none" "$E2E_ARGS_USED" 0
+expect_eq "cloud node default" "$E2E_CLOUD_NODE" u2deb-cloud
 e2e_parse_common_arg --cloud-node u2deb-cloud.local
 expect_eq "--cloud-node sets the cloud node" "$E2E_ARGS_USED,$E2E_CLOUD_NODE" "2,u2deb-cloud.local"
-E2E_CLOUD_NODE=
+E2E_CLOUD_NODE=u2deb-cloud
 e2e_parse_common_arg --edge-node edge-2
 expect_eq "--edge-node sets the edge node" "$E2E_EDGE_NODE" edge-2
 E2E_EDGE_NODE=u2deb-edge

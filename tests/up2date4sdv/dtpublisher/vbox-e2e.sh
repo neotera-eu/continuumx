@@ -41,6 +41,8 @@ build/dtpublisher/, checks what a subscriber receives, and removes the publisher
 
 Needs: key-based SSH from this host to both VMs (no password prompt), passwordless sudo on
 both VMs, kubectl working as root on the cloud VM (/root/.kube/config), bash as the login shell.
+If passwordless sudo is missing, the check stops and prints how to set it up, with a warning
+about what it allows.
 
 VirtualBox playground options:
   --cloud USER@HOST           SSH target of the cloud VM (default: user@192.168.56.10)
@@ -131,6 +133,36 @@ e2e_target_trace() {
   } >>"${E2E_TRACE_DIR}/versions.txt"
 }
 
+# sudo_help TARGET: how to allow passwordless sudo on TARGET, and what that means.
+sudo_help() {
+  local user=${1%@*}
+  [[ "$user" != "$1" ]] || user='<the VM user you log in as>'
+  cat >&2 <<EOF
+
+Passwordless sudo is not set up for ${user} on ${1#*@}.
+
+Why it is needed: the check runs its commands on the VMs as root (kubectl, ctr, systemctl,
+journalctl, and files under ${E2E_REMOTE_DIR}) with 'sudo -n bash -c ...'. It never asks for,
+reads or stores a password, so sudo must not need one.
+
+To allow it, log in to that VM (ssh ${1}) and run:
+
+  echo '${user} ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/90-cx-dtp-e2e
+  sudo chmod 0440 /etc/sudoers.d/90-cx-dtp-e2e
+  sudo visudo -cf /etc/sudoers.d/90-cx-dtp-e2e
+
+and remove it again when you no longer need it:
+
+  sudo rm /etc/sudoers.d/90-cx-dtp-e2e
+
+WARNING: this lets anyone who can log in as ${user} on that VM, or who holds its SSH key, run any
+command as root without a password. Do it only on disposable playground VMs, never on a shared
+or production machine. A rule limited to single commands does not help here: the check runs
+'bash -c' as root, which is equivalent to full root access.
+
+EOF
+}
+
 # Access checks, before anything else: SSH without a prompt and sudo without a password.
 e2e_require_tools ssh
 for target in "$CLOUD_SSH" "$EDGE_SSH"; do
@@ -138,7 +170,12 @@ for target in "$CLOUD_SSH" "$EDGE_SSH"; do
     e2e_die "$E2E_EXIT_PRECONDITION" "cannot SSH to ${target} without a prompt (key-based SSH needed; see --ssh-opt): ${out}"
   fi
   if ! out=$(vm_exec "$target" true </dev/null 2>&1); then
-    e2e_die "$E2E_EXIT_PRECONDITION" "sudo needs a password on ${target}; passwordless sudo is needed for this check: ${out}"
+    if [[ "$out" == *password* || "$out" == *"terminal is required"* ]]; then
+      e2e_log "warning: sudo on ${target} asks for a password: ${out}"
+      sudo_help "$target"
+      e2e_die "$E2E_EXIT_PRECONDITION" "passwordless sudo is not set up on ${target}; see above"
+    fi
+    e2e_die "$E2E_EXIT_PRECONDITION" "sudo -n bash -c true failed on ${target}: ${out}"
   fi
 done
 e2e_cloud_exec "kubectl version --request-timeout=10s >/dev/null 2>&1" \
