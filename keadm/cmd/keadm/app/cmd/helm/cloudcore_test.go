@@ -75,21 +75,25 @@ func TestDefaultHelmSettings(t *testing.T) {
 }
 
 func TestImageTags(t *testing.T) {
-	assert.Equal(t, 3, len(setsKeyImageTags), "setsKeyImageTags should have exactly 3 elements")
+	assert.Equal(t, 4, len(setsKeyImageTags), "setsKeyImageTags should have exactly 4 elements")
 	assert.Contains(t, setsKeyImageTags, "cloudCore.image.tag",
 		"setsKeyImageTags should contain cloudCore.image.tag")
 	assert.Contains(t, setsKeyImageTags, "iptablesManager.image.tag",
 		"setsKeyImageTags should contain iptablesManager.image.tag")
 	assert.Contains(t, setsKeyImageTags, "controllerManager.image.tag",
 		"setsKeyImageTags should contain controllerManager.image.tag")
+	assert.Contains(t, setsKeyImageTags, "dtPublisher.image.tag",
+		"setsKeyImageTags should contain dtPublisher.image.tag")
 
-	assert.Equal(t, 3, len(setsKeyImageRepositories), "setsKeyImageRepositories should have exactly 3 entries")
+	assert.Equal(t, 4, len(setsKeyImageRepositories), "setsKeyImageRepositories should have exactly 4 entries")
 	assert.Equal(t, "cloudcore", setsKeyImageRepositories["cloudCore.image.repository"],
 		"cloudCore.image.repository should map to cloudcore")
 	assert.Equal(t, "iptables-manager", setsKeyImageRepositories["iptablesManager.image.repository"],
 		"iptablesManager.image.repository should map to iptables-manager")
 	assert.Equal(t, "controller-manager", setsKeyImageRepositories["controllerManager.image.repository"],
 		"controllerManager.image.repository should map to controller-manager")
+	assert.Equal(t, "dtpublisher", setsKeyImageRepositories["dtPublisher.image.repository"],
+		"dtPublisher.image.repository should map to dtpublisher")
 }
 
 func TestAppendDefaultSets(t *testing.T) {
@@ -349,8 +353,9 @@ func TestAppendDefaultSetsAdvanced(t *testing.T) {
 				"cloudCore.image.repository=custom/cloudcore",
 				"iptablesManager.image.repository=custom/iptables-manager",
 				"controllerManager.image.repository=custom/controller-manager",
+				"dtPublisher.image.repository=custom/dtpublisher",
 			},
-			expectedSetsCount: len(setsKeyImageTags) + 3 + 1,
+			expectedSetsCount: len(setsKeyImageTags) + 4 + 1,
 			checkSet:          "cloudCore.image.repository",
 			expectedValue:     "custom/cloudcore",
 		},

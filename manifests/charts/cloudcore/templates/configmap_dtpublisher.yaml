@@ -1,0 +1,59 @@
+{{- /*
+Copyright 2026 Neotera.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Device Twins Resources Publisher (UP2DATE4SDV CID 93): configuration file of "dtpublisher serve".
+*/ -}}
+{{- $dp := .Values.dtPublisher }}
+{{- if $dp.enable }}
+{{- $tls := $dp.security.tls }}
+{{- if not (has $tls.clientAuth (list "none" "optional" "require")) }}
+{{- fail (printf "dtPublisher.security.tls.clientAuth %q: want none, optional or require" $tls.clientAuth) }}
+{{- end }}
+{{- if and (ne $tls.clientAuth "none") (not $dp.security.insecureDev) (not $tls.clientCASecretName) }}
+{{- fail "dtPublisher.security.tls.clientCASecretName is required when clientAuth is optional or require" }}
+{{- end }}
+{{- if and $dp.access.consumers (or $dp.security.insecureDev (eq $tls.clientAuth "none")) }}
+{{- fail "dtPublisher.access.consumers needs client certificates: set security.tls.clientAuth to optional or require" }}
+{{- end }}
+{{- $config := dict
+  "sources" $dp.sources
+  "minPublishInterval" $dp.minPublishInterval
+  "transport" (dict "type" "httpsse" "httpsse" (dict "address" ":8443"))
+  "query" $dp.query
+  "healthAddress" ":8080" }}
+{{- if $dp.security.insecureDev }}
+{{- $_ := set $config "security" (dict "insecureDev" true) }}
+{{- else }}
+{{- $serverTLS := dict "certFile" "/etc/dtpublisher/tls/tls.crt" "keyFile" "/etc/dtpublisher/tls/tls.key" "clientAuth" $tls.clientAuth }}
+{{- if ne $tls.clientAuth "none" }}
+{{- $_ := set $serverTLS "clientCAFile" "/etc/dtpublisher/client-ca/ca.crt" }}
+{{- end }}
+{{- $_ := set $config "security" (dict "tls" $serverTLS) }}
+{{- end }}
+{{- with $dp.access.consumers }}
+{{- $_ := set $config "access" (dict "consumers" .) }}
+{{- end }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dtpublisher
+  namespace: {{ .Release.Namespace }}
+  {{- with $dp.labels }}
+  labels: {{- toYaml . | nindent 4 }}
+  {{- end }}
+data:
+  config.yaml: |
+{{ toYaml $config | indent 4 }}
+{{- end }}

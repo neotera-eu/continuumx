@@ -1,0 +1,60 @@
+{{- /*
+Copyright 2026 Neotera.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Device Twins Resources Publisher (UP2DATE4SDV CID 93): read-only access to what it publishes.
+*/ -}}
+{{- if .Values.dtPublisher.enable }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dtpublisher
+  namespace: {{ .Release.Namespace }}
+  {{- with .Values.dtPublisher.labels }}
+  labels: {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: dtpublisher
+  {{- with .Values.dtPublisher.labels }}
+  labels: {{- toYaml . | nindent 4 }}
+  {{- end }}
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["devices.kubeedge.io"]
+    resources: ["devices", "devicemodels", "devicestatuses"]
+    verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dtpublisher
+  {{- with .Values.dtPublisher.labels }}
+  labels: {{- toYaml . | nindent 4 }}
+  {{- end }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: dtpublisher
+subjects:
+  - kind: ServiceAccount
+    name: dtpublisher
+    namespace: {{ .Release.Namespace }}
+{{- end }}

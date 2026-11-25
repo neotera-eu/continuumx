@@ -1,0 +1,129 @@
+{{- /*
+Copyright 2026 Neotera.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Device Twins Resources Publisher (UP2DATE4SDV CID 93). A single instance: two replicas would
+publish separate revision sequences.
+*/ -}}
+{{- $dp := .Values.dtPublisher }}
+{{- if $dp.enable }}
+{{- $tlsSecret := $dp.security.tls.secretName | default "dtpublisher-tls" }}
+{{- $clientCA := and (not $dp.security.insecureDev) (ne $dp.security.tls.clientAuth "none") }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dtpublisher
+  namespace: {{ .Release.Namespace }}
+  {{- with $dp.labels }}
+  labels: {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with $dp.annotations }}
+  annotations: {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: 1
+  selector:
+    {{- with $dp.labels }}
+    matchLabels: {{- toYaml . | nindent 6 }}
+    {{- end }}
+  template:
+    metadata:
+      {{- with $dp.labels }}
+      labels: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap_dtpublisher.yaml") . | sha256sum }}
+    spec:
+      {{- with $dp.image.pullSecrets }}
+      imagePullSecrets: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: dtpublisher
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: dtpublisher
+          image: {{ $dp.image.repository }}:{{ $dp.image.tag }}
+          imagePullPolicy: {{ $dp.image.pullPolicy }}
+          args:
+            - serve
+            - --config=/etc/dtpublisher/config/config.yaml
+            - --v={{ $dp.logLevel }}
+          ports:
+            - name: i4
+              containerPort: 8443
+              protocol: TCP
+            - name: health
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: health
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: health
+            periodSeconds: 5
+          {{- with $dp.resources }}
+          resources: {{ toYaml . | nindent 12 }}
+          {{- end }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: config
+              mountPath: /etc/dtpublisher/config
+              readOnly: true
+            {{- if not $dp.security.insecureDev }}
+            - name: tls
+              mountPath: /etc/dtpublisher/tls
+              readOnly: true
+            {{- end }}
+            {{- if $clientCA }}
+            - name: client-ca
+              mountPath: /etc/dtpublisher/client-ca
+              readOnly: true
+            {{- end }}
+      volumes:
+        - name: config
+          configMap:
+            name: dtpublisher
+        {{- if not $dp.security.insecureDev }}
+        - name: tls
+          secret:
+            secretName: {{ $tlsSecret }}
+        {{- end }}
+        {{- if $clientCA }}
+        - name: client-ca
+          secret:
+            secretName: {{ $dp.security.tls.clientCASecretName }}
+        {{- end }}
+      restartPolicy: Always
+      {{- with $dp.affinity }}
+      affinity: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $dp.tolerations }}
+      tolerations: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $dp.nodeSelector }}
+      nodeSelector: {{ toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

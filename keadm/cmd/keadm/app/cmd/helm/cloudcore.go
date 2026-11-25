@@ -65,8 +65,8 @@ const (
 	defaultHelmCreateNs = true
 )
 
-var setsKeyImageTags = []string{"cloudCore.image.tag", "iptablesManager.image.tag", "controllerManager.image.tag"}
-var setsKeyImageRepositories = map[string]string{"cloudCore.image.repository": "cloudcore", "iptablesManager.image.repository": "iptables-manager", "controllerManager.image.repository": "controller-manager"}
+var setsKeyImageTags = []string{"cloudCore.image.tag", "iptablesManager.image.tag", "controllerManager.image.tag", "dtPublisher.image.tag"}
+var setsKeyImageRepositories = map[string]string{"cloudCore.image.repository": "cloudcore", "iptablesManager.image.repository": "iptables-manager", "controllerManager.image.repository": "controller-manager", "dtPublisher.image.repository": "dtpublisher"}
 
 var helmSettings = helmcli.New()
 

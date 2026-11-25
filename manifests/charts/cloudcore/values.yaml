@@ -199,3 +199,73 @@ mosquitto:
     requests:
       cpu: 100m
       memory: 50Mi
+
+# Device Twins Resources Publisher (UP2DATE4SDV CID 93). Publishes nodes and device twins
+# to authorised consumers over Interface I-4. Disabled by default.
+dtPublisher:
+  enable: false
+  image:
+    repository: "neotera/dtpublisher"
+    tag: "v1.23.0"
+    pullPolicy: "IfNotPresent"
+    pullSecrets: []
+  labels:
+    k8s-app: dtpublisher
+    kubeedge: dtpublisher
+  annotations: {}
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/edge
+                operator: DoesNotExist
+  tolerations: []
+  nodeSelector: {}
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+  # Log verbosity (klog -v).
+  logLevel: 2
+  # What is published. Annotations are not published unless their keys are listed.
+  sources:
+    nodes:
+      enabled: true
+      annotationKeys: []
+    devices:
+      enabled: true
+      annotationKeys: []
+  # Minimum interval between two published changes of one resource; "0s" publishes every change.
+  minPublishInterval: "0s"
+  # Opt-in list and get operations. The default operation is the subscription (watch).
+  query:
+    enabled: false
+  security:
+    # Plain HTTP without TLS. For development playgrounds only.
+    insecureDev: false
+    tls:
+      # Secret (type kubernetes.io/tls) with tls.crt and tls.key. Empty: the chart generates a
+      # self-signed certificate for dtpublisher.<namespace>(.svc) into the Secret dtpublisher-tls,
+      # with its CA in ca.crt for consumers to trust.
+      secretName: ""
+      # Client certificates: none, optional or require.
+      clientAuth: "none"
+      # Secret with ca.crt that client certificates are verified against. Required unless
+      # clientAuth is none.
+      clientCASecretName: ""
+  # Consumers and the key prefixes each may read; empty allows every consumer TLS accepts.
+  # Needs clientAuth optional or require. Example:
+  #   consumers:
+  #     - name: consumer-a          # client certificate common name
+  #       prefixes: ["nodes/", "devices/"]
+  access:
+    consumers: []
+  service:
+    type: "ClusterIP"
+    port: 8443
+    # Set when type is NodePort.
+    nodePort: ""
